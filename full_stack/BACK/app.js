@@ -44,52 +44,17 @@ app.put("/signout", async (req, res) => {
     res.send(result);
 })
 
-app.get("/search/:localization/:keyword", async (req,res) => {
-    const result = await searchJobs(req.params.localization, req.params.keyword);
-    const result2 = await searchJobs2(req.params.localization, req.params.keyword);
-    
-    const finalResult = [...result, ...result2];
-
-    if (req.headers.authorization && req.headers.authorization !== "null") {
-        const favoritos = await readFav(req.headers.authorization);
-        const compararFinal = finalResult.map(el => {
-            if (el.url.includes('jooble')) {
-                el.url = el.url.split('&sid')[0]
-            }
-            return el
-        })
-        const compararFav = favoritos.map(el => {
-            if (el.url.includes('jooble')) {
-                el.url = el.url.split('&sid')[0]
-            }
-            return el
-        })
-        
-        const comparados = compararFinal.map(el => {
-            compararFav.map(fav => {
-                if (fav.url === el.url){
-                    el.ok = true;
-                }
-            })
-            return el
-        })
-        res.send(comparados)
-    } else {
-        res.send(finalResult)
-    }
-})
-
-app.post("/favorites/create", async (req, res) => {
+app.post("/coche/create", async (req, res) => {
     const result = await saveFavorite(req.body.titulo, req.body.resumen, req.body.url, req.headers.authorization)
     res.send(result)
 })
 
-app.delete("/favorites/delete", async (req, res) => {
+app.delete("/coche/delete", async (req, res) => {
     const result = await deleteFavorite(req.body.url, req.headers.authorization);
     res.send(result)
 })
 
-app.get("/favorites/get", async (req, res) => {
+app.get("/coche/get", async (req, res) => {
     const result = await readFav(req.headers.authorization);
     res.send(result)
 })

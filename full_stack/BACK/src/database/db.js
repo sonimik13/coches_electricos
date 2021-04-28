@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------------------
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
-const md5 = require('md5')
+// const md5 = require('md5') CAMBIARLO A OTRO ENCRIPTADO
 const randomstring = require("randomstring");
 const connection = mysql.createConnection({
         host     : process.env.HOST,
@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
         password : process.env.PASS,
         database : process.env.DB
 });
-
+// CAMBIAR BASEWDE DATOS A MONGO
 connection.connect();
 
 // -------------------------------------------------------------------------------
