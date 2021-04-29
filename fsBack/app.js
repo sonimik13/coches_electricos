@@ -6,13 +6,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, deleteFavorite, readFav, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
-// -------------------------------------------------------------------------------
-// Frontend app
-// -------------------------------------------------------------------------------
+const {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, validateSurname, deleteFavorite, readFav, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
 
+// FRONTEND
 // const staticFilesPath = express.static(__dirname + "/public")
 // app.use(staticFilesPath)
+
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(cors())
@@ -23,8 +22,8 @@ app.use(cors())
 
 app.post("/signup", async (req, res) => {
     if(validateEmail(req.body.email)&&validatePass(req.body.pass)){
-        if(validateName(req.body.name, req.body.apellido)) {
-            const result =  await signUp(req.body.email, req.body.pass, req.body.name, req.body.apellido)
+        if(validateSurname(req.body.name)&&validateSurname(req.body.surname)) {
+            const result =  await signUp(req.body.email, req.body.pass, req.body.name, req.body.surname, req.body.movil)
             res.send(result)
         }
         else {

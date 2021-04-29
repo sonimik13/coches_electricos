@@ -26,6 +26,7 @@ const registerNewUser = (USER) => {
                 ok: true,
               };
               res(result);
+              db.close()
             }
           });
       } catch {
@@ -35,37 +36,39 @@ const registerNewUser = (USER) => {
   });
 };
 
-const checkUser = (email, pass) => {
+const checkUser = (user) => {
   return new Promise((res, rej) => {
-    connection.query(
-      `SELECT secret, id FROM usuarios WHERE email = '${email}' AND pass = '${pass}'`,
-      function (err, results, fields) {
-        if (err) {
-          console.log(err);
-          res(false);
-        } else if (results[0]?.secret) {
-          let token = jwt.sign(
-            { email: email, id: results[0].id },
-            results[0].secret,
-            { expiresIn: 60 * 60 }
-          );
-          const result = {
-            status: 200,
-            data: "Usuario logeado correctamente",
-            token: token,
-            ok: true,
-          };
-          res(result);
-        } else if (results[0] == undefined) {
-          const result = {
-            status: 401,
-            data: "Email o contraseña incorrect@s",
-            ok: false,
-          };
-          res(result);
-        }
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu").collection("usuarios")
+          .findOne(user, (err, result) => {
+            if (err) throw err;
+            if (result === null) {
+              res({
+                status: 401,
+                data: "Email o contraseña incorrect@s",
+                ok: false,
+              });
+            } else {
+              let token = jwt.sign({ email: result.email, id: result.id }, result.secret, {
+                expiresIn: 60 * 60});
+              res({
+                status: 200,
+                token: token,
+                data: "Usuario logado correctamente",
+                ok: true,
+              });
+              db.close();
+            }
+          });
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
       }
-    );
+    });
   });
 };
 

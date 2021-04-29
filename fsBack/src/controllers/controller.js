@@ -21,10 +21,16 @@ function validatePass(pass) {
     return patternPass.test(pass);  
 }
 
-function validateName(name, surname) {
-    let patternName = /^[a-z ,.'-]+$/;
-    return patternName.test(name, surname)
+function validateName(name) {
+    let patternName = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+    return patternName.test(name)
 }
+
+function validateSurname(surname) {
+    let patternSurname = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+    return patternSurname.test(surname)
+}
+
 function validateCard(card) {
     let patternCard = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/;
     return patternCard.test(card)
@@ -34,7 +40,7 @@ function validateCard(card) {
 // Logic
 // -------------------------------------------------------------------------------
 
-const signUp = async (email, pass, name, surname) => { 
+const signUp = async (email, pass, name, surname, movil) => { 
     const secret = randomstring.generate();
     const id = nanoid(10);
     const USER = {
@@ -43,7 +49,7 @@ const signUp = async (email, pass, name, surname) => {
         name: name,
         surname: surname,
         email: email,
-        movil: "",
+        movil: movil,
         pass: md5(pass),
         secret,
         coches: [],
@@ -55,7 +61,11 @@ const signUp = async (email, pass, name, surname) => {
 }
 
 const signIn = async (email, pass) => {
-    const result = await checkUser(email, md5(pass))
+    const USER = {
+        email,
+        pass: md5(pass)
+    }
+    const result = await checkUser(USER)
     return result
 }
 
@@ -236,4 +246,4 @@ const signUpGoogle = async (email, pass) => {
 // Export modules
 // -------------------------------------------------------------------------------
 
-module.exports = {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, deleteFavorite, readFav, newPass, changePass, signUpGoogle}
+module.exports = {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, validateSurname, deleteFavorite, readFav, newPass, changePass, signUpGoogle}
