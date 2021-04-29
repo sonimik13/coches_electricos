@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, validateSurname, deleteFavorite, readFav, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
+const {signUp, signIn, editUser, validateEmail, validatePass, validateName, validateSurname, newCard, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
 
 // FRONTEND
 // const staticFilesPath = express.static(__dirname + "/public")
@@ -22,7 +22,7 @@ app.use(cors())
 
 app.post("/signup", async (req, res) => {
     if(validateEmail(req.body.email)&&validatePass(req.body.pass)){
-        if(validateSurname(req.body.name)&&validateSurname(req.body.surname)) {
+        if(validateName(req.body.name)&&validateSurname(req.body.surname)) {
             const result =  await signUp(req.body.email, req.body.pass, req.body.name, req.body.surname, req.body.movil)
             res.send(result)
         }
@@ -47,25 +47,21 @@ app.post("/signin", async (req, res) => {
     res.send(result)
 })
 
-app.put("/signout", async (req, res) => {
-    const result = await signOut(req.headers.authorization);
+app.put("/create/card", async (req, res) => {
+    const result = await newCard(req.body, req.headers.authorization);
     res.send(result);
 })
 
-app.post("/coche/create", async (req, res) => {
-    const result = await saveFavorite(req.body.titulo, req.body.resumen, req.body.url, req.headers.authorization)
-    res.send(result)
+app.put("/edit/user", async (req, res) => {
+    const result = await editUser(req.body, req.headers.authorization);
+    res.send(result);
 })
 
-app.delete("/coche/delete", async (req, res) => {
-    const result = await deleteFavorite(req.body.url, req.headers.authorization);
-    res.send(result)
-})
 
-app.get("/coche/get", async (req, res) => {
-    const result = await readFav(req.headers.authorization);
-    res.send(result)
-})
+
+
+
+// --------------- PARA CAMBIAR ---------------
 
 app.post("/user/newpass", async (req,res) =>{
     const result = await newPass(req.body.email)

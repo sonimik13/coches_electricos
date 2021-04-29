@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer')
 const randomstring = require("randomstring");
 const { nanoid } = require('nanoid')
-const {registerNewUser, checkUser, deleteSecret, deleteFav, readFavorite, registerNewFav, changeCodes, doQuery, registerNewUserGoogle} = require('../database/db')
+const {registerNewUser, checkUser, newCardDB, editUserDB, registerNewUserGoogle} = require('../database/db')
 
 // -------------------------------------------------------------------------------
 // Aux Functions
@@ -69,42 +69,31 @@ const signIn = async (email, pass) => {
     return result
 }
 
-const signOut = async token => {
-    const result = await deleteSecret(token);
-    return result;
-}
-
-const saveFavorite = async (titulo, resumen, url, token) => {
-    let decode = jwt.decode(token)
-    const NEWFAV = { 
-        titulo: titulo, 
-        resumen: resumen, 
-        url: url, 
-        idUsuario: decode.id,
-        token: decode
+const newCard = async (card, token) => {
+    const decode = jwt.decode(token)
+    const CARD = {
+        id: decode.id,
+        titular: card.titular,
+        numero: card.numero,
+        fecha: card.fecha,
+        codigo: card.codigo
     }
-        const result = await registerNewFav(NEWFAV)
-        return result
-}
-
-const readFav = async token => {
-    const result = await readFavorite(token);
+    const result = await newCardDB(CARD)
     return result
 }
 
-const deleteFavorite = async (url, token) => {
-    let decode = jwt.decode(token)
-    if (decode.email) {
-        const result = await deleteFav(url);
-        return result
-    } else {
-        const result = {
-            status: 400,
-            data: "No tienes token, no autorizado",
-            ok: false
-        }
-        return result
+const  editUser = async (user, token) => {
+    const decode = jwt.decode(token)
+    const newUser = {
+        id:decode.id,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        movil: user.movil,
     }
+
+    const result = await editUserDB(newUser)
+    return result
 }
 
 const newPass = async (email) => {
@@ -246,4 +235,4 @@ const signUpGoogle = async (email, pass) => {
 // Export modules
 // -------------------------------------------------------------------------------
 
-module.exports = {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, validateSurname, deleteFavorite, readFav, newPass, changePass, signUpGoogle}
+module.exports = {signUp, signIn, editUser, validateEmail, validatePass, validateName, validateSurname, newCard, newPass, changePass, signUpGoogle}
