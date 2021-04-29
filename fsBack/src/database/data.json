@@ -4,6 +4,7 @@
     "apellidos": "Meyer-Alten",
     "email": "meyer@gmail.com",
     "pass":  "password",
+    "img": "",
     "movil": 665663664,
     "vehiculos": [
         {
@@ -25,9 +26,11 @@
             "fechas": "date.now"
         }
     ],
-    "tarjeta": {
-        "numero": 646546454654654,
-        "fechaCaducidad": "fecha",
-        "codigo": 190
-    }
+    "tarjeta": [
+        {
+            "numero": 646546454654654,
+            "fechaCaducidad": "fecha",
+            "codigo": 190
+        }
+    ]
 }
