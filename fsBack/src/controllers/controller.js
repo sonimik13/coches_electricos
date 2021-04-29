@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer')
 const randomstring = require("randomstring");
 const { nanoid } = require('nanoid')
-const {registerNewUser, checkUser, newCardDB, editUserDB, registerNewUserGoogle} = require('../database/db')
+const {registerNewUser, checkUser, newCardDB, newCarDB, editCarDB, editUserDB, newInvoiceDB, deleteSecret, registerNewUserGoogle} = require('../database/db')
 
 // -------------------------------------------------------------------------------
 // Aux Functions
@@ -69,6 +69,11 @@ const signIn = async (email, pass) => {
     return result
 }
 
+const signOut = async token => {
+    const result = await deleteSecret(token);
+    return result;
+}
+
 const newCard = async (card, token) => {
     const decode = jwt.decode(token)
     const CARD = {
@@ -82,7 +87,7 @@ const newCard = async (card, token) => {
     return result
 }
 
-const  editUser = async (user, token) => {
+const editUser = async (user, token) => {
     const decode = jwt.decode(token)
     const newUser = {
         id:decode.id,
@@ -96,6 +101,47 @@ const  editUser = async (user, token) => {
     return result
 }
 
+const newCar = async (matricula, descripcion, cargador, token)=>{
+    const decode =jwt.decode(token)
+    const CAR ={
+        id: decode.id,
+        matricula: matricula,
+        descripcion: descripcion,
+        cargador: cargador
+    }
+    const result = await newCarDB(CAR)
+    return result
+}
+
+const editCar = async (coche, token) => {
+    const decode = jwt.decode(token)
+    const newCar = {
+        id:decode.id,
+        matricula: coche.matricula,
+        descripcion: coche.descripcion,
+        cargador: coche.cargador
+    }
+
+    const result = await editCarDB(newCar)
+    return result
+}
+
+const newInvoice = async (invoice, token) => {
+    const decode = jwt.decode(token)
+    const newInvoice = {
+        id:decode.id,
+        idFactura: nanoid(5),
+        concepto: invoice.concepto,
+        importe: invoice.importe,
+        reating: invoice.reating,
+        fecha: Date.now()
+    }
+
+    const result = await newInvoiceDB(newInvoice)
+    return result
+}
+
+// ------------------------------------------------
 const newPass = async (email) => {
     const sql = `SELECT * FROM usuarios WHERE email = "${email}"`;
     const response = await doQuery(sql);
@@ -235,4 +281,4 @@ const signUpGoogle = async (email, pass) => {
 // Export modules
 // -------------------------------------------------------------------------------
 
-module.exports = {signUp, signIn, editUser, validateEmail, validatePass, validateName, validateSurname, newCard, newPass, changePass, signUpGoogle}
+module.exports = {signUp, signIn, signOut, editUser, newCar, editCar, newInvoice, validateEmail, validatePass, validateName, validateSurname, newCard, newPass, changePass, signUpGoogle}

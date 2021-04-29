@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const {signUp, signIn, editUser, validateEmail, validatePass, validateName, validateSurname, newCard, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
+const {signUp, signIn, signOut, editUser, newCar, editCar, newInvoice, validateEmail, validatePass, validateName, validateSurname, newCard, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
 
 // FRONTEND
 // const staticFilesPath = express.static(__dirname + "/public")
@@ -47,6 +47,11 @@ app.post("/signin", async (req, res) => {
     res.send(result)
 })
 
+app.put("/signout", async (req, res) => {
+    const result = await signOut(req.headers.authorization);
+    res.send(result);
+})
+
 app.put("/create/card", async (req, res) => {
     const result = await newCard(req.body, req.headers.authorization);
     res.send(result);
@@ -57,11 +62,23 @@ app.put("/edit/user", async (req, res) => {
     res.send(result);
 })
 
+app.put("/create/car", async (req, res) => {
+    const result = await newCar(req.body.matricula, req.body.descripcion, req.body.cargador, req.headers.authorization)
+    res.send(result)
+})
+
+app.put("/edit/car", async (req, res) =>{
+    const result = await editCar(req.body, req.headers.authorization)
+    res.send(result)
+})
+
+app.put("/invoice", async (req, res) =>{
+    const result = await newInvoice(req.body, req.headers.authorization)
+    res.send(result)
+})
 
 
-
-
-// --------------- PARA CAMBIAR ---------------
+// --------------- PARA CHEQUEAR ---------------
 
 app.post("/user/newpass", async (req,res) =>{
     const result = await newPass(req.body.email)
