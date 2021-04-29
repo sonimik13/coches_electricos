@@ -1,14 +1,11 @@
 // -------------------------------------------------------------------------------
 // Node modules
 // -------------------------------------------------------------------------------
-
 const md5 = require('md5')
 const jwt = require('jsonwebtoken');
-const axios = require('axios')
-const fetch = require('node-fetch')
 const nodemailer = require('nodemailer')
 const randomstring = require("randomstring");
-const cheerio = require('cheerio')
+const { nanoid } = require('nanoid')
 const {registerNewUser, checkUser, deleteSecret, deleteFav, readFavorite, registerNewFav, changeCodes, doQuery, registerNewUserGoogle} = require('../database/db')
 
 // -------------------------------------------------------------------------------
@@ -17,21 +14,41 @@ const {registerNewUser, checkUser, deleteSecret, deleteFav, readFavorite, regist
 function validateEmail(email) {
     let patternEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return patternEmail.test(email);  
- }
+}
 
 function validatePass(pass) {
     let patternPass = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     return patternPass.test(pass);  
 }
 
+function validateName(name, surname) {
+    let patternName = /^[a-z ,.'-]+$/;
+    return patternName.test(name, surname)
+}
+function validateCard(card) {
+    let patternCard = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/;
+    return patternCard.test(card)
+}
+
 // -------------------------------------------------------------------------------
 // Logic
 // -------------------------------------------------------------------------------
 
-const signUp = async (email, pass) => { 
+const signUp = async (email, pass, name, surname) => { 
+    const secret = randomstring.generate();
+    const id = nanoid(10);
     const USER = {
+        id,
+        img: "",
+        name: name,
+        surname: surname,
         email: email,
-        pass: md5(pass)
+        movil: "",
+        pass: md5(pass),
+        secret,
+        coches: [],
+        facturas: [],
+        tarjetas: []
     }
     const result = await registerNewUser(USER)
     return result
@@ -78,90 +95,6 @@ const deleteFavorite = async (url, token) => {
         }
         return result
     }
-}
-
-// Primer scraper
-const searchJobs = async (location, key) => {
-    const TERM = {
-        localizacion: location
-    }
-
-    const val = async location => {
-        if(location === "nada") {
-            const html = await axios.get(`https://www.tecnoempleo.com/busqueda-empleo.php?te=${key}&ex=,1,#buscador-ofertas-ini`)
-            return html
-        }else{
-            const codigo = await changeCodes(TERM) 
-            const html = await axios.get(`https://www.tecnoempleo.com/busqueda-empleo.php?te=${key}${'&pr=,' + codigo + ','},&ex=,1,#buscador-ofertas-ini`)
-            return html
-        }
-    }
-
-    const result2 = await val(location)
-
-    const $ = await cheerio.load(result2.data);
-
-    let resumenes = [];
-    let titulos = [];
-    let urls = [];
-
-    $('a.text-gray-700.font-weight-bold').each(function () {
-        titulos.push($(this).text().trim().replace(/\t|\n/g, ""));
-    });
-
-    $('span.d-block.fs--15.hidden-md-down.lead.text-gray-800').each(function () {
-        resumenes.push($(this).text().trim().replace(/\t|\n/g, ""))
-    });
-
-    $('a.text-gray-700.font-weight-bold').each(function () {
-        urls.push($(this).attr("href"));
-    });
-
-    const result = resumenes.map((el, i) => {
-        const obj = { titulo: titulos[i], resumen: el, url: urls[i] }
-        return obj
-    })
-    
-    return result;
-}
-
-// Segundo scraper
-const searchJobs2 = async (location, key) => {
-    const val = async location => {
-        if(location === "nada") {
-            const html = await axios.get(`https://es.jooble.org/SearchResult?ukw=${key}&workExp=2`)
-            return html
-        }else{
-            const html = await axios.get(`https://es.jooble.org/SearchResult?rgns=${location}&ukw=${key}&workExp=2`);            
-            return html
-        }
-    }
-    
-    const result2 = await val(location)
-
-    const $ = await cheerio.load(result2.data);
-
-    let resumenes = [];
-    let titulos = [];
-    let urls = [];
-
-    $('span.a7df9').each(function () {
-        titulos.push($(this).text().trim().replace(/\t|\n/g, ""));
-    });
-    $('div._0b1c1').each(function () {
-        resumenes.push($(this).text().trim().replace(/\t|\n/g, ""));
-    });
-    // link = $('a')
-    $('a.baa11._1d27a.button_size_M.d95a3._2c371._70395').each(function () {
-        urls.push($(this).attr("href").replace(/(m\/)/g, ""));
-    });
-
-    const result = resumenes.map((el, i) => {
-        const obj = {titulo: titulos[i], resumen: el, url: `http://es.jooble.org` + urls[i]}
-        return obj
-    })
-
-    return result;
 }
 
 const newPass = async (email) => {
@@ -303,4 +236,4 @@ const signUpGoogle = async (email, pass) => {
 // Export modules
 // -------------------------------------------------------------------------------
 
-module.exports = {signUp, signIn, signOut, searchJobs, searchJobs2, saveFavorite, validateEmail, validatePass, deleteFavorite, readFav, newPass, changePass, signUpGoogle}
+module.exports = {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, deleteFavorite, readFav, newPass, changePass, signUpGoogle}

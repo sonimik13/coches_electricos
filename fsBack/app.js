@@ -3,10 +3,10 @@
 // -------------------------------------------------------------------------------
 require('dotenv').config();
 const express = require('express');
-const {signUp, signIn, signOut, saveFavorite, searchJobs, searchJobs2, validateEmail, validatePass, deleteFavorite, readFav, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
 const app = express();
 const cors = require('cors');
 
+const {signUp, signIn, signOut, saveFavorite, validateEmail, validatePass, validateName, deleteFavorite, readFav, newPass, changePass, signUpGoogle} = require('./src/controllers/controller')
 // -------------------------------------------------------------------------------
 // Frontend app
 // -------------------------------------------------------------------------------
@@ -23,8 +23,17 @@ app.use(cors())
 
 app.post("/signup", async (req, res) => {
     if(validateEmail(req.body.email)&&validatePass(req.body.pass)){
-        const result =  await signUp(req.body.email, req.body.pass)
-        res.send(result)
+        if(validateName(req.body.name, req.body.apellido)) {
+            const result =  await signUp(req.body.email, req.body.pass, req.body.name, req.body.apellido)
+            res.send(result)
+        }
+        else {
+            res.status(406).json({
+                status: 406,
+                data: "Nombre de usuario no es valido",
+                ok: false
+            })
+        }
     } else {
         res.status(406).json({
             status: 406,
