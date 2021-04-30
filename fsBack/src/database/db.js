@@ -392,6 +392,92 @@ const deleteCarDB = coche => {
   });
 }
 
+const readUserDB =(id) =>{
+  return new Promise((res, rej) => {
+    
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .findOne({id:id}, (err, result) => {
+            if (err) throw err;
+            if(result===null){
+              res({
+                status: 401,
+                data: "No se encontro usuario",
+                ok: false,
+              });            
+            } else {
+              const response = {
+                status: 200,
+                data: "Usuario encontrado", 
+                result: result,
+                ok: true,
+              };
+              res(response);
+              db.close()
+            }
+          });
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+const deleteCardDB = tarjeta => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: tarjeta.id},
+            {$pull: {'tarjeta': tarjeta.numero}},
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 406,
+                  data: "Ha habido un error",
+                  result,
+                  ok: false,
+                });
+              } else if (result.result.nModified === 0){
+                res({
+                  status: 406,
+                  data: "No se ha encontrado ninguna tarjeta",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+              else {
+                res({
+                  status: 200,
+                  data: "Tarjeta borrada correctamente",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos" + err,
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
 // --------------- PARA CHEQUEAR ---------------
 const registerNewUserGoogle = (USER) => {
   return new Promise((res, rej) => {
@@ -455,6 +541,8 @@ module.exports = {
   editCarDB,
   newInvoiceDB,
   deleteCarDB,
+  deleteCardDB,
   deleteSecret,
+  readUserDB,
   registerNewUserGoogle,
 };

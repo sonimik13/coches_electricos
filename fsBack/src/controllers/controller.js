@@ -15,6 +15,8 @@ const {
   editUserDB,
   newInvoiceDB,
   deleteCarDB,
+  readUserDB,
+  deleteCardDB,
   deleteSecret,
   registerNewUserGoogle,
 } = require("../database/db");
@@ -153,15 +155,43 @@ const newInvoice = async (invoice, token) => {
 };
 
 const deleteCar = async (coche, token) => {
-    const decode = jwt.decode(token);
+  const decode = jwt.decode(token);
   const car = {
     id: decode.id,
-    matricula: coche.matricula
+    matricula: coche.matricula,
   };
 
   const result = await deleteCarDB(car);
   return result;
-}
+};
+
+const deleteCard = async (tarjeta, token) => {
+  const decode = jwt.decode(token);
+  const card = {
+    id: decode.id,
+    numero: tarjeta.numero,
+  };
+
+  const result = await deleteCardDB(card);
+  return result;
+};
+
+const readUser = async (token) => {
+  try {
+    const decode = jwt.decode(token);
+
+    const result = await readUserDB(decode.id);
+
+    return result;
+  } catch {
+    const result = {
+      status: 401,
+      data: "Id incorrecto",
+      ok: false,
+    };
+    return result;
+  }
+};
 
 // --------------- PARA CHEQUEAR ---------------
 const newPass = async (email) => {
@@ -318,6 +348,8 @@ module.exports = {
   validateCard,
   newCard,
   deleteCar,
+  deleteCard,
+  readUser,
   newPass,
   changePass,
   signUpGoogle,

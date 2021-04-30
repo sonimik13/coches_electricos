@@ -21,6 +21,8 @@ const {
   validateCard,
   newCard,
   deleteCar,
+  deleteCard,
+  readUser,
   newPass,
   changePass,
   signUpGoogle,
@@ -70,16 +72,16 @@ app.put("/signout", async (req, res) => {
 });
 
 app.put("/create/card", async (req, res) => {
-    if(validateCard(req.body.numero)) {
-        const result = await newCard(req.body, req.headers.authorization);
-        res.send(result);
-    } else {
-        res.status(406).json({
-            status: 406,
-            data: "Tarjeta de credito no valida",
-            ok: false,
-          });
-    }
+  if (validateCard(req.body.numero)) {
+    const result = await newCard(req.body, req.headers.authorization);
+    res.send(result);
+  } else {
+    res.status(406).json({
+      status: 406,
+      data: "Tarjeta de credito no valida",
+      ok: false,
+    });
+  }
 });
 
 app.put("/edit/user", async (req, res) => {
@@ -103,9 +105,19 @@ app.put("/invoice", async (req, res) => {
 });
 
 app.delete("/delete/car", async (req, res) => {
-    const result = await deleteCar(req.body, req.headers.authorization)
-    res.send(result)
-})
+  const result = await deleteCar(req.body, req.headers.authorization);
+  res.send(result);
+});
+
+app.delete("/delete/card", async (req, res) => {
+  const result = await deleteCard(req.body, req.headers.authorization);
+  res.send(result);
+});
+
+app.get("/usuario/get", async (req, res) => {
+  const result = await readUser(req.headers.authorization);
+  res.send(result);
+});
 
 // --------------- PARA CHEQUEAR ---------------
 
