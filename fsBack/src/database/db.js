@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { MongoClient } = require("mongodb");
 const URL = process.env.MONGODB;
 const optionsMongo = { useNewUrlParser: true, useUnifiedTopology: true };
+const randomstring = require("randomstring")
 
 // -------------------------------------------------------------------------------
 // LOGICA
@@ -99,49 +100,37 @@ const readFavorite = (token) => {
   }
 };
 
-const deleteSecret = (token) => {
+const deleteSecret = token => {
   const secret = randomstring.generate();
   const decode = jwt.decode(token);
-  if (decode.email) {
     return new Promise((res, rej) => {
-      connection.query(
-        `UPDATE usuarios SET secret= "${secret}" WHERE email= "${decode.email}"`,
-        function (err, results) {
-          if (err) {
-            const result = {
-              status: 406,
-              data: "Algo salió mal...",
-              ok: false,
-            };
-            res(result);
-          } else if (results.changedRows == 1) {
-            const result = {
-              status: 200,
-              data: "Logout correctly",
-              url: "/",
-              ok: true,
-            };
-            res(result);
-          } else {
-            const result = {
-              status: 401,
-              data: "Algo va mal...",
-              ok: false,
-            };
-            res(result);
-          }
+      MongoClient.connect(URL, optionsMongo, (err, db) =>{
+        try {
+          db.db("niutu").collection("usuarios").updateOne({id: decode.id}, {$set: {secret: secret}}, (err, result) => {
+            if (err) throw err;
+            if (result === null) {
+              res({
+                status: 400,
+                data: "Token not found",
+                ok: false,
+              })
+            } else {
+              res({
+                status: 200,
+                data: result,
+                ok: true
+              })
+              db.close();
+            }
+          })
+
+        } 
+        catch {
+          rej(false)
         }
-      );
-    });
-  } else {
-    const result = {
-      status: 400,
-      data: "Token not found",
-      url: "/",
-      ok: false,
-    };
-    return result;
-  }
+      })
+ 
+  })
 };
 
 const deleteFav = async (url) => {
@@ -180,7 +169,7 @@ const deleteFav = async (url) => {
 };
 
 const registerNewFav = (NEWFAV) => {
-  if (NEWFAV.token.email) {
+  if (NEWFAV.token.email) { 
     return new Promise((resolve, reject) => {
       connection.query(
         `INSERT IGNORE INTO favoritos (titulo,resumen, url, idUsuario) VALUES ("${NEWFAV.titulo}","${NEWFAV.resumen}","${NEWFAV.url}","${NEWFAV.idUsuario}")`,
