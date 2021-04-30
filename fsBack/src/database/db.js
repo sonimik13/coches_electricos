@@ -94,25 +94,25 @@ const deleteSecret = (token) => {
           .updateOne(
             { id: decode.id },
             {
-              $set: { secret: secret}
+              $set: { secret: secret },
             },
             (err, result) => {
               if (err) throw err;
               if (result === null) {
                 res({
                   status: 401,
-                  data: "No se ha encontrado a ningun usuario con ese id, token incorrecto",
+                  data:
+                    "No se ha encontrado a ningun usuario con ese id, token incorrecto",
                   ok: false,
                 });
-              } else if (result.result.n === 1){
+              } else if (result.result.n === 1) {
                 res({
                   status: 200,
                   data: "Logout correctamente",
                   ok: true,
                 });
                 db.close();
-              }
-              else {
+              } else {
                 res({
                   status: 406,
                   data: "Algo salió mal...",
@@ -132,7 +132,6 @@ const deleteSecret = (token) => {
       }
     });
   });
-     
 };
 
 const newCardDB = (card) => {
@@ -256,7 +255,7 @@ const newCarDB = (coche) => {
   });
 };
 
-const editCarDB =(coche) => {
+const editCarDB = (coche) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
@@ -265,7 +264,7 @@ const editCarDB =(coche) => {
           .updateOne(
             { id: coche.id, "coches.matricula": coche.matricula },
             {
-              $set: { 'coches.$': coche}
+              $set: { "coches.$": coche },
             },
             (err, result) => {
               if (err) throw err;
@@ -275,15 +274,14 @@ const editCarDB =(coche) => {
                   data: "Ha habido un error",
                   ok: false,
                 });
-              } else if (result.result.nModified === 1){
+              } else if (result.result.nModified === 1) {
                 res({
                   status: 200,
                   data: "Coche editado correctamente",
                   ok: true,
                 });
                 db.close();
-              }
-              else {
+              } else {
                 res({
                   status: 406,
                   data: "No se ha encontrado el coche",
@@ -303,9 +301,9 @@ const editCarDB =(coche) => {
       }
     });
   });
-}
+};
 
-const newInvoiceDB = invoice => {
+const newInvoiceDB = (invoice) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
@@ -341,17 +339,17 @@ const newInvoiceDB = invoice => {
       }
     });
   });
-}
+};
 
-const deleteCarDB = coche => {
+const deleteCarDB = (coche) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
         db.db("niutu")
           .collection("usuarios")
           .updateOne(
-            { id: coche.id},
-            {$pull: {'coches': coche}},
+            { id: coche.id },
+            { $pull: { coches: coche } },
             (err, result) => {
               if (err) throw err;
               if (result === null) {
@@ -361,7 +359,7 @@ const deleteCarDB = coche => {
                   result,
                   ok: false,
                 });
-              } else if (result.result.nModified === 0){
+              } else if (result.result.nModified === 0) {
                 res({
                   status: 406,
                   data: "No se ha encontrado ningun coche",
@@ -369,8 +367,7 @@ const deleteCarDB = coche => {
                   ok: true,
                 });
                 db.close();
-              }
-              else {
+              } else {
                 res({
                   status: 200,
                   data: "Coche borrado correctamente",
@@ -390,32 +387,31 @@ const deleteCarDB = coche => {
       }
     });
   });
-}
+};
 
-const readUserDB =(id) =>{
+const readUserDB = (id) => {
   return new Promise((res, rej) => {
-    
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
         db.db("niutu")
           .collection("usuarios")
-          .findOne({id:id}, (err, result) => {
+          .findOne({ id: id }, (err, result) => {
             if (err) throw err;
-            if(result===null){
+            if (result === null) {
               res({
                 status: 401,
                 data: "No se encontro usuario",
                 ok: false,
-              });            
+              });
             } else {
               const response = {
                 status: 200,
-                data: "Usuario encontrado", 
+                data: "Usuario encontrado",
                 result: result,
                 ok: true,
               };
               res(response);
-              db.close()
+              db.close();
             }
           });
       } catch {
@@ -427,17 +423,17 @@ const readUserDB =(id) =>{
       }
     });
   });
-}
+};
 
-const deleteCardDB = tarjeta => {
+const deleteCardDB = (tarjeta) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
         db.db("niutu")
           .collection("usuarios")
           .updateOne(
-            { id: tarjeta.id},
-            {$pull: {'tarjeta': tarjeta.numero}},
+            { id: tarjeta.id },
+            { $pull: { tarjeta: tarjeta } },
             (err, result) => {
               if (err) throw err;
               if (result === null) {
@@ -447,7 +443,7 @@ const deleteCardDB = tarjeta => {
                   result,
                   ok: false,
                 });
-              } else if (result.result.nModified === 0){
+              } else if (result.result.nModified === 0) {
                 res({
                   status: 406,
                   data: "No se ha encontrado ninguna tarjeta",
@@ -455,8 +451,7 @@ const deleteCardDB = tarjeta => {
                   ok: true,
                 });
                 db.close();
-              }
-              else {
+              } else {
                 res({
                   status: 200,
                   data: "Tarjeta borrada correctamente",
@@ -476,7 +471,7 @@ const deleteCardDB = tarjeta => {
       }
     });
   });
-}
+};
 
 // --------------- PARA CHEQUEAR ---------------
 const registerNewUserGoogle = (USER) => {
