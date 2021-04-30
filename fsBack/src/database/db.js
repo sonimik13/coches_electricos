@@ -31,7 +31,11 @@ const registerNewUser = (USER) => {
             }
           });
       } catch {
-        rej(err);
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
       }
     });
   });
@@ -97,14 +101,13 @@ const deleteSecret = (token) => {
               if (result === null) {
                 res({
                   status: 401,
-                  data: "Ha habido un error",
+                  data: "No se ha encontrado a ningun usuario con ese id, token incorrecto",
                   ok: false,
                 });
               } else if (result.result.n === 1){
                 res({
                   status: 200,
                   data: "Logout correctamente",
-                  result,
                   ok: true,
                 });
                 db.close();
@@ -215,32 +218,39 @@ const editUserDB = (user) => {
   });
 };
 
-const newCarDB = (coches) => {
+const newCarDB = (coche) => {
   return new Promise((res, rej) => {
-    console.log(coches);
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
         db.db("niutu")
           .collection("usuarios")
           .updateOne(
-            { id: coches.id },
-            { $push: { coches: coches } },
+            { id: coche.id },
+            { $push: { coches: coche } },
             (err, result) => {
-              if (err) {
-                console.log(err);
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
               } else {
-                const result = {
+                res({
                   status: 200,
-                  data: "Nuevo coche creado",
+                  data: "Coche añadido correctamente",
                   ok: true,
-                };
-                res(result);
+                });
                 db.close();
               }
             }
           );
       } catch {
-        rej(err);
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
       }
     });
   });
@@ -265,11 +275,10 @@ const editCarDB =(coche) => {
                   data: "Ha habido un error",
                   ok: false,
                 });
-              } else if (result.result.n === 1){
+              } else if (result.result.nModified === 1){
                 res({
                   status: 200,
                   data: "Coche editado correctamente",
-                  result,
                   ok: true,
                 });
                 db.close();
@@ -334,6 +343,56 @@ const newInvoiceDB = invoice => {
   });
 }
 
+const deleteCarDB = coche => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: coche.id},
+            {$pull: {'coches': coche}},
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 406,
+                  data: "Ha habido un error",
+                  result,
+                  ok: false,
+                });
+              } else if (result.result.nModified === 0){
+                res({
+                  status: 406,
+                  data: "No se ha encontrado ningun coche",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+              else {
+                res({
+                  status: 200,
+                  data: "Coche borrado correctamente",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos" + err,
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+// --------------- PARA CHEQUEAR ---------------
 const registerNewUserGoogle = (USER) => {
   return new Promise((res, rej) => {
     const secret = randomstring.generate();
@@ -395,6 +454,7 @@ module.exports = {
   newCarDB,
   editCarDB,
   newInvoiceDB,
+  deleteCarDB,
   deleteSecret,
   registerNewUserGoogle,
 };
