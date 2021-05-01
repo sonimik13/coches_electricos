@@ -1,15 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import logo from '../../assets/logo.svg'
+import './Signin.css';
+import FetchLogin from '../../Hooks/FetchLogin'
 
 function Signin (props) {
-    const [state, setState] = useState("")
+    const [email, setEmail] = useState("")
+    const [pass, setPass] = useState("")
+
+    const handleEmail = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handlePass = (event) => {
+        setPass(event.target.value)
+    }
+
+    const login = async () => {
+        const result = await FetchLogin(email, pass)
+        const data = await result.json()
+        await console.log(data);
+    }
 
     return (
-        <div className="login">
-            <img src="" alt="logo"/>
-            <input type="text"/>
-            <input type="password"/>
-            <button></button>
-            <button></button>
+        <div className="main-login">
+            <div className="logo">
+                <img src={logo} alt="logo-app" id="logo-signin"/>
+                <h1 className="titulo-signin">NIUTU</h1>
+            </div>
+            <div className="form-signin">
+                <input type="text" className="input" placeholder="Usuario" onChange={handleEmail}/>
+                <input type="password" className="input" placeholder="Contraseña" onChange={handlePass}/>
+                <div className="recuerdame">
+                    <input type="checkbox" name="recuerdame" id="recuerdame-checkbox"/>
+                    <p>RECUÉRDAME</p>
+                </div>
+            </div>
+            <div className="botones-signin">
+                <button onClick={login}>ACCEDER</button>
+                <hr/>
+                <button>REGISTRARSE</button>
+            </div>
         </div>
     )
 }
+
+export default Signin;
