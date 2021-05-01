@@ -9,7 +9,7 @@ function Menu() {
     <div className={`menu-desplegable ${dataContext.menu}`}>
       <div className="perfil">
         <img src="https://thispersondoesnotexist.com/image" alt="" />
-        <h3>Hannes Dammhal</h3>
+        <h3>Hannes <br/> Dammhal</h3>
       </div>
       <ul className="menu-listado">
         <li>Tus recargas</li>
