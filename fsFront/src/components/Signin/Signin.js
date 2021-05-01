@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import logo from '../../assets/logo.svg'
 import './Signin.css';
 import FetchLogin from '../../Hooks/FetchLogin'
+import AuthContext from "../../contexts/AuthContext";
+import Menu from '../Menu/Menu'
 
 function Signin (props) {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
+    const [menu, setMenu] = useState(false);
+
+    const toggleMenu = () => setMenu(!menu)
 
     const handleEmail = (event) => {
         setEmail(event.target.value)
@@ -15,14 +20,35 @@ function Signin (props) {
         setPass(event.target.value)
     }
 
+    const dataContext = {
+        menu,
+        toggleMenu,
+    };
+
     const login = async () => {
         const result = await FetchLogin(email, pass)
         const data = await result.json()
-        await console.log(data);
+        
+        if (data.status === 200) {
+            alert(data.data)
+            localStorage.setItem("token", data.token)
+        }
+        else if (data.status === 401) {
+            alert(data.data)
+        }
+        else if (data.status === 500) {
+            alert(data.data)
+        }
+        else {
+            alert(data.data)
+        }
     }
 
     return (
         <div className="main-login">
+            <AuthContext.Provider value={dataContext}>
+                <Menu />
+            </AuthContext.Provider>
             <div className="logo">
                 <img src={logo} alt="logo-app" id="logo-signin"/>
                 <h1 className="titulo-signin">NIUTU</h1>
@@ -38,7 +64,7 @@ function Signin (props) {
             <div className="botones-signin">
                 <button onClick={login}>ACCEDER</button>
                 <hr/>
-                <button>REGISTRARSE</button>
+                <button onClick={toggleMenu}>REGISTRARSE</button>
             </div>
         </div>
     )
