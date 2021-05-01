@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Singup from './componets/Singup/Singup'
+import RegistroP2 from './componets/Singup/RegistroP2/RegistroP2'
+import RegistroP3 from './componets/Singup/RegistroP3/RegistroP3'
+import Condiciones from './componets/Singup/Condiciones/Condiciones'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     {/* <Singup /> */}
+      {/* <RegistroP2 />  */}
+     {/* <RegistroP3 /> */}
+     <Condiciones />
+     
     </div>
   );
 }
