@@ -21,7 +21,7 @@ function Registrop2(){
     const handlePass = (event) => {
         setPass(event.target.value)
     }
-
+  
     return (
 
         <div className="main-registrop2">
