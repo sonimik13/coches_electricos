@@ -6,6 +6,7 @@
     width: 80%;
     left: -80%;
     transition: left 1s;
+    z-index: 1;
   }
   .menu-desplegable.true {
     left: 0;
