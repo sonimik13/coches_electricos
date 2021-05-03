@@ -2,7 +2,7 @@
 div.main-registrop2{
     padding-top:15%;
     margin-bottom: 40%;
-   
+   background-color: #69E5AF;
     box-sizing: border-box;
 }
 
@@ -20,7 +20,7 @@ div.botones-registrop2 button{
         color: white;
         font-weight: bolder;
         font-size: 15px;
-        background-color: rgb(73, 70, 70);
+        background-color: #E83F6F;
         box-shadow: 5px 5px 10px -3px black;
         border: none;
         border-radius: 5px;

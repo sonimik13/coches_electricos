@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import './RegistroP2.css';
+import FetchRegistrop2 from  "../../../Hooks/FetchRegistrop2";
 
 function Registrop2(){
     const [nombre, setNombre]= useState("")
@@ -21,8 +22,30 @@ function Registrop2(){
     const handlePass = (event) => {
         setPass(event.target.value)
     }
-  
-    return (
+    const registrop2 = async () => {
+        const result = await FetchRegistrop2(nombre,apellido,email, pass);
+        const data = await result.json();
+        console.log(data)
+    
+        if (data.status === 200) {
+          alert(data.data);
+          localStorage.setItem(
+              
+              "nombre", data.nombre,
+              "apellido", data.apellido,
+              "email", data.email,
+              "pass", data.pass
+
+              );
+        } else if (data.status === 401) {
+          alert(data.data);
+        } else if (data.status === 500) {
+          alert(data.data);
+        } else {
+          alert(data.data);
+        }    
+      };
+      return (
 
         <div className="main-registrop2">
             <div className="texto">
@@ -39,7 +62,7 @@ function Registrop2(){
                 </div>
             </div>
                 <div className="botones-registrop2">   
-                    <button onClick="">Siguiente</button>
+                    <button onClick={registrop2}>Siguiente</button>
                 </div>
             </div>
         </div>

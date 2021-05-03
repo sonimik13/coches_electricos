@@ -2,6 +2,7 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
+    
 }
 
 div.main-singup{
@@ -10,7 +11,7 @@ div.main-singup{
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
-    background-color: grey;
+    background-color:white;
 }
 
 #logo-signup{
@@ -19,6 +20,7 @@ div.main-singup{
 
 h1.titulo-sinup{
     text-align: center;
+    
 }
 h4.text-redessoci{
     display:flex;
@@ -34,6 +36,10 @@ div.botones-signup{
     align-items:center;
     justify-content: center;
     width: 100%;
+    background-color: #69E5AF;
+    border-radius: 20%;
+    
+    
 }
 div.botones-signup button{
     width: 80%;
@@ -42,7 +48,7 @@ div.botones-signup button{
         color: white;
         font-weight: bolder;
         font-size: 15px;
-        background-color: rgb(73, 70, 70);
+        background-color:#E83F6F;
         box-shadow: 5px 5px 10px -3px black;
         border: none;
         border-radius: 5px;
@@ -54,6 +60,8 @@ div.botones-redessoci{
     align-items:center;
     justify-content: center;
     width: 100%;
+    background-color: #69E5AF;
+    border-radius: 20%;
 }
 div.botones-redessoci button{
         width: 70%;
