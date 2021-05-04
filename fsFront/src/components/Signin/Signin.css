@@ -10,7 +10,7 @@ div.main-login {
     justify-content: space-evenly;
     align-items: center;
     height: 100vh;
-    background-color: grey;
+    background-color: #69E5AF;
 }
 
 #logo-signin {
@@ -24,6 +24,7 @@ div.form-signin {
     display: flex;
     flex-direction: column;
     width: 100%;
+    
 }
     .form-signin .input {
         width: 80%;
@@ -61,10 +62,14 @@ div.botones-signin {
         color: white;
         font-weight: bolder;
         font-size: 15px;
-        background-color: rgb(73, 70, 70);
+        background-color:#E83F6F;
         box-shadow: 5px 5px 10px -3px black;
         border: none;
         border-radius: 5px;
+    }
+    div.botones-signin button.registrarse {
+        background-color: #F2FDF8;
+        color: black;
     }
         div.botones-signin button:hover {
             cursor: pointer;
@@ -73,5 +78,5 @@ div.botones-signin {
         }
     hr {
         border: 1px solid black;
-        width: 50%;
+        width: 100px;
     }

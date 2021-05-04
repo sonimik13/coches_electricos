@@ -21,7 +21,7 @@ function Signin(props) {
 
     if (data.status === 200) {
       alert(data.data);
-      localStorage.setItem("token", data.token);
+      props.signin(data.token)
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 500) {
@@ -35,7 +35,7 @@ function Signin(props) {
     <div className="main-login">
       <div className="logo">
         <img src={logo} alt="logo-app" id="logo-signin" />
-        <h1 className="titulo-signin">NIUTU</h1>
+        <h1 className="titulo-signin">MIUTU</h1>
       </div>
       <div className="form-signin">
         <input
@@ -56,9 +56,9 @@ function Signin(props) {
         </div>
       </div>
       <div className="botones-signin">
-        <button onClick={login}>ACCEDER</button>
+        <button onClick={login} className="acceder">ACCEDER</button>
         <hr />
-        <button>REGISTRARSE</button>
+        <button className="registrarse">REGISTRARSE</button>
       </div>
     </div>
   );

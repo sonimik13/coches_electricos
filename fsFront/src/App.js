@@ -1,27 +1,41 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthContext from "./contexts/AuthContext";
-import Menu from "./components/Menu/Menu";
-
 import Signin from "./components/Signin/Signin";
-import Home from "./components/Home/Home";
+import General from "./components/General/General";
 
 function App() {
   const [menu, setMenu] = useState(false);
+  const [token, setToken] = useState("");
 
   const toggleMenu = () => setMenu(!menu);
+
+  const logout = async () => {
+    await sessionStorage.setItem("token", "");
+    await setToken(sessionStorage.getItem("token"));
+  };
+
+  const signin = (token) => {
+    sessionStorage.setItem("token", token);
+    setToken(token);
+  };
 
   const dataContext = {
     menu,
     toggleMenu,
+    logout,
+    token
   };
+
   return (
     <div className="App">
-      {/* <Signin /> */}
-      <AuthContext.Provider value={dataContext}>
-        <Menu />
-        <Home />
-      </AuthContext.Provider>
+      {token !== "" ? (
+        <AuthContext.Provider value={dataContext}>
+          <General />
+        </AuthContext.Provider>
+      ) : (
+        <Signin signin={signin} />
+      )}
     </div>
   );
 }

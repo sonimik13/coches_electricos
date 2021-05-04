@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import './react-leaflet.css';
+import React, { Component } from "react";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "./react-leaflet.css";
+import logo from "./react-leaflet-icon";
 
 /*Creamos un nuevo Marker para que cada vez que aparezca un
 nuevo marker, aparezca el popup*/
 // const position = [51.71, -0.09]
 
 class MapView extends Component {
-
   /*Función para capturar la latitud y la longitud*/
-  handleClick(e){
+  handleClick(e) {
     this.setState({ position: e.latlng });
   }
 
@@ -18,8 +18,9 @@ class MapView extends Component {
     super(props);
     this.state = {
       position: { lat: 40.4167, lng: -3.70325 },
-      zoom: 13,
-    }
+      zoom: 15,
+      localizacion: props.data,
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -29,11 +30,15 @@ class MapView extends Component {
       <MapContainer center={position} zoom={zoom} onClick={this.handleClick}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution={<a href="https://osm.org/copyright">OpenStreetMap</a>} contributors
+          attribution={<a href="https://osm.org/copyright">OpenStreetMap</a>}
+          contributors
         />
-        {/* <Marker position={position}>
-        </Marker> */}
-        </MapContainer>
+        {this.state.localizacion === "" ? (
+          <></>
+        ) : (
+          <Marker position={this.state.localizacion} icon={logo}></Marker>
+        )}
+      </MapContainer>
     );
   }
 }
