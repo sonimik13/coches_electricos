@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const App = () => {
   const adminUser = {
     email: "gonzandres_39@hotmail.com",
-    password: "Tea1"
+    password: "contraseña1234"
   }
   const [user, setUser] = useState({ email: "", password: "" })
   const [error, setError] = useState("");
