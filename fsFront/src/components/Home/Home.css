@@ -3,11 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.main-home {
+    background-color: whitesmoke;
+}
 .home-header {
     background-color: grey;
     display: flex;
-    padding: 50px 20px 12px 20px;
+    padding: 30px 20px 12px 20px;
     color: white;
 }
 
