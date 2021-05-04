@@ -126,7 +126,11 @@ const deleteSecret = token => {
 
         } 
         catch {
-          rej(false)
+          rej({
+            status: 500,
+            data: "Error Interno de la Base de Datos",
+            ok: false,
+          })
         }
       })
  
