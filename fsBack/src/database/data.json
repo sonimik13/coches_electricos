@@ -24,11 +24,13 @@
             "concepto": "Recarga numero X",
             "idFactura": 33513486,
             "importe": "65$",
-            "fechas": "date.now"
+            "fechas": "date.now",
+            "reating": ""
         }
     ],
     "tarjeta": [
         {
+            "titular": "Conrad",
             "numero": 646546454654654,
             "fechaCaducidad": "fecha",
             "codigo": 190

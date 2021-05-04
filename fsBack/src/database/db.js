@@ -3,6 +3,7 @@
 // -------------------------------------------------------------------------------
 const jwt = require("jsonwebtoken");
 const { MongoClient } = require("mongodb");
+const randomstring = require("randomstring");
 const URL = process.env.MONGODB;
 const optionsMongo = { useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -26,11 +27,15 @@ const registerNewUser = (USER) => {
                 ok: true,
               };
               res(result);
-              db.close()
+              db.close();
             }
           });
       } catch {
-        rej(err);
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
       }
     });
   });
@@ -40,7 +45,8 @@ const checkUser = (user) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
-        db.db("niutu").collection("usuarios")
+        db.db("niutu")
+          .collection("usuarios")
           .findOne(user, (err, result) => {
             if (err) throw err;
             if (result === null) {
@@ -50,8 +56,13 @@ const checkUser = (user) => {
                 ok: false,
               });
             } else {
-              let token = jwt.sign({ email: result.email, id: result.id }, result.secret, {
-                expiresIn: 60 * 60});
+              let token = jwt.sign(
+                { email: result.email, id: result.id },
+                result.secret,
+                {
+                  expiresIn: 60 * 60,
+                }
+              );
               res({
                 status: 200,
                 token: token,
@@ -72,182 +83,402 @@ const checkUser = (user) => {
   });
 };
 
-const readFavorite = (token) => {
-  const decode = jwt.decode(token);
-
-  if (decode.email) {
-    return new Promise((res, rej) => {
-      connection.query(
-        `SELECT * FROM favoritos WHERE idUsuario = ${decode.id}`,
-        function (error, result, fields) {
-          if (error) {
-            res(false);
-          } else {
-            res(result);
-          }
-        }
-      );
-    });
-  } else {
-    const result = {
-      status: 400,
-      data: "Token not found",
-      url: "/",
-      ok: false,
-    };
-    return result;
-  }
-};
-
 const deleteSecret = (token) => {
   const secret = randomstring.generate();
   const decode = jwt.decode(token);
-  if (decode.email) {
-    return new Promise((res, rej) => {
-      connection.query(
-        `UPDATE usuarios SET secret= "${secret}" WHERE email= "${decode.email}"`,
-        function (err, results) {
-          if (err) {
-            const result = {
-              status: 406,
-              data: "Algo salió mal...",
-              ok: false,
-            };
-            res(result);
-          } else if (results.changedRows == 1) {
-            const result = {
-              status: 200,
-              data: "Logout correctly",
-              url: "/",
-              ok: true,
-            };
-            res(result);
-          } else {
-            const result = {
-              status: 401,
-              data: "Algo va mal...",
-              ok: false,
-            };
-            res(result);
-          }
-        }
-      );
-    });
-  } else {
-    const result = {
-      status: 400,
-      data: "Token not found",
-      url: "/",
-      ok: false,
-    };
-    return result;
-  }
-};
-
-const deleteFav = async (url) => {
   return new Promise((res, rej) => {
-    connection.query(
-      `DELETE FROM favoritos WHERE url = "${url}"`,
-      function (error, results) {
-        if (error) {
-          const result = {
-            status: 406,
-            data: "Algo va mal",
-            ok: false,
-            url: "/",
-          };
-          rej(result);
-        } else if (results.affectedRows === 1) {
-          const result = {
-            status: 200,
-            data: "Se ha eliminado tu favorito",
-            ok: true,
-            url: "/",
-          };
-          res(result);
-        } else {
-          const result = {
-            status: 401,
-            data: "Tu favorito no existe",
-            ok: false,
-            url: "/",
-          };
-          res(result);
-        }
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: decode.id },
+            {
+              $set: { secret: secret}
+            },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "No se ha encontrado a ningun usuario con ese id, token incorrecto",
+                  ok: false,
+                });
+              } else if (result.result.n === 1){
+                res({
+                  status: 200,
+                  data: "Logout correctamente",
+                  ok: true,
+                });
+                db.close();
+              }
+              else {
+                res({
+                  status: 406,
+                  data: "Algo salió mal...",
+                  result,
+                  ok: false,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
       }
-    );
-  });
-};
-
-const registerNewFav = (NEWFAV) => {
-  if (NEWFAV.token.email) {
-    return new Promise((resolve, reject) => {
-      connection.query(
-        `INSERT IGNORE INTO favoritos (titulo,resumen, url, idUsuario) VALUES ("${NEWFAV.titulo}","${NEWFAV.resumen}","${NEWFAV.url}","${NEWFAV.idUsuario}")`,
-        function (error, results, fields) {
-          if (error) {
-            const result = {
-              status: 401,
-              data: "Ha ocurrido un error",
-              ok: false,
-              url: "/",
-            };
-            resolve(result);
-          } else if (results.affectedRows === 0) {
-            const result = {
-              status: 406,
-              data: "Esta oferta favorita ya existe",
-              ok: false,
-            };
-            resolve(result);
-          } else {
-            const result = {
-              status: 200,
-              data: "Oferta favorita guardada correctamente",
-              ok: true,
-            };
-            resolve(result);
-          }
-        }
-      );
     });
-  } else {
-    const result = {
-      status: 400,
-      data: "No tienes token, no autorizado",
-      ok: false,
-    };
-    return result;
-  }
-};
-
-const changeCodes = async (TERM) => {
-  return new Promise((resolve, reject) => {
-    connection.query(
-      `SELECT codigo FROM  codigos WHERE nombre = ('${TERM.localizacion}')`,
-      function (error, results, fields) {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results[0].codigo);
-        }
-      }
-    );
   });
+     
 };
 
-const doQuery = async (param) => {
-  return new Promise((resolve, reject) => {
-    connection.query(param, function (err, res) {
-      if (err) {
-        rej(false);
-      } else {
-        resolve(res);
+const newCardDB = (card) => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: card.id },
+            { $push: { tarjetas: card } },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
+              } else {
+                res({
+                  status: 200,
+                  data: "Tarjeta añadida correctamente",
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
       }
     });
   });
 };
 
+const editUserDB = (user) => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: user.id },
+            {
+              $set: {
+                name: user.name,
+                surname: user.surname,
+                email: user.email,
+                movil: user.movil,
+              },
+            },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
+              } else {
+                res({
+                  status: 200,
+                  data: "Usuario editado correctamente",
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+};
+
+const newCarDB = (coche) => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: coche.id },
+            { $push: { coches: coche } },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
+              } else {
+                res({
+                  status: 200,
+                  data: "Coche añadido correctamente",
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+};
+
+const editCarDB =(coche) => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: coche.id, "coches.matricula": coche.matricula },
+            {
+              $set: { 'coches.$': coche}
+            },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
+              } else if (result.result.nModified === 1){
+                res({
+                  status: 200,
+                  data: "Coche editado correctamente",
+                  ok: true,
+                });
+                db.close();
+              }
+              else {
+                res({
+                  status: 406,
+                  data: "No se ha encontrado el coche",
+                  result,
+                  ok: false,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+const newInvoiceDB = invoice => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: invoice.id },
+            { $push: { facturas: invoice } },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
+              } else {
+                res({
+                  status: 200,
+                  data: "Factura añadida correctamente",
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+const deleteCarDB = coche => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: coche.id},
+            {$pull: {'coches': coche}},
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 406,
+                  data: "Ha habido un error",
+                  result,
+                  ok: false,
+                });
+              } else if (result.result.nModified === 0){
+                res({
+                  status: 406,
+                  data: "No se ha encontrado ningun coche",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+              else {
+                res({
+                  status: 200,
+                  data: "Coche borrado correctamente",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos" + err,
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+const readUserDB =(id) =>{
+  return new Promise((res, rej) => {
+    
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .findOne({id:id}, (err, result) => {
+            if (err) throw err;
+            if(result===null){
+              res({
+                status: 401,
+                data: "No se encontro usuario",
+                ok: false,
+              });            
+            } else {
+              const response = {
+                status: 200,
+                data: "Usuario encontrado", 
+                result: result,
+                ok: true,
+              };
+              res(response);
+              db.close()
+            }
+          });
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+const deleteCardDB = tarjeta => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: tarjeta.id},
+            {$pull: {'tarjeta': tarjeta.numero}},
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 406,
+                  data: "Ha habido un error",
+                  result,
+                  ok: false,
+                });
+              } else if (result.result.nModified === 0){
+                res({
+                  status: 406,
+                  data: "No se ha encontrado ninguna tarjeta",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+              else {
+                res({
+                  status: 200,
+                  data: "Tarjeta borrada correctamente",
+                  result,
+                  ok: true,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos" + err,
+          ok: false,
+        });
+      }
+    });
+  });
+}
+
+// --------------- PARA CHEQUEAR ---------------
 const registerNewUserGoogle = (USER) => {
   return new Promise((res, rej) => {
     const secret = randomstring.generate();
@@ -303,12 +534,15 @@ const registerNewUserGoogle = (USER) => {
 
 module.exports = {
   registerNewUser,
-  deleteSecret,
-  deleteFav,
   checkUser,
-  readFavorite,
-  registerNewFav,
-  changeCodes,
-  doQuery,
+  newCardDB,
+  editUserDB,
+  newCarDB,
+  editCarDB,
+  newInvoiceDB,
+  deleteCarDB,
+  deleteCardDB,
+  deleteSecret,
+  readUserDB,
   registerNewUserGoogle,
 };
