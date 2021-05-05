@@ -5,6 +5,17 @@ div.main-registrop2{
    background-color: #69E5AF;
     box-sizing: border-box;
 }
+div.atras{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    color:#22C47D;
+    width: 30%;
+}
 
 div.botones-registrop2{
     display: flex;

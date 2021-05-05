@@ -5,6 +5,17 @@ div.main-condiciones{
    background-color: white;
     box-sizing: border-box; 
 }
+div.cerrar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    color:#22C47D;
+    width: 30%;
+}
 
 div.text0-condiciones{
     margin-top:20%

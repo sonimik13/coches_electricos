@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 
 import './RegistroP3.css';
-import FetchRegistrop3 from  "../../../Hooks/FetchRegistrop3";
 
+import { Link } from 'react-router-dom';
+import atras from '../../../assets/atras.svg';
 function Registrop3(){
     const [telefono, setTelefono]=useState("")
 
@@ -13,31 +14,20 @@ function Registrop3(){
     }
       
 
-      const registrop3 = async () => {
-        const result = await FetchRegistrop3(telefono);
-        const data = await result.json();
-        console.log(data)
-    
-        if (data.status === 200) {
-          alert(data.data);
-          localStorage.setItem("telefono", data.telefono);
-        } else if (data.status === 401) {
-          alert(data.data);
-        } else if (data.status === 500) {
-          alert(data.data);
-        } else {
-          alert(data.data);
-        }    
-      };
+     
     return (
         <div className="main-registro3">
+            <div className="atras">
+                <img src={atras} alt="atras" id="imagen-atras"></img>
+            </div>
             <div className="texto">
                 
                  <div className="from-registrop3">
                     <h4 className="texto-registrop3">Introduce tu móvil</h4>
                     <input type="text" className="input" placeholder="+34 --- -- --" onChange={handleTelefono}/>
                     <div className="botones-registrop3">   
-                      <button onClick={registrop3}>
+                      <button>
+                     
                         <Link to="/Condiciones">Siguiente</Link>
                        </button>
                     </div>
@@ -62,3 +52,21 @@ function Registrop3(){
 
 
 export default Registrop3;
+
+
+// const registrop3 = async () => {
+//   const result = await FetchRegistrop3(telefono);
+//   const data = await result.json();
+//   console.log(data)
+
+//   if (data.status === 200) {
+//     alert(data.data);
+//     localStorage.setItem("telefono", data.telefono);
+//   } else if (data.status === 401) {
+//     alert(data.data);
+//   } else if (data.status === 500) {
+//     alert(data.data);
+//   } else {
+//     alert(data.data);
+//   }    
+// };

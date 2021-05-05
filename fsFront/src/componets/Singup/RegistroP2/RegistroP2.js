@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 
 import './RegistroP2.css';
-import FetchRegistrop2 from  "../../../Hooks/FetchRegistrop2";
+
+import { Link } from 'react-router-dom';
+import atras from '../../../assets/atras.svg';
 
 function Registrop2(){
     const [nombre, setNombre]= useState("")
@@ -13,6 +15,7 @@ function Registrop2(){
     
     const handleNombre = (event)=>{
         setNombre(event.target.value)
+        console.log(setNombre)
     }
     const handleApellido = (event)=>{
         setApellido(event.target.value)
@@ -25,32 +28,13 @@ function Registrop2(){
     }
 
  
-    const registrop2 = async () => {
-        const result = await FetchRegistrop2(nombre,apellido,email, pass);
-        const data = await result.json();
-        console.log(data)
     
-        if (data.status === 200) {
-          alert(data.data);
-          localStorage.setItem(
-              
-              "nombre", data.nombre,
-              "apellido", data.apellido,
-              "email", data.email,
-              "pass", data.pass
-              
-              );
-        } else if (data.status === 401) {
-          alert(data.data);
-        } else if (data.status === 500) {
-          alert(data.data);
-        } else {
-          alert(data.data);
-        }    
-      };
       return (
 
         <div className="main-registrop2">
+            <div className="atras">
+                <img src={atras} alt="atras" id="imagen-atras"></img>
+            </div>
             <div className="texto">
             <h1 className="titulo-registrop2">Regístrate</h1>
             <div className="form-registrop2">
@@ -66,7 +50,8 @@ function Registrop2(){
                 </div>
             </div>
                 <div className="botones-registrop2">   
-                    <button onClick={registrop2}>
+                    <button>
+                    
                         <Link to="/registrop3">Siguiente</Link>
                     </button>
                 </div>
@@ -77,3 +62,29 @@ function Registrop2(){
 }
 
 export default Registrop2;
+
+
+
+//const registrop2 = async () => {
+    //     const result = await FetchRegistrop2(nombre,apellido,email, pass);
+    //     const data = await result.json();
+    //     console.log(data)
+    
+    //     if (data.status === 200) {
+    //       alert(data.data);
+    //       localStorage.setItem(
+              
+    //           "nombre", data.nombre,
+    //           "apellido", data.apellido,
+    //           "email", data.email,
+    //           "pass", data.pass
+              
+    //           );
+    //     } else if (data.status === 401) {
+    //       alert(data.data);
+    //     } else if (data.status === 500) {
+    //       alert(data.data);
+    //     } else {
+    //       alert(data.data);
+    //     }    
+    //   };

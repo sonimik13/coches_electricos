@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import './Condiciones.css';
+import { Link } from 'react-router-dom';
+import cerrar from '../../../assets/cerrar.svg';
 
 function Condiciones(){
 
@@ -8,6 +10,9 @@ function Condiciones(){
     return(
 
         <div className="main-condiciones">
+            <div className="atras">
+                <img src={cerrar} alt="atras" id="imagen-atras"></img>
+            </div>
              
               <div className="text-condiciones">
                 <h3 className="text-condiciones">Al pulsar la flecha siguiente,<br />
@@ -26,7 +31,9 @@ function Condiciones(){
                 </div>
 
                 <div className="botones-registrop2">   
-                    <button onClick="">Siguiente</button>
+                    <button>
+                    <Link to="/tarjeta">Siguiente</Link>
+                    </button>
                 </div>
 
         </div>
