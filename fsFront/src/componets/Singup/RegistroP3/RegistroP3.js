@@ -37,8 +37,10 @@ function Registrop3(){
                     <h4 className="texto-registrop3">Introduce tu móvil</h4>
                     <input type="text" className="input" placeholder="+34 --- -- --" onChange={handleTelefono}/>
                     <div className="botones-registrop3">   
-                    <button onClick={registrop3}>Siguiente</button>
-                </div>
+                      <button onClick={registrop3}>
+                        <Link to="/Condiciones">Siguiente</Link>
+                       </button>
+                    </div>
                 </div>  
             </div>
 

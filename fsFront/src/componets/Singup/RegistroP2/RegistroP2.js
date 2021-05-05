@@ -8,6 +8,7 @@ function Registrop2(){
     const [apellido, setApellido] = useState("")
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
+    
 
     
     const handleNombre = (event)=>{
@@ -22,6 +23,8 @@ function Registrop2(){
     const handlePass = (event) => {
         setPass(event.target.value)
     }
+
+ 
     const registrop2 = async () => {
         const result = await FetchRegistrop2(nombre,apellido,email, pass);
         const data = await result.json();
@@ -35,7 +38,7 @@ function Registrop2(){
               "apellido", data.apellido,
               "email", data.email,
               "pass", data.pass
-
+              
               );
         } else if (data.status === 401) {
           alert(data.data);
@@ -56,13 +59,16 @@ function Registrop2(){
                 <input type="text" className="input" placeholder="Apellido" onChange={handleApellido}/>
                 <input type="text" className="input" placeholder="Email" onChange={handleEmail}/>
                 <input type="password" className="input" placeholder="Contraseña" onChange={handlePass}/>
+                
                 <div className="recuerdame">
                     <p>RECUÉRDAME</p>
                     <input type="checkbox" name="recuerdame" id="recuerdame-checkbox"/>
                 </div>
             </div>
                 <div className="botones-registrop2">   
-                    <button onClick={registrop2}>Siguiente</button>
+                    <button onClick={registrop2}>
+                        <Link to="/registrop3">Siguiente</Link>
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import './Singup.css'
-import logo from '../../assets/logo.svg'
+
+import Intro from './Intro/Intro'
+import RegistroP2 from './RegistroP2/RegistroP2'
+import RegistroP3 from './RegistroP3/RegistroP3'
+import Condiciones from './Condiciones/Condiciones'
+import Tarjeta from './Tarjeta/Tarjeta'
+
+
+import {BrowserRouter as Router,Route, Switch, Link} from "react-router-dom"
 
 function Singup(){
 
     return(
-      <div className="main-singup">
-            <div className="logo">
-                <img src={logo} alt="logo-app" id="logo-signup"/>
-                <h1 className="titulo-signup">niutu</h1>
-            </div>
-          
-            <div className="botones-signup">
-               
-                <button onClick="">REGISTRARSE</button>
-                <h4 className="text-redessoci">o <br />conéctate a través <br />de las redes sociales</h4>
+         <div className="singup">
+             <Tarjeta />
+    <Router>
+        <button>
+            <Link to="/registroP2">Intro</Link>
+        </button>
+            <Switch>
 
-                <div className="botones-redessoci">
-                <button>Facebook</button>
-                <br />
-                <button>Google</button>
-             </div>
-            </div>
-            {/* <div className="botones-redessoci">
-                <button>Facebook</button>
-                <br />
-                <button>Google</button>
-             </div> */}
-      </div>
+                <Route exact path="/" coponent={Intro} />
+                <Route path="/registroP2" coponent={RegistroP2} />
+               
+                <Route path="/registroP3" coponent={RegistroP3} />
+           
+                <Route path="/condiciones" coponent={Condiciones} />
+                <Route path="/tarjeta" coponent={Tarjeta} />
+               
+               
+            </Switch>
+  </Router>
+        </div>
     )
 }
 
