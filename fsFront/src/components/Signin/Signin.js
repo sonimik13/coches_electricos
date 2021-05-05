@@ -42,7 +42,7 @@ function Signin(props) {
     <div className="main-login">
       <div className="logo">
         <img src={logo} alt="logo-app" id="logo-signin" />
-        <h1 className="titulo-signin">MIUTU</h1>
+        <h1 className="titulo-signin">miutu</h1>
       </div>
       <div className="form-signin">
         <input

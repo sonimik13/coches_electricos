@@ -6,13 +6,52 @@ import General from "./components/General/General";
 import Intro from "./components/Intro/Intro";
 import RegistroP2 from "./components/RegistroP2/RegistroP2";
 import RegistroP3 from "./components/RegistroP3/RegistroP3";
-import Condiciones from "./components/Condiciones/Condiciones";
 import Tarjeta from "./components/Tarjeta/Tarjeta";
+import FetchSignup from "./Hooks/FetchSignup";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const [menu, setMenu] = useState(false);
   const [token, setToken] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [movil, setMovil] = useState("");
+
+  const handleNombre = (event) => {
+    setNombre(event.target.value);
+  };
+  const handleApellido = (event) => {
+    setApellido(event.target.value);
+  };
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePass = (event) => {
+    setPass(event.target.value);
+  };
+  const handleMovil = (event) => {
+    setMovil(event.target.value);
+  };
+
+  const signup = async () => {
+    const result = await FetchSignup(nombre, apellido, email, pass, movil)
+    const data = await result.json()
+    console.log(data);
+  }
+
+  const fetch = {
+    handleMovil,
+    signup
+  }
+
+  const funcionesSignup = {
+    handleNombre,
+    handleApellido,
+    handleEmail,
+    handlePass
+  }
 
   const toggleMenu = () => setMenu(!menu);
 
@@ -47,10 +86,15 @@ function App() {
             </Route>
           )}
           <Route path="/signup" component={Intro} />
-          <Route path="/registroP2" component={RegistroP2} />
-          <Route path="/registroP3" component={RegistroP3} />
-          <Route path="/condiciones" component={Condiciones} />
-          <Route path="/tarjeta" component={Tarjeta} />
+          <Route path="/registroP2">
+            <RegistroP2 data={funcionesSignup}/>
+          </Route>
+          <Route path="/registroP3">
+            <RegistroP3 data={fetch}/>
+          </Route>
+          <Route path="/tarjeta">
+            <Tarjeta />
+          </Route>
         </Switch>
       </div>
     </Router>

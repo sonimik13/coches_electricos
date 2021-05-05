@@ -13,7 +13,7 @@ function Intro() {
       <div className="main-singup">
         <div className="logo">
           <img src={logo} alt="logo-app" id="logo-signup" />
-          <h1 className="titulo-signup">MIUTU</h1>
+          <h1 className="titulo-signup">miutu</h1>
         </div>
         <div className="botones-signup">
           <button>
