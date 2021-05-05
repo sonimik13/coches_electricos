@@ -4,39 +4,37 @@ import "leaflet/dist/leaflet.css";
 import "./react-leaflet.css";
 import logo from "./react-leaflet-icon";
 
-/*Creamos un nuevo Marker para que cada vez que aparezca un
-nuevo marker, aparezca el popup*/
-// const position = [51.71, -0.09]
-
 class MapView extends Component {
-  /*Función para capturar la latitud y la longitud*/
-  handleClick(e) {
-    this.setState({ position: e.latlng });
-  }
-
   constructor(props) {
     super(props);
     this.state = {
-      position: { lat: 40.4167, lng: -3.70325 },
+      position: { lat: 40.4165, lng: -3.70256 },
       zoom: 15,
-      localizacion: props.data,
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
     const { position, zoom } = this.state;
+    console.log(this.props.data);
     return (
-      <MapContainer center={position} zoom={zoom} onClick={this.handleClick}>
+      <MapContainer
+        key={JSON.stringify(this.props.data)}
+        center={
+          Object.keys(this.props.data).length !== 0
+            ? this.props.data
+            : this.state.position
+        }
+        zoom={zoom}
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution={<a href="https://osm.org/copyright">OpenStreetMap</a>}
           contributors
         />
-        {this.state.localizacion === "" ? (
-          <></>
+        {Object.keys(this.props.data).length !== 0 ? (
+          <Marker position={this.props.data} icon={logo}></Marker>
         ) : (
-          <Marker position={this.state.localizacion} icon={logo}></Marker>
+          ""
         )}
       </MapContainer>
     );

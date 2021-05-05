@@ -1,35 +1,54 @@
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Popper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import MapView from "../Mapa/react-leaflet";
 import square from "../../assets/square.svg";
 import coche from "../../assets/coche.svg";
 import cargador from "../../assets/cargador.svg";
 import location from "../../assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
-import FetchUser from "../../Hooks/FetchUser";
 import "./Home.css";
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    border: "1px solid",
+    padding: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
 function Home(props) {
-  const [position, setPosition] = useState("");
-  const [user, setUser] = useState();
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [position, setPosition] = useState({});
   const dataContext = useContext(AuthContext);
 
-  useEffect(() => {
-    const fetch1 =  async () => {
-      const result = await FetchUser(localStorage.getItem("token"));
-      const data = await result.json();
-      await setUser(data.result);
-    };
-    fetch1();
-  }, []);
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+  const handleClick2 = (event) => {
+    setAnchorEl2(anchorEl2 ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const open2 = Boolean(anchorEl2);
+
+  const id = open ? "simple-popper" : undefined;
+  const id2 = open ? "simple-popper" : undefined;
 
   const localizacion = async () => {
-    await navigator.geolocation.getCurrentPosition(function (position) {
+    await navigator.geolocation.getCurrentPosition((position) => {
       setPosition({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       });
     });
   };
+
+  useEffect(() => {
+    localizacion();
+  }, []);
 
   return (
     <div className="main-home">
@@ -48,17 +67,30 @@ function Home(props) {
       </main>
       <footer className="home-footer">
         <div className="info-recarga">
-          <div className="coche">
+          <div className="coche" aria-describedby={id} onClick={handleClick}>
             <img src={coche} alt="" />
-            <p>Tesla Modelo 3</p>
+            <Popper id={id} open={open} anchorEl={anchorEl}>
+              <div className={classes.paper}>
+                {props.data ? props.data.coches[0].descripcion : ""}
+              </div>
+            </Popper>
           </div>
           <div className="recarga">
             <h2>$ 9.90</h2>
             <p>POR 10km</p>
           </div>
-          <div className="cargador">
+          <div
+            className="cargador"
+            className="coche"
+            aria-describedby={id2}
+            onClick={handleClick2}
+          >
             <img src={cargador} alt="" />
-            <p>Cargador Tipo 2</p>
+            <Popper id={id2} open={open2} anchorEl={anchorEl2}>
+              <div className={classes.paper}>
+                {props.data ? props.data.coches[0].cargador : ""}
+              </div>
+            </Popper>
           </div>
         </div>
         <hr />
@@ -89,6 +121,18 @@ function Home(props) {
             <option value="">17:30</option>
             <option value="">18:00</option>
             <option value="">18:30</option>
+            <option value="">19:00</option>
+            <option value="">19:30</option>
+            <option value="">20:00</option>
+            <option value="">20:30</option>
+            <option value="">21:00</option>
+            <option value="">21:30</option>
+            <option value="">22:00</option>
+            <option value="">22:30</option>
+            <option value="">23:00</option>
+            <option value="">23:30</option>
+            <option value="">00:00</option>
+            <option value="">00:30</option>
           </select>
           <label htmlFor="#">HASTA</label>
           <select name="aparcamiento" id="aparcamiento">
@@ -116,6 +160,18 @@ function Home(props) {
             <option value="">17:30</option>
             <option value="">18:00</option>
             <option value="">18:30</option>
+            <option value="">19:00</option>
+            <option value="">19:30</option>
+            <option value="">20:00</option>
+            <option value="">20:30</option>
+            <option value="">21:00</option>
+            <option value="">21:30</option>
+            <option value="">22:00</option>
+            <option value="">22:30</option>
+            <option value="">23:00</option>
+            <option value="">23:30</option>
+            <option value="">00:00</option>
+            <option value="">00:30</option>
           </select>
         </div>
         <hr />

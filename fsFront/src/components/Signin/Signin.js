@@ -21,7 +21,7 @@ function Signin(props) {
 
     if (data.status === 200) {
       alert(data.data);
-      props.signin(data.token)
+      props.signin(data.token);
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 500) {
@@ -56,7 +56,9 @@ function Signin(props) {
         </div>
       </div>
       <div className="botones-signin">
-        <button onClick={login} className="acceder">ACCEDER</button>
+        <button onClick={login} className="acceder">
+          ACCEDER
+        </button>
         <hr />
         <button className="registrarse">REGISTRARSE</button>
       </div>
