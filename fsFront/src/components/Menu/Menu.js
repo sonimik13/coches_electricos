@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import FetchLogout from "../../Hooks/FetchLogout";
+import {useHistory} from "react-router-dom"
 import './Menu.css'
 
 function Menu(props) {
+  const history = useHistory();
   const dataContext = useContext(AuthContext);
 
   const logout = async () => {
@@ -14,6 +16,7 @@ function Menu(props) {
     if (data.status === 200) {
       alert(data.data);
       dataContext.logout()
+      history.push("/")
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 500) {

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.svg";
 import "./Signin.css";
 import FetchLogin from "../../Hooks/FetchLogin";
+import { useHistory } from "react-router-dom";
 
 function Signin(props) {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -15,6 +17,10 @@ function Signin(props) {
     setPass(event.target.value);
   };
 
+  const changePage = () => {
+    history.push("/signup");
+  };
+
   const login = async () => {
     const result = await FetchLogin(email, pass);
     const data = await result.json();
@@ -22,6 +28,7 @@ function Signin(props) {
     if (data.status === 200) {
       alert(data.data);
       props.signin(data.token);
+      history.push("/home");
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 500) {
@@ -60,7 +67,9 @@ function Signin(props) {
           ACCEDER
         </button>
         <hr />
-        <button className="registrarse">REGISTRARSE</button>
+        <button className="registrarse" onClick={changePage}>
+          REGISTRARSE
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+div.todo-intro {
+  background-color: #69e5af;
+  height: 100vh;
+  padding: 20px;
+}
+img#img-atras{
+  width: 30px;
+  background-color: #69e5af;
+}
+div.main-singup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+  background-color: #69e5af;
+}
+div.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#logo-signup {
+  width: 150px;
+}
+div.botones-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+div.text-redessoci {
+  width: 60%;
+  text-align: center;
+  margin: 30px auto;
+  font-size: 18px;
+  color: white;
+}
+div.botones-signup a {
+  text-decoration: none;
+  color: white;
+}
+div.botones-signup button {
+  width: 80%;
+  height: 40px;
+  color: white;
+  font-weight: bolder;
+  font-size: 16px;
+  background-color: #e83f6f;
+  box-shadow: 5px 5px 10px -3px black;
+  border: none;
+  border-radius: 5px;
+}
+div.botones-signup button:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+div.botones-redessoci {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+div.botones-redessoci button {
+  width: 80%;
+  height: 35px;
+  margin: 15px auto;
+  color: white;
+  font-weight: bolder;
+  font-size: 15px;
+  box-shadow: 5px 5px 10px -3px black;
+  border: none;
+  border-radius: 15px;
+}
+div.botones-redessoci button:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+div.botones-redessoci button.btn-facebook {
+  background-color: #004f9d;
+}
+div.botones-redessoci button.btn-google {
+  background-color: #ffffff;
+  color: black;
+}
