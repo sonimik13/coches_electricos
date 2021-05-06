@@ -8,7 +8,7 @@ function General() {
 
   useEffect(() => {
     const fetch1 =  async () => {
-      const result = await FetchUser(localStorage.getItem("token"));
+      const result = await FetchUser(sessionStorage.getItem("token"));
       const data = await result.json();
       await setUser(data.result);
     };
