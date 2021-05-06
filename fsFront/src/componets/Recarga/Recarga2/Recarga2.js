@@ -29,7 +29,31 @@ function Recarga2(){
                 </div>
 
             </div>
-            <div className="estrellas">
+            <div className="valoracion">
+
+
+                    <button>
+                        <i className="fas fa-star"></i>
+                    </button>
+
+                    <button>
+                        <i className="fas fa-star"></i>
+                    </button>
+
+                    <button>
+                        <i className="fas fa-star"></i>
+                    </button>
+
+                    <button>
+                        <i className="fas fa-star"></i>
+                    </button>
+
+                    <button>
+                        <i className="fas fa-star"></i>
+                    </button>
+
+            </div>
+            {/* <div className="estrellas">
                 <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
 
                 <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
@@ -38,7 +62,8 @@ function Recarga2(){
                 <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
                
                 
-            </div>
+            </div> */}
+          
             <div className="botones">
                     <div className="boton-gracias">
                         <button>Gracias</button>
