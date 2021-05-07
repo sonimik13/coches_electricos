@@ -9,6 +9,13 @@ import RegistroP3 from "./components/RegistroP3/RegistroP3";
 import Tarjeta from "./components/Tarjeta/Tarjeta";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+
+import Recarga from './componets/Recarga/Recarga';
+
+
+
+
+
 function App() {
   const [menu, setMenu] = useState(false);
   const [token, setToken] = useState("");

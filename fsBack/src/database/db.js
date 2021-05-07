@@ -433,15 +433,25 @@ const readUserDB = (id) => {
   });
 };
 
+<<<<<<< HEAD
 const deleteCardDB = (tarjeta) => {
+=======
+const deleteCardDB = tarjeta => {
+  console.log(tarjeta)
+>>>>>>> inmafront
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
         db.db("niutu")
           .collection("usuarios")
           .updateOne(
+<<<<<<< HEAD
             { id: tarjeta.id },
             { $pull: { tarjeta: tarjeta } },
+=======
+            { id: tarjeta.id},
+            {$pull: {'tarjetas': tarjeta}},
+>>>>>>> inmafront
             (err, result) => {
               if (err) throw err;
               if (result === null) {

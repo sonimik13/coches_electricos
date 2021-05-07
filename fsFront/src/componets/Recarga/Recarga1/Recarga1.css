@@ -1,0 +1,130 @@
+div.main-recarga{
+    padding-top:15%;
+    /* margin-bottom: 40%; */
+   background-color: white;
+    box-sizing: border-box; 
+    flex-direction:column;
+}
+.h1{
+
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    color:black;
+    font-size: 15px;
+    font-weight: 100;
+    width: 16%;
+    margin-top: 20%;
+  
+}
+img#imagen-moto{
+   
+    margin-top: 15%;
+}
+div.text-tapa h3 {
+    margin-top: 20%;
+    border:2px solid black;
+    align-items: center;
+    margin: 10px;
+    background: linear-gradient(94.06deg, #56CCF2 -40.19%, #E83F6F 141.01%);
+    display: flex;
+    flex-direction: row;
+    padding-right: 2%;
+    color:white;
+}
+
+div.tex-tapa img#imagen-deposito{
+    display: flex;
+    flex-direction: row;
+    padding-right: 2%;
+}
+
+div.modelo-matricula {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20%;
+}
+div.modelo-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+div.modelo-row p {
+    width: 40%;
+}
+div.modelo-row h4 {
+    width: 40%;
+}
+div.boton-cancelar{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+}
+div.distancia-tiempo{
+    border:2px solid black;
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    margin-top: 20%;
+    /* justify-content: space-between; */
+}
+div.distancia-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10%;
+    
+}
+
+div.distancia-column p {
+    width: 40%;
+    
+}
+div.distancia-column h4 {
+    width: 40%;
+}
+div.boton-cancelar{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20%;
+}
+div.boton-cancelar button{
+    width: 80%;
+        height: 40px;
+        margin: 15px auto;
+        color: white;
+        font-weight: bolder;
+        font-size: 19px;
+        background-color: #082B1C;
+        box-shadow: 5px 5px 10px -3px black;
+        border: none;
+        border-radius: 5px;
+}
+div.text-tapa{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+}
+
+#imagen-enchufe {
+    width: 20%;
+}
