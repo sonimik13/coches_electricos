@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import AuthContext from "./contexts/AuthContext";
 import Signin from "./components/Signin/Signin";
-import General from "./components/General/General";
+// import General from "./components/General/General";
 import Intro from "./components/Intro/Intro";
 import RegistroP2 from "./components/RegistroP2/RegistroP2";
 import RegistroP3 from "./components/RegistroP3/RegistroP3";
@@ -10,7 +10,9 @@ import Tarjeta from "./components/Tarjeta/Tarjeta";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
-import Recarga from './componets/Recarga/Recarga';
+// import Recarga from './componets/Recarga/Recarga';
+// import Recarga1 from './componets/Recarga/Recarga1';
+import Recarga2 from './componets/Recarga/Recarga2/Recarga2';
 
 
 
@@ -86,6 +88,9 @@ function App() {
           <Route path="/tarjeta">
             <Tarjeta />
           </Route>
+          <Route path="/home">
+            <Recarga2 /> 
+           </Route>
         </Switch>
       </div>
     </Router>
