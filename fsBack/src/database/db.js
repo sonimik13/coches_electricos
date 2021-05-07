@@ -17,13 +17,21 @@ const registerNewUser = (USER) => {
       try {
         db.db("niutu")
           .collection("usuarios")
-          .insertOne(USER, (err, result) => {
+          .insertOne(USER, (err, response) => {
             if (err) {
               console.log(err);
             } else {
+              let token = jwt.sign(
+                { email: response.ops[0].email, id: response.ops[0].id },
+                response.ops[0].secret,
+                {
+                  expiresIn: 60 * 60,
+                }
+              );
               const result = {
                 status: 200,
                 data: "Nuevo usuario creado",
+                token,
                 ok: true,
               };
               res(result);
