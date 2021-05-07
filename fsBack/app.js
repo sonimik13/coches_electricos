@@ -48,14 +48,14 @@ app.post("/signup", async (req, res) => {
     } else {
       res.status(406).json({
         status: 406,
-        data: "Nombre de usuario no es valido",
+        data: "El Nombre/Apellido del usuario no es válido",
         ok: false,
       });
     }
   } else {
     res.status(406).json({
       status: 406,
-      data: "Usuario/contraseña no valida",
+      data: "Email/contraseña no válida",
       ok: false,
     });
   }
