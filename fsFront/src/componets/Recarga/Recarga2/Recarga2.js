@@ -3,7 +3,7 @@ import './Recarga2.css';
 
 import logotipo from '../../../assets/logotipo.svg';
 import vector from '../../../assets/vector.svg';
-import estrella from '../../../assets/estrella.svg';
+
 
 
 function Recarga2(){

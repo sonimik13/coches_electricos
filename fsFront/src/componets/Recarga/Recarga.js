@@ -11,8 +11,8 @@ function Recarga(){
     return(
 
         <div className="Recarga">
-            {/* <Recarga1 /> */}
-            <Recarga2 />
+            <Recarga1 />
+            {/* <Recarga2 /> */}
             {/* <Router>
 
                     <Switch>

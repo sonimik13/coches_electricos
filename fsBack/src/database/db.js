@@ -430,6 +430,7 @@ const readUserDB =(id) =>{
 }
 
 const deleteCardDB = tarjeta => {
+  console.log(tarjeta)
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
       try {
@@ -437,7 +438,7 @@ const deleteCardDB = tarjeta => {
           .collection("usuarios")
           .updateOne(
             { id: tarjeta.id},
-            {$pull: {'tarjeta': tarjeta.numero}},
+            {$pull: {'tarjetas': tarjeta}},
             (err, result) => {
               if (err) throw err;
               if (result === null) {
