@@ -7,6 +7,7 @@ import Intro from "./components/Intro/Intro";
 import RegistroP2 from "./components/RegistroP2/RegistroP2";
 import RegistroP3 from "./components/RegistroP3/RegistroP3";
 import Tarjeta from "./components/Tarjeta/Tarjeta";
+import Configuracion from "./components/Configuracion/Configuracion";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -86,6 +87,9 @@ function App() {
             </Route>
             <Route path="/tarjeta">
               <Tarjeta token={token} />
+            </Route>
+            <Route path="/configuracion">
+              <Configuracion />
             </Route>
           </Switch>
         </div>
