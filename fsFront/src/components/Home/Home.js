@@ -22,6 +22,7 @@ function Home(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [position, setPosition] = useState({});
+  const [coches, setCoches] = useState([]);
   const dataContext = useContext(AuthContext);
 
   const handleClick = (event) => {
@@ -30,6 +31,16 @@ function Home(props) {
   const handleClick2 = (event) => {
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
+
+  useEffect(() => {
+    function loadCoches() {
+      if(props.data) {
+        setCoches(props.data.coches)
+      }
+    }
+    loadCoches()
+  }, [])
+  
 
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
@@ -71,13 +82,13 @@ function Home(props) {
             <img src={coche} alt="" />
             <Popper id={id} open={open} anchorEl={anchorEl}>
               <div className={classes.paper}>
-                {props.data ? props.data.coches[0].descripcion : ""}
+              {coches.length > 0 ? coches[0].descripcion : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
           <div className="recarga">
-            <h2>$ 9.90</h2>
-            <p>POR 10km</p>
+            <h2>$ 0,00</h2>
+            <p>POR 0km</p>
           </div>
           <div
             className="cargador"
@@ -88,7 +99,7 @@ function Home(props) {
             <img src={cargador} alt="" />
             <Popper id={id2} open={open2} anchorEl={anchorEl2}>
               <div className={classes.paper}>
-                {props.data ? props.data.coches[0].cargador : ""}
+                {coches.length > 0 ? coches[0].cargador : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>

@@ -15,7 +15,6 @@ class MapView extends Component {
 
   render() {
     const { position, zoom } = this.state;
-    console.log(this.props.data);
     return (
       <MapContainer
         key={JSON.stringify(this.props.data)}

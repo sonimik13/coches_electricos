@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-
+import React from "react";
 import "./RegistroP2.css";
-
 import { Link } from "react-router-dom";
 import atras from "../../assets/atras.svg";
 
 function Registrop2(props) {
-
   return (
     <>
       <div className="todo-registro">
