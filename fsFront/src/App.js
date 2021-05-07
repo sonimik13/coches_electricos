@@ -38,7 +38,6 @@ function App() {
   const signup = async () => {
     const result = await FetchSignup(nombre, apellido, email, pass, movil)
     const data = await result.json()
-    console.log(data);
   }
 
   const fetch = {
