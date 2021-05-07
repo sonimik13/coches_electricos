@@ -50,12 +50,24 @@ function App() {
 
   const logout = async () => {
     await sessionStorage.setItem("token", "");
-    await setToken(sessionStorage.getItem("token"));
+    setToken("");
+    setNombre("");
+    setApellido("");
+    setEmail("");
+    setPass("");
   };
 
-  const signin = (token) => {
-    sessionStorage.setItem("token", token);
-    setToken(token);
+  const signin = async (token) => {
+    await sessionStorage.setItem("token", token);
+    await setToken(token);
+  };
+
+  const fetch = {
+    nombre,
+    apellido,
+    email,
+    pass,
+    signin,
   };
 
   const dataContext = {
@@ -66,34 +78,32 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          {token !== "" ? (
-            <AuthContext.Provider value={dataContext}>
-              <Route path="/home" component={General} />
-            </AuthContext.Provider>
-          ) : (
+    <AuthContext.Provider value={dataContext}>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/home" component={General} />
             <Route exact path="/">
               <Signin signin={signin} />
             </Route>
-          )}
-          <Route path="/signup" component={Intro} />
-          <Route path="/registroP2">
-            <RegistroP2 data={funcionesSignup} />
-          </Route>
-          <Route path="/registroP3">
-            <RegistroP3 data={{nombre, apellido, email, pass}} login={signin} />
-          </Route>
-          <Route path="/tarjeta">
-            <Tarjeta />
-          </Route>
-          <Route path="/home">
-            <Recarga2 /> 
-           </Route>
-        </Switch>
-      </div>
-    </Router>
+            <Route path="/signup" component={Intro} />
+            <Route path="/registroP2">
+              <RegistroP2 data={funcionesSignup} />
+            </Route>
+            <Route path="/registroP3">
+              <RegistroP3 data={fetch} />
+            </Route>
+            <Route path="/tarjeta">
+              <Tarjeta token={token} />
+            </Route>
+            <Route path="/recarga">
+              <Recarga  />
+            </Route>
+
+          </Switch>
+        </div>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

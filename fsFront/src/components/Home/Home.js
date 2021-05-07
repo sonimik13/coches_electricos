@@ -87,8 +87,8 @@ function Home(props) {
             </Popper>
           </div>
           <div className="recarga">
-            <h2>$ 9.90</h2>
-            <p>POR 10km</p>
+            <h2>$ 0,00</h2>
+            <p>POR 0km</p>
           </div>
           <div
             className="cargador"

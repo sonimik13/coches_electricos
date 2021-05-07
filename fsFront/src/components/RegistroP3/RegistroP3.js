@@ -22,18 +22,21 @@ function Registrop3(props) {
     const data = await result.json();
     if (data.status === 200) {
       alert(data.data);
-      props.login(data.token)
+      await props.data.signin(data.token)
       history.push("/tarjeta");
     }
-    if (data.status === 500) {
+    else if (data.status === 500) {
       alert(data.data);
     }
-    if (data.status === 500) {
+    else if (data.status === 500) {
       alert(data.data);
     }
-    if (data.status === 406) {
+    else if (data.status === 406) {
       alert(data.data);
       history.push("/registroP2");
+    }
+    else {
+      console.log(data);
     }
   };
 

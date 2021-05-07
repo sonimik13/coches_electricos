@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import logoTarjeta from "../../assets/tarjetascredito.svg";
 import FetchCard from "../../Hooks/FetchCard"
 
-function Tarjeta() {
+function Tarjeta(props) {
   const history = useHistory()
   const [titular, setTitular] =useState("")
   const [tarjeta, setTarjeta] =useState("")
@@ -32,7 +32,7 @@ function Tarjeta() {
     numero: tarjeta,
     fecha: `${fecha.mes}/${fecha.año}`,
     codigo: codigo,
-    token: sessionStorage.getItem("token")
+    token: props.token
   }
   const addCard = async () => {
     const result = await FetchCard(card)
