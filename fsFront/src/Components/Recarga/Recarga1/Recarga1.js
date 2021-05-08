@@ -14,30 +14,18 @@ function Recarga1() {
       const result = await FetchUser(sessionStorage.getItem("token"));
       const data = await result.json();
       await setUser(data.result);
-      if (data.result.coches.length === 0) {
-        alert("Tienes que añadir un coche antes de solicitar la carga");
-        history.push("/home");
-      }
     };
     fetchrecarga();
   }, []);
 
   return (
     <div className="main-recarga1">
-      <div className="text-recarga">
-        <h1 className="text-recarga">Recarga en camino!</h1>
-      </div>
+      <h1 className="text-recarga">¡Recarga en camino!</h1>
 
-      <div className="img-moto">
-        <img src={motocarga} alt="motocarga" id="imagen-moto"></img>
-      </div>
+      <img src={motocarga} alt="motocarga" id="imagen-moto"></img>
 
       <div className="text-tapa">
-        <h3>
-          Recuerde dejar abierta
-          <br />
-          la tapa del depósito
-        </h3>
+        <h3>Recuerde dejar abierta la tapa del depósito</h3>
         <img src={deposito} alt="deposito" id="imagen-deposito"></img>
       </div>
 
@@ -59,7 +47,6 @@ function Recarga1() {
           <h4>{user ? user.coches[0].matricula : ""}</h4>
         </div>
       </div>
-
       <div className="distancia-tiempo">
         <div className="distancia-column">
           <p>Distancia</p>
@@ -74,10 +61,9 @@ function Recarga1() {
           <h4>15 €</h4>
         </div>
       </div>
+      <hr />
       <Link to="/home">
-        <div className="boton-cancelar">
-          <button>Cancelar</button>
-        </div>
+        <div className="boton-cancelar">Cancelar</div>
       </Link>
     </div>
   );
