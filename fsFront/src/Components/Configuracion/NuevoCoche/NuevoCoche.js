@@ -1,4 +1,4 @@
-import atras from "../../../assets/atras.svg";
+import atras from "../../../Assets/atras.svg";
 import FetchNewCar from "../../../Hooks/FetchNewCar";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";

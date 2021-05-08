@@ -1,7 +1,7 @@
 import React from "react";
 import "./Intro.css";
-import logo from "../../assets/Logotipo.svg";
-import atras from "../../assets/atras.svg";
+import logo from "../../Assets/Logotipo.svg";
+import atras from "../../Assets/atras.svg";
 import { Link } from "react-router-dom";
 
 function Intro() {

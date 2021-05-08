@@ -2,10 +2,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { Popper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MapView from "../Mapa/react-leaflet";
-import square from "../../assets/square.svg";
-import coche from "../../assets/coche.svg";
-import cargador from "../../assets/cargador.svg";
-import location from "../../assets/gps.svg";
+import square from "../../Assets/square.svg";
+import coche from "../../Assets/coche.svg";
+import cargador from "../../Assets/cargador.svg";
+import location from "../../Assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
 import "./Home.css";
 

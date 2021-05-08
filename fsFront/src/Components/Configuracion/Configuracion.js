@@ -1,7 +1,7 @@
 import "./Configuracion.css";
-import atras from "../../assets/atras.svg";
-import avanza from "../../assets/avanza.svg";
-import añadir from "../../assets/añadir-coche.svg";
+import atras from "../../Assets/atras.svg";
+import avanza from "../../Assets/avanza.svg";
+import añadir from "../../Assets/añadir-coche.svg";
 import Coche from "./Coche/Coche";
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";

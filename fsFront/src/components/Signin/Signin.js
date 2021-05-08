@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/Logotipo.svg";
+import logo from "../../Assets/Logotipo.svg";
 import "./Signin.css";
 import FetchLogin from "../../Hooks/FetchLogin";
 import { useHistory } from "react-router-dom";

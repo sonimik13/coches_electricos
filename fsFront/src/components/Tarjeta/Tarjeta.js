@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./Tarjeta.css";
 import { Link, useHistory } from "react-router-dom";
-import logoTarjeta from "../../assets/tarjetascredito.svg";
+import logoTarjeta from "../../Assets/tarjetascredito.svg";
 import FetchCard from "../../Hooks/FetchCard"
 
 function Tarjeta(props) {

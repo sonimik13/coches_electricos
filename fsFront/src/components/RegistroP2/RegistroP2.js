@@ -1,7 +1,7 @@
 import React from "react";
 import "./RegistroP2.css";
 import { Link } from "react-router-dom";
-import atras from "../../assets/atras.svg";
+import atras from "../../Assets/atras.svg";
 
 function Registrop2(props) {
   return (
