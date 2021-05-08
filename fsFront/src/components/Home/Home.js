@@ -7,6 +7,7 @@ import coche from "../../assets/coche.svg";
 import cargador from "../../assets/cargador.svg";
 import location from "../../assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
+import {Link} from 'react-router-dom'
 import "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,13 +35,12 @@ function Home(props) {
 
   useEffect(() => {
     function loadCoches() {
-      if(props.data) {
-        setCoches(props.data.coches)
+      if (props.data) {
+        setCoches(props.data.coches);
       }
     }
-    loadCoches()
-  }, [])
-  
+    loadCoches();
+  }, []);
 
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
@@ -82,7 +82,9 @@ function Home(props) {
             <img src={coche} alt="" />
             <Popper id={id} open={open} anchorEl={anchorEl}>
               <div className={classes.paper}>
-              {coches.length > 0 ? coches[0].descripcion : "Aun no hay coches añadidos"}
+                {coches.length > 0
+                  ? coches[0].descripcion
+                  : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
@@ -99,7 +101,9 @@ function Home(props) {
             <img src={cargador} alt="" />
             <Popper id={id2} open={open2} anchorEl={anchorEl2}>
               <div className={classes.paper}>
-                {coches.length > 0 ? coches[0].cargador : "Aun no hay coches añadidos"}
+                {coches.length > 0
+                  ? coches[0].cargador
+                  : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
@@ -186,9 +190,11 @@ function Home(props) {
           </select>
         </div>
         <hr />
-        <div className="btn-recarga">
-          <h3>Solicitar</h3>
-        </div>
+        <Link to="/recarga1">
+          <div className="btn-recarga">
+            <h3>Solicitar</h3>
+          </div>
+        </Link>
       </footer>
     </div>
   );
