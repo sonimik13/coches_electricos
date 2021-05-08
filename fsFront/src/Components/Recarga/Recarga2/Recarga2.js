@@ -1,8 +1,7 @@
 import React from "react";
 import "./Recarga2.css";
-
 import logotipo from "../../../assets/Logotipo.svg";
-// import vector from "../../../assets/vector.svg";
+import vector from "../../../assets/vector.svg";
 import { Link } from "react-router-dom";
 
 function Recarga2() {
@@ -14,7 +13,7 @@ function Recarga2() {
 
       <div className="text-vector">
         <h1> Recarga lista </h1>
-        <img src="" alt="vector" id="imagen-vector"></img>
+        <img src={vector} alt="vector" id="imagen-vector"></img>
       </div>
 
       <div className="hora-precio">
@@ -46,23 +45,11 @@ function Recarga2() {
           <i className="fas fa-star"></i>
         </button>
       </div>
-      {/* <div className="estrellas">
-                <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
-                <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
-                <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
-                <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
-                <div className="imagen-estrella"><img src={estrella} alt="estrella" id="imagen-estrella"></img></div>
-               
-                
-            </div> */}
-
       <div className="botones">
         <div className="boton-gracias">
-          <button className="gracias">
-            <Link className="link" to="/home">
-              Gracias
-            </Link>
-          </button>
+          <Link className="link" to="/home">
+            <button className="gracias">Gracias</button>
+          </Link>
         </div>
       </div>
     </div>

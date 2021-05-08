@@ -18,6 +18,10 @@ function Recarga1() {
     fetchrecarga();
   }, []);
 
+  setTimeout(() => {
+    history.push("/recarga2")
+  }, 5000);
+
   return (
     <div className="main-recarga1">
       <h1 className="text-recarga">¡Recarga en camino!</h1>
