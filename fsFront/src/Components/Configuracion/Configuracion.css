@@ -6,6 +6,9 @@ div.todo-configuracion {
 div.todo-configuracion img {
   width: 25px;
 }
+div.todo-configuracion h3 {
+  text-align: center;
+}
 div.todo-configuracion img:hover {
   cursor: pointer;
 }
@@ -35,10 +38,13 @@ div.config-datos-perfil {
 }
 
 div.coches-usuario {
-  margin: 20px;
+  margin: 25px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+div.coches-usuario img {
+  width: 35px;
 }
 div.coches-usuario img:hover {
   cursor: pointer;
@@ -61,7 +67,7 @@ div.input-coche {
   border-radius: 25px 25px 0 0;
 }
 div.info-coche:hover {
-  border: 1px solid red;
+  border: 2px solid #69e5af;
   cursor: pointer;
 }
 div.input-coche input {
@@ -92,6 +98,19 @@ div.editar-eliminar {
   font-weight: 600;
 }
 div.editar-eliminar p:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+div.guardar-coche {
+  color: white;
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 5px;
+  width: 50%;
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+}
+div.guardar-coche:hover {
   cursor: pointer;
   transform: scale(1.02);
 }

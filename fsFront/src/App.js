@@ -8,6 +8,7 @@ import RegistroP2 from "./components/RegistroP2/RegistroP2";
 import RegistroP3 from "./components/RegistroP3/RegistroP3";
 import Tarjeta from "./components/Tarjeta/Tarjeta";
 import Configuracion from "./components/Configuracion/Configuracion";
+import NuevoCoche from "./components/Configuracion/NuevoCoche/NuevoCoche";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -90,6 +91,9 @@ function App() {
             </Route>
             <Route path="/configuracion">
               <Configuracion />
+            </Route>
+            <Route path="/nuevoCoche">
+              <NuevoCoche />
             </Route>
           </Switch>
         </div>
