@@ -18,7 +18,7 @@ function Config() {
       await setUser(data.result);
     };
     fetch1();
-  }, []);
+  });
 
   const selectCar = (car) => {
     setSelect(car);
