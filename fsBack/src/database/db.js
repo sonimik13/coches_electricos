@@ -362,7 +362,7 @@ const deleteCarDB = (coche) => {
               if (err) throw err;
               if (result === null) {
                 res({
-                  status: 406,
+                  status: 401,
                   data: "Ha habido un error",
                   result,
                   ok: false,
