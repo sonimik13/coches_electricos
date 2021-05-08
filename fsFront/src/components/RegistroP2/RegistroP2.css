@@ -1,0 +1,66 @@
+div.todo-registro {
+  height: 100vh;
+  background-color: #69e5af;
+  padding: 20px;
+}
+img#imagen-atras {
+  width: 30px;
+}
+div.main-registrop2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80vh;
+}
+h1.titulo-registrop2 {
+  font-size: 50px;
+}
+.form-registrop2 {
+  width: 100%;
+  text-align: center;
+}
+.form-registrop2 .input {
+  width: 80%;
+  margin: 15px auto;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  box-shadow: 5px 5px 20px -3px black;
+}
+div.recuerdame2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 35px;
+  color: white;
+  font-weight: bolder;
+}
+div.recuerdame2 input {
+  margin-right: 10px;
+}
+div.botones-registrop2 {
+  width: 100%;
+  text-align: center;
+}
+div.botones-registrop2 button {
+  width: 80%;
+  height: 50px;
+  margin: 15px auto;
+  color: white;
+  font-weight: bolder;
+  font-size: 16px;
+  background-color: #e83f6f;
+  box-shadow: 5px 5px 10px -3px black;
+  border: none;
+  border-radius: 5px;
+}
+div.botones-registrop2 button:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+div.botones-registrop2 a {
+  text-decoration: none;
+  color: white;
+}
