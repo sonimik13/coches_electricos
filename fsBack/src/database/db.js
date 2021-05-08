@@ -6,7 +6,6 @@ const { MongoClient } = require("mongodb");
 const randomstring = require("randomstring");
 const URL = process.env.MONGODB;
 const optionsMongo = { useNewUrlParser: true, useUnifiedTopology: true };
-const randomstring = require("randomstring")
 
 // -------------------------------------------------------------------------------
 // LOGICA
@@ -181,43 +180,6 @@ const newCardDB = (card) => {
   });
 };
 
-<<<<<<< HEAD
-const deleteSecret = token => {
-  const secret = randomstring.generate();
-  const decode = jwt.decode(token);
-    return new Promise((res, rej) => {
-      MongoClient.connect(URL, optionsMongo, (err, db) =>{
-        try {
-          db.db("niutu").collection("usuarios").updateOne({id: decode.id}, {$set: {secret: secret}}, (err, result) => {
-            if (err) throw err;
-            if (result === null) {
-              res({
-                status: 400,
-                data: "Token not found",
-                ok: false,
-              })
-            } else {
-              res({
-                status: 200,
-                data: result,
-                ok: true
-              })
-              db.close();
-            }
-          })
-
-        } 
-        catch {
-          rej({
-            status: 500,
-            data: "Error Interno de la Base de Datos",
-            ok: false,
-          })
-        }
-      })
- 
-  })
-=======
 const editUserDB = (user) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
@@ -261,7 +223,6 @@ const editUserDB = (user) => {
       }
     });
   });
->>>>>>> main
 };
 
 const newCarDB = (coche) => {
@@ -302,39 +263,6 @@ const newCarDB = (coche) => {
   });
 };
 
-<<<<<<< HEAD
-const registerNewFav = (NEWFAV) => {
-  if (NEWFAV.token.email) { 
-    return new Promise((resolve, reject) => {
-      connection.query(
-        `INSERT IGNORE INTO favoritos (titulo,resumen, url, idUsuario) VALUES ("${NEWFAV.titulo}","${NEWFAV.resumen}","${NEWFAV.url}","${NEWFAV.idUsuario}")`,
-        function (error, results, fields) {
-          if (error) {
-            const result = {
-              status: 401,
-              data: "Ha ocurrido un error",
-              ok: false,
-              url: "/",
-            };
-            resolve(result);
-          } else if (results.affectedRows === 0) {
-            const result = {
-              status: 406,
-              data: "Esta oferta favorita ya existe",
-              ok: false,
-            };
-            resolve(result);
-          } else {
-            const result = {
-              status: 200,
-              data: "Oferta favorita guardada correctamente",
-              ok: true,
-            };
-            resolve(result);
-          }
-        }
-      );
-=======
 const editCarDB = (coche) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
@@ -379,7 +307,6 @@ const editCarDB = (coche) => {
           ok: false,
         });
       }
->>>>>>> main
     });
   });
 };
