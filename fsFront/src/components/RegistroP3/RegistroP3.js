@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./RegistroP3.css";
 import { Link } from "react-router-dom";
-import atras from "../../assets/atras.svg";
+import atras from "../../Assets/atras.svg";
 import FetchSignup from "../../Hooks/FetchSignup";
 import { useHistory } from "react-router-dom";
 

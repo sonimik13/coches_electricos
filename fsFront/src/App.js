@@ -1,21 +1,17 @@
 import "./App.css";
 import React, { useState } from "react";
 import AuthContext from "./contexts/AuthContext";
-import Signin from "./components/Signin/Signin";
-// import General from "./components/General/General";
-import Intro from "./components/Intro/Intro";
-import RegistroP2 from "./components/RegistroP2/RegistroP2";
-import RegistroP3 from "./components/RegistroP3/RegistroP3";
-import Tarjeta from "./components/Tarjeta/Tarjeta";
+import Signin from "./Components/Signin/Signin";
+import General from "./Components/General/General";
+import Intro from "./Components/Intro/Intro";
+import RegistroP2 from "./Components/RegistroP2/RegistroP2";
+import RegistroP3 from "./Components/RegistroP3/RegistroP3";
+import Tarjeta from "./Components/Tarjeta/Tarjeta";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
-// import Recarga from './componets/Recarga/Recarga';
-// import Recarga1 from './componets/Recarga/Recarga1';
-import Recarga2 from './componets/Recarga/Recarga2/Recarga2';
-
-
-
+import Recarga2 from './Components/Recarga/Recarga2/Recarga2';
+import Recarga1 from './Components/Recarga/Recarga1/Recarga1';
 
 
 function App() {
@@ -96,8 +92,11 @@ function App() {
             <Route path="/tarjeta">
               <Tarjeta token={token} />
             </Route>
-            <Route path="/recarga">
-              <Recarga  />
+            <Route path="/recarga2">
+              <Recarga2  />
+            </Route>
+            <Route path="/recarga1">
+              <Recarga1  />
             </Route>
 
           </Switch>

@@ -1,52 +1,65 @@
 div.main-recarga{
+    display: flex;
     padding-top:15%;
     /* margin-bottom: 40%; */
    background-color: white;
     box-sizing: border-box; 
     flex-direction:column;
+    justify-content: center;
 }
-.h1{
+div.text-recarga{
 
     display: flex;
-    margin-top: 10px;
     flex-direction: column;
-    width: 100%;
-    display:flex;
+    /* justify-content: center; */
     align-items: center;
-    color:black;
+    width: 100%;
+    color:#484848;
     font-size: 15px;
     font-weight: 100;
-    width: 16%;
     margin-top: 20%;
-  
 }
+
+ div.img-moto{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     
+ }
 img#imagen-moto{
-   
-    margin-top: 15%;
+    width: 55%;
+    margin-top: 10%;
+    
 }
-div.text-tapa h3 {
+div.text-tapa  {
     margin-top: 20%;
     border:2px solid black;
     align-items: center;
     margin: 10px;
-    background: linear-gradient(94.06deg, #56CCF2 -40.19%, #E83F6F 141.01%);
+    background:linear-gradient( #69E5AF 100%,#340D66 100%);  
     display: flex;
     flex-direction: row;
     padding-right: 2%;
     color:white;
 }
+div.text-tapa h3{
+    color:white;
+    margin-left: 12px;
+}
 
-div.tex-tapa img#imagen-deposito{
+ #imagen-deposito{
     display: flex;
     flex-direction: row;
-    padding-right: 2%;
+    margin-left: 26px;
+    margin-top: 20px;
+    
 }
 
 div.modelo-matricula {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 div.modelo-row {
     display: flex;
@@ -70,12 +83,14 @@ div.boton-cancelar{
     width: 100%;
 }
 div.distancia-tiempo{
-    border:2px solid black;
+    /* border:2px solid black; */
     width: 100%;
     display: flex;
     flex-direction:row;
     margin-top: 20%;
     /* justify-content: space-between; */
+    /* border-top-style:solid; */
+    border-width:solid;
 }
 div.distancia-column {
     display: flex;
@@ -123,6 +138,8 @@ div.text-tapa{
     font-size: 14px;
     font-weight: 700;
     color: black;
+    border-width:solid;
+    border:2px solid black; 
 }
 
 #imagen-enchufe {

@@ -1,8 +1,9 @@
 import React from 'react';
 import './Recarga2.css';
 
-import logotipo from '../../../assets/logotipo.svg';
-import vector from '../../../assets/vector.svg';
+import logotipo from '../../../Assets/logotipo.svg';
+import vector from '../../../Assets/vector.svg';
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,7 +16,7 @@ function Recarga2(){
             </div>
           
                 <div className="text-vector">
-                    <h1>Recarga lista !</h1>
+                    <h1> Recarga lista </h1>
                     <img src={vector} alt="vector" id="imagen-vector"></img>
                 </div> 
             
@@ -66,7 +67,9 @@ function Recarga2(){
           
             <div className="botones">
                     <div className="boton-gracias">
-                        <button>Gracias</button>
+                        <button className="gracias">
+                            <Link className="link" to="/home">Gracias</Link>
+                        </button>
                      </div>
 
             </div>

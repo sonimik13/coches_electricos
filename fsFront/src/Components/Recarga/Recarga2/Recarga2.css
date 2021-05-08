@@ -1,16 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.link{
+    text-decoration: none;
+    color:white;
+}
 div.main-recarga2{
     display: flex;
     background-color: white;
     flex-direction:column;
     height: 100vh;
       padding: 5%;
+      align-content: center;
+}
+div.imagen-recarga{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 div.text-recarga2{
     margin:10px;
 }
 
 div.text-vector{
+    display: flex;
     margin:15px;
+    align-items: center;
+    flex-direction: column;
 
 }
 img#imagen-vector{
@@ -61,20 +78,33 @@ div.imagen-estrella{
     justify-content: space-between;
 }
 
-div.boton-gracias button{
+/* div.boton-gracias button{
     width: 80%;
     height: 40px;
-    /* margin: 15px auto; */
-    color: white;
+    color:#FDF1F5;
     font-weight: bolder;
     font-size: 15px;
-    background-color: #E83F6F;
+    background-color:#082B1C;
     box-shadow: 5px 5px 10px -3px black;
-    border: none;
     border-radius: 5px;
     flex-direction: column;
     font-size: 26px;
-    justify-content: center;
+    align-items: center;
+    margin: 35px;
+    text-decoration: none;
+} */
+.gracias{
+    color:#FDF1F5;
+    font-weight: bolder;
+    font-size: 15px;
+    background-color:#082B1C;
+    box-shadow: 5px 5px 10px -3px black;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 80%;
+    height: 40px;
+    flex-direction: column;
+    font-size: 26px;
     align-items: center;
     margin: 35px;
 }

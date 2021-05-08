@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Popper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/styles";
 import MapView from "../Mapa/react-leaflet";
-import square from "../../assets/square.svg";
-import coche from "../../assets/coche.svg";
-import cargador from "../../assets/cargador.svg";
-import location from "../../assets/gps.svg";
+import square from "../../Assets/square.svg";
+import coche from "../../Assets/coche.svg";
+import cargador from "../../Assets/cargador.svg";
+import location from "../../Assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
+import { Link } from 'react-router-dom';
 import "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -186,9 +187,11 @@ function Home(props) {
           </select>
         </div>
         <hr />
+        <Link to="/recarga1">
         <div className="btn-recarga">
           <h3>Solicitar</h3>
         </div>
+        </Link>
       </footer>
     </div>
   );
