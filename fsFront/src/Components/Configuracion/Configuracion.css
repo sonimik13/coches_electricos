@@ -35,6 +35,10 @@ div.menu-configuracion {
 }
 div.config-datos-perfil {
   line-height: 1.6;
+  text-align: start;
+}
+div.config-datos-perfil h3 {
+  text-align: start;
 }
 
 div.coches-usuario {
