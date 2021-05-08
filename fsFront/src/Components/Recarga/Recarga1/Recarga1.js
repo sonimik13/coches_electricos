@@ -21,14 +21,11 @@ function Recarga1() {
   return (
     <div className="main-recarga1">
       <h1 className="text-recarga">¡Recarga en camino!</h1>
-
       <img src={motocarga} alt="motocarga" id="imagen-moto"></img>
-
       <div className="text-tapa">
         <h3>Recuerde dejar abierta la tapa del depósito</h3>
         <img src={deposito} alt="deposito" id="imagen-deposito"></img>
       </div>
-
       <div className="modelo-matricula">
         <div className="modelo-row">
           <p className="modelo">Modelo:</p>
@@ -47,6 +44,7 @@ function Recarga1() {
           <h4>{user ? user.coches[0].matricula : ""}</h4>
         </div>
       </div>
+      <hr />
       <div className="distancia-tiempo">
         <div className="distancia-column">
           <p>Distancia</p>

@@ -7,10 +7,10 @@ div.main-recarga1 {
   height: 100vh;
 }
 h1.text-recarga {
-  color: #082B1C;
+  color: #082b1c;
   font-size: 50px;
   text-align: center;
-  margin: 20px auto;
+  margin: 15px auto;
 }
 
 img#imagen-moto {
@@ -19,27 +19,26 @@ img#imagen-moto {
 }
 div.text-tapa {
   margin: 10px auto;
-  border: 1px solid #69E5AF;
+  border: 1px solid #69e5af;
   border-radius: 15px;
   align-items: center;
-  background: linear-gradient(94.06deg, #69E5AF -40.19%, #340D66 141.01%);
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90%;
-  padding: 15px; 
+  padding: 15px;
 }
-div.text-tapa  h3 {
+div.text-tapa h3 {
   font-weight: normal;
 }
-
 
 div.modelo-matricula {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 20px auto;
+  margin: 10px auto;
   width: 80%;
   line-height: 2.5;
 }
@@ -68,11 +67,12 @@ div.distancia-column {
   width: 100%;
 }
 
-div.boton-cancelar  {
+div.boton-cancelar {
   width: 280px;
   height: 48px;
   padding: 8px 90px 8px 90px;
   margin: 10px auto;
+  margin-bottom: 20px;
   text-align: center;
   color: white;
   font-weight: bolder;
@@ -80,4 +80,12 @@ div.boton-cancelar  {
   background-color: #082b1c;
   box-shadow: 5px 5px 10px -3px black;
   border-radius: 55px;
+}
+div.main-recarga1 a {
+  text-decoration: none;
+}
+
+div.boton-cancelar:hover {
+  cursor: pointer;
+  transform: scale(1.02);
 }
