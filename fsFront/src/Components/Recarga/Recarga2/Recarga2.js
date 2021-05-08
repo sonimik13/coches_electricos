@@ -12,16 +12,16 @@ function Recarga2() {
       </div>
 
       <div className="text-vector">
-        <h1> Recarga lista </h1>
+        <h1>¡Recarga lista!</h1>
         <img src={vector} alt="vector" id="imagen-vector"></img>
       </div>
 
       <div className="hora-precio">
         <div className="hora-column">
-          <p className="hora">HORA</p> <h4>11:15</h4>
+          <p className="hora">HORA</p> <h3>11:15</h3>
         </div>
         <div className="hora-column">
-          <p className="hora">PRECIO</p> <h4>15€</h4>
+          <p className="hora">PRECIO</p> <h3>15 €</h3>
         </div>
       </div>
       <div className="valoracion">
@@ -45,13 +45,9 @@ function Recarga2() {
           <i className="fas fa-star"></i>
         </button>
       </div>
-      <div className="botones">
-        <div className="boton-gracias">
-          <Link className="link" to="/home">
-            <button className="gracias">Gracias</button>
-          </Link>
-        </div>
-      </div>
+      <Link className="link" to="/home">
+        <div className="boton-cancelar">Gracias</div>
+      </Link>
     </div>
   );
 }

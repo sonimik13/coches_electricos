@@ -57,7 +57,9 @@ function Config() {
               <p>+34 {user ? user.movil : ""}</p>
               <p>{user ? user.email : ""}</p>
             </div>
-            <img src={avanza} alt="avanza" />
+            <Link to="/editarUsuario">
+              <img src={avanza} alt="avanza" />
+            </Link>
           </div>
           <div className="coches-usuario">
             <h2>Coches</h2>
