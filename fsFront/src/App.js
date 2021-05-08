@@ -11,6 +11,9 @@ import Configuracion from "./Components/Configuracion/Configuracion";
 import NuevoCoche from "./Components/Configuracion/NuevoCoche/NuevoCoche";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import Recarga2 from "./components/Recarga/Recarga2/Recarga2";
+import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
+
 function App() {
   const [menu, setMenu] = useState(false);
   const [token, setToken] = useState("");
@@ -94,6 +97,12 @@ function App() {
             </Route>
             <Route path="/nuevoCoche">
               <NuevoCoche />
+            </Route>
+            <Route path="/recarga2">
+              <Recarga2 />
+            </Route>
+            <Route path="/recarga1">
+              <Recarga1 />
             </Route>
           </Switch>
         </div>
