@@ -125,6 +125,14 @@ div.tarjetas-usuario {
   justify-content: space-between;
   align-items: center;
 }
+
+div.tarjetas-usuario img {
+  width: 35px;
+}
+div.tarjetas-usuario img:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
 div.info-tarjeta {
   margin: 15px auto;
   width: 90%;
@@ -135,10 +143,19 @@ div.info-tarjeta {
   border-radius: 25px;
 }
 
-div.input-titular {
+div.input-tarjeta {
   background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
   text-align: center;
   border-radius: 25px 25px 0 0;
+}
+div.info-tarjeta:hover {
+  border: 2px solid #69e5af;
+  cursor: pointer;
+}
+div.input-titular input {
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
 }
 div.info-tarjeta input {
   text-align: center;
@@ -185,13 +202,6 @@ div.guardar-tarjeta {
   background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
 }
 div.guardar-tarjeta:hover {
-  cursor: pointer;
-  transform: scale(1.02);
-}
-div.tarjetas-usuario img {
-  width: 35px;
-}
-div.tarjetas-usuario img:hover {
   cursor: pointer;
   transform: scale(1.02);
 }

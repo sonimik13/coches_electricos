@@ -53,7 +53,7 @@ function NuevaTarjeta() {
                     <img src={atras} alt="atras" />
                 </Link>
                 <div className="main-configuracion">
-                    <h1 className="titulo-configuracion">Añadir nueva tarjeta</h1>
+                    <h1 className="titulo-configuracion">Añade nueva tarjeta</h1>
                     <div className="info-tarjeta">
                         <div className="input-titular">
                             <input

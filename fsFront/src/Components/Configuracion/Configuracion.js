@@ -88,8 +88,8 @@ function Config() {
               <img src={añadir} alt="añadir-tarjeta" />
             </Link>
           </div>
-          {/* {drawCoches()} */}
-          {/* {drawTarjetas()} */}
+          {drawCoches()}
+          {drawTarjetas()}
         </div>
       </div>
     </>

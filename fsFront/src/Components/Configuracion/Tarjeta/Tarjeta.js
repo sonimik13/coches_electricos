@@ -31,7 +31,7 @@ function Tarjeta(props) {
     const FetchDelete = async () => {
         const card = {
             titular: titular,
-            numero: numero,
+            numero: props.tarjeta.numero,
             fechaCaducidad: fechaCaducidad,
             codigo: codigo
         };
