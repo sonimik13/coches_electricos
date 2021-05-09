@@ -9,10 +9,11 @@ import RegistroP3 from "./Components/RegistroP3/RegistroP3";
 import Tarjeta from "./Components/Tarjeta/Tarjeta";
 import Configuracion from "./Components/Configuracion/Configuracion";
 import NuevoCoche from "./Components/Configuracion/NuevoCoche/NuevoCoche";
+import NuevaTarjeta from "./Components/Configuracion/NuevaTarjeta/NuevaTarjeta" 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Recarga2 from "./components/Recarga/Recarga2/Recarga2";
-import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
+import Recarga2 from "./Components/Recarga/Recarga2/Recarga2";
+import Recarga1 from "./Components/Recarga/Recarga1/Recarga1";
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -97,6 +98,9 @@ function App() {
             </Route>
             <Route path="/nuevoCoche">
               <NuevoCoche />
+            </Route>
+            <Route path="/nuevaTarjeta">
+              <NuevaTarjeta />
             </Route>
             <Route path="/recarga2">
               <Recarga2 />

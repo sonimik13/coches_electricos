@@ -1,7 +1,7 @@
 import React from "react";
 import "./Recarga2.css";
-import logotipo from "../../../assets/Logotipo.svg";
-import vector from "../../../assets/vector.svg";
+import logotipo from "../../../Assets/Logotipo.svg";
+import vector from "../../../Assets/vector.svg";
 import { Link } from "react-router-dom";
 
 function Recarga2() {

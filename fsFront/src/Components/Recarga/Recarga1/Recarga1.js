@@ -1,7 +1,7 @@
 import "./Recarga1.css";
 import React, { useState, useEffect } from "react";
-import motocarga from "../../../assets/motocarga.svg";
-import deposito from "../../../assets/deposito.svg";
+import motocarga from "../../../Assets/motocarga.svg";
+import deposito from "../../../Assets/deposito.svg";
 import FetchUser from "../../../Hooks/FetchUser";
 import { Link, useHistory } from "react-router-dom";
 
