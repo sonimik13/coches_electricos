@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AuthContext from "./contexts/AuthContext";
 import Signin from "./components/Signin/Signin";
 import General from "./components/General/General";
