@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import FetchLogout from "../../Hooks/FetchLogout";
-import {useHistory} from "react-router-dom"
+import {useHistory, Link} from "react-router-dom"
 import './Menu.css'
 
 function Menu(props) {
@@ -29,13 +29,13 @@ function Menu(props) {
   return (
     <div className={`menu-desplegable ${dataContext.menu}`}>
       <div className="perfil">
-        <img src="https://thispersondoesnotexist.com/image" alt="" />
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHrfYwlcuM60g/profile-displayphoto-shrink_200_200/0/1593101044871?e=1625097600&v=beta&t=X8x7MTDgtBK0RSAnny_bd0t3xP5RVdhmqYrFfSxJiDI" alt="fotoperfil" />
         <h3>{props.data ? props.data.name : ""}<br/>{props.data ? props.data.surname : ""}</h3>
       </div>
       <ul className="menu-listado">
         <li>Tus recargas</li>
         <li>Pago</li>
-        <li>Configuración</li>
+        <li onClick={dataContext.toggleMenu}><Link to="/configuracion">Configuración</Link></li>
         <li onClick={logout}>Logout</li>
         <li onClick={dataContext.toggleMenu}>Atras</li>
       </ul>

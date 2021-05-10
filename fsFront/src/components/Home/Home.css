@@ -7,6 +7,9 @@
   background-color: whitesmoke;
   height: 100vh;
 }
+div.main-home a {
+  text-decoration: none;
+}
 .home-header {
   background-color: #69e5af;
   display: flex;

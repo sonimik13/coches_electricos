@@ -7,6 +7,8 @@ import coche from "../../assets/coche.svg";
 import cargador from "../../assets/cargador.svg";
 import location from "../../assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
+import FetchUser from "../../Hooks/FetchUser"
+import {useHistory} from 'react-router-dom'
 import "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,10 +20,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home(props) {
+  const history = useHistory()
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [position, setPosition] = useState({});
+  const [coches, setCoches] = useState([]);
   const dataContext = useContext(AuthContext);
 
   const handleClick = (event) => {
@@ -30,6 +34,24 @@ function Home(props) {
   const handleClick2 = (event) => {
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
+
+  const solicitar = () => {
+    if (coches.length > 0) {
+      history.push("/recarga1")
+    }
+    else {
+      alert("Aun no tienes coches añadidos")
+    }
+  }
+
+  useEffect(() => {
+    const fetch1 = async () => {
+      const result = await FetchUser(sessionStorage.getItem("token"));
+      const data = await result.json();
+      await setCoches(data.result.coches);
+    };
+    fetch1();
+  });
 
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
@@ -71,13 +93,15 @@ function Home(props) {
             <img src={coche} alt="" />
             <Popper id={id} open={open} anchorEl={anchorEl}>
               <div className={classes.paper}>
-                {props.data ? props.data.coches[0].descripcion : ""}
+                { coches.length > 0
+                  ? coches[0].descripcion
+                  : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
           <div className="recarga">
-            <h2>$ 9.90</h2>
-            <p>POR 10km</p>
+            <h2>$ 0,00</h2>
+            <p>POR 0km</p>
           </div>
           <div
             className="cargador"
@@ -88,7 +112,9 @@ function Home(props) {
             <img src={cargador} alt="" />
             <Popper id={id2} open={open2} anchorEl={anchorEl2}>
               <div className={classes.paper}>
-                {props.data ? props.data.coches[0].cargador : ""}
+                { coches.length > 0
+                  ? coches[0].cargador
+                  : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
@@ -175,9 +201,9 @@ function Home(props) {
           </select>
         </div>
         <hr />
-        <div className="btn-recarga">
-          <h3>Solicitar</h3>
-        </div>
+          <div className="btn-recarga" onClick={solicitar}>
+            <h3>Solicitar</h3>
+          </div>
       </footer>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/Logotipo.svg";
 import "./Signin.css";
 import FetchLogin from "../../Hooks/FetchLogin";
 import { useHistory } from "react-router-dom";
@@ -42,7 +42,6 @@ function Signin(props) {
     <div className="main-login">
       <div className="logo">
         <img src={logo} alt="logo-app" id="logo-signin" />
-        <h1 className="titulo-signin">MIUTU</h1>
       </div>
       <div className="form-signin">
         <input

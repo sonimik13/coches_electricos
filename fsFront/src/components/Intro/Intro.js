@@ -1,6 +1,6 @@
 import React from "react";
 import "./Intro.css";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/Logotipo.svg";
 import atras from "../../assets/atras.svg";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,6 @@ function Intro() {
       <div className="main-singup">
         <div className="logo">
           <img src={logo} alt="logo-app" id="logo-signup" />
-          <h1 className="titulo-signup">MIUTU</h1>
         </div>
         <div className="botones-signup">
           <button>

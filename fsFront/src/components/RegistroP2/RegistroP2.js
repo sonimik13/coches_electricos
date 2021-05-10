@@ -1,75 +1,60 @@
-import React, { useState } from "react";
-
+import React from "react";
 import "./RegistroP2.css";
-
 import { Link } from "react-router-dom";
 import atras from "../../assets/atras.svg";
 
-function Registrop2() {
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-
-  const handleNombre = (event) => {
-    setNombre(event.target.value);
-  };
-  const handleApellido = (event) => {
-    setApellido(event.target.value);
-  };
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
-  };
-  const handlePass = (event) => {
-    setPass(event.target.value);
-  };
-
+function Registrop2(props) {
   return (
-    
-    <div className="main-registrop2">
-      <div className="atras">
-        <img src={atras} alt="atras" id="imagen-atras"></img>
-      </div>
-      <div className="texto">
-        <h1 className="titulo-registrop2">Regístrate</h1>
-        <div className="form-registrop2">
-          <input
-            type="text"
-            className="input"
-            placeholder="Nombre"
-            onChange={handleNombre}
-          />
-          <input
-            type="text"
-            className="input"
-            placeholder="Apellido"
-            onChange={handleApellido}
-          />
-          <input
-            type="text"
-            className="input"
-            placeholder="Email"
-            onChange={handleEmail}
-          />
-          <input
-            type="password"
-            className="input"
-            placeholder="Contraseña"
-            onChange={handlePass}
-          />
+    <>
+      <div className="todo-registro">
+        <Link to="/signup">
+          <img src={atras} alt="atras" id="imagen-atras"></img>
+        </Link>
+        <div className="main-registrop2">
+          <h1 className="titulo-registrop2">Regístrate</h1>
+          <div className="form-registrop2">
+            <input
+              type="text"
+              className="input"
+              placeholder="Nombre"
+              onChange={props.data.handleNombre}
+            />
+            <input
+              type="text"
+              className="input"
+              placeholder="Apellido"
+              onChange={props.data.handleApellido}
+            />
+            <input
+              type="text"
+              className="input"
+              placeholder="Email"
+              onChange={props.data.handleEmail}
+            />
+            <input
+              type="password"
+              className="input"
+              placeholder="Contraseña"
+              onChange={props.data.handlePass}
+            />
 
-          <div className="recuerdame2">
-            <p>RECUÉRDAME</p>
-            <input type="checkbox" name="recuerdame" id="recuerdame-checkbox" />
+            <div className="recuerdame2">
+              <input
+                type="checkbox"
+                name="recuerdame"
+                id="recuerdame-checkbox"
+              />
+              <p>RECUÉRDAME</p>
+            </div>
+          </div>
+          <div className="botones-registrop2">
+            <button>
+              <Link to="/registroP3">SIGUIENTE</Link>
+            </button>
           </div>
         </div>
-        <div className="botones-registrop2">
-          <button>
-            <Link to="/registrop3">Siguiente</Link>
-          </button>
-        </div>
       </div>
-    </div>
+    </>
   );
 }
 
