@@ -1,5 +1,5 @@
 div.todo-onbording {
-  background-color: #f2fdf8;
+  background-color: #F7F7F7;
   height: 100vh;
   padding: 20px;
   color: #082b1c;
@@ -88,7 +88,7 @@ div.main-botonera button:hover {
 div.main-botonera .atras {
   color: #082b1c;
   border: 1px solid #082b1c;
-  background-color: #f2fdf8;
+  background-color: #F7F7F7;
   font-size: 20px;
   font-weight: 700;
 }

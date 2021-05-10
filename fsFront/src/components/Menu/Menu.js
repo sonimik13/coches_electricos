@@ -33,7 +33,7 @@ function Menu(props) {
       </div>
       <ul className="menu-listado">
         <li>Tus recargas</li>
-        <li>Pago</li>
+        <li onClick={dataContext.toggleMenu}><Link to="/pago">Pago</Link></li>
         <li onClick={dataContext.toggleMenu}><Link to="/configuracion">Configuración</Link></li>
         <li onClick={logout}>Logout</li>
         <li onClick={dataContext.toggleMenu}>Atras</li>

@@ -30,7 +30,7 @@ function Home(props) {
   const [coches, setCoches] = useState([]);
   const [tarjetas, setTarjetas] = useState([]);
   const [recarga, setRecarga] = useState(true);
-  const [importe, setImporte] = useState("$ 5,99");
+  const [importe, setImporte] = useState("€ 5,99");
   const dataContext = useContext(AuthContext);
 
   const handleClick = (event) => {
@@ -41,9 +41,9 @@ function Home(props) {
   };
   const handleRecarga = () => {
     if (!recarga) {
-      setImporte("$ 5,99");
+      setImporte("€ 5,99");
     } else {
-      setImporte("$ 9,99");
+      setImporte("€ 9,99");
     }
     setRecarga(!recarga);
   };
@@ -139,7 +139,7 @@ function Home(props) {
             </Popper>
           </div>
           <div className="recarga" onClick={handleRecarga}>
-            <h2>{recarga ? "$ 5,99" : "$ 9,99"}</h2>
+            <h2>{importe}</h2>
             <p>{recarga ? "por 1/2h de recarga" : "por 1h de recarga"}</p>
           </div>
           <div
