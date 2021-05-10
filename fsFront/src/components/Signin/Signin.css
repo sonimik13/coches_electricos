@@ -10,7 +10,7 @@ div.main-login {
   justify-content: space-evenly;
   align-items: center;
   height: 100vh;
-  background-color: #69e5af;
+  background-color: #F2FDF8;
 }
 
 #logo-signin {
@@ -33,7 +33,7 @@ div.form-signin {
   height: 40px;
   padding-left: 10px;
   font-size: 16px;
-  box-shadow: 5px 5px 20px -3px black;
+  box-shadow: 2px 2px 10px -3px black;
 }
 div.recuerdame {
   display: flex;
@@ -43,7 +43,7 @@ div.recuerdame {
   margin-right: 50px;
   font-size: 14px;
   font-weight: 700;
-  color: white;
+  color: #082B1C;
 }
 div.recuerdame #recuerdame-checkbox {
   margin-right: 10px;
@@ -58,25 +58,25 @@ div.botones-signin {
 }
 div.botones-signin button {
   width: 80%;
-  height: 50px;
+  height: 48px;
   margin: 15px auto;
   color: white;
   font-weight: bolder;
   font-size: 16px;
-  background-color: #e83f6f;
+  background-color: #082B1C;
   box-shadow: 5px 5px 10px -3px black;
   border: none;
-  border-radius: 5px;
+  border-radius: 34px;
 }
 div.botones-signin button.registrarse {
   background-color: #f2fdf8;
-  color: black;
+  color: #082B1C;
 }
 div.botones-signin button:hover {
   cursor: pointer;
   transform: scale(1.02);
 }
 hr {
-  border: 1px solid black;
+  border: 1px solid #082B1C;
   width: 100px;
 }

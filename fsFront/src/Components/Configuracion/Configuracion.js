@@ -47,7 +47,7 @@ function Config() {
           <div className="menu-configuracion">
             <img
               className="img-perfil"
-              src="https://thispersondoesnotexist.com/image"
+              src="https://media-exp1.licdn.com/dms/image/C4E03AQHrfYwlcuM60g/profile-displayphoto-shrink_200_200/0/1593101044871?e=1625097600&v=beta&t=X8x7MTDgtBK0RSAnny_bd0t3xP5RVdhmqYrFfSxJiDI"
               alt="foto perfil"
             />
             <div className="config-datos-perfil">
@@ -57,7 +57,9 @@ function Config() {
               <p>+34 {user ? user.movil : ""}</p>
               <p>{user ? user.email : ""}</p>
             </div>
-            <img src={avanza} alt="avanza" />
+            <Link to="/editarUsuario">
+              <img src={avanza} alt="avanza" />
+            </Link>
           </div>
           <div className="coches-usuario">
             <h2>Coches</h2>

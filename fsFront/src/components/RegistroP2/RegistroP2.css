@@ -1,6 +1,6 @@
 div.todo-registro {
   height: 100vh;
-  background-color: #69e5af;
+  background-color: #F2FDF8;
   padding: 20px;
 }
 img#imagen-atras {
@@ -15,6 +15,7 @@ div.main-registrop2 {
 }
 h1.titulo-registrop2 {
   font-size: 50px;
+  color: #082B1C;
 }
 .form-registrop2 {
   width: 100%;
@@ -22,11 +23,11 @@ h1.titulo-registrop2 {
 }
 .form-registrop2 .input {
   width: 80%;
-  margin: 15px auto;
+  margin: 20px auto;
   height: 40px;
   padding-left: 10px;
   font-size: 16px;
-  box-shadow: 5px 5px 20px -3px black;
+  box-shadow: 2px 2px 10px -2px black;
 }
 div.recuerdame2 {
   display: flex;
@@ -46,15 +47,15 @@ div.botones-registrop2 {
 }
 div.botones-registrop2 button {
   width: 80%;
-  height: 50px;
+  height: 46px;
   margin: 15px auto;
   color: white;
   font-weight: bolder;
   font-size: 16px;
-  background-color: #e83f6f;
-  box-shadow: 5px 5px 10px -3px black;
+  background: linear-gradient(94.06deg, #69E5AF -40.19%, #340D66 141.01%);;
+  box-shadow: 2px 2px 10px -3px black;
   border: none;
-  border-radius: 5px;
+  border-radius: 56px;
 }
 div.botones-registrop2 button:hover {
   cursor: pointer;

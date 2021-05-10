@@ -29,7 +29,7 @@ function Menu(props) {
   return (
     <div className={`menu-desplegable ${dataContext.menu}`}>
       <div className="perfil">
-        <img src="https://thispersondoesnotexist.com/image" alt="fotoperfil" />
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHrfYwlcuM60g/profile-displayphoto-shrink_200_200/0/1593101044871?e=1625097600&v=beta&t=X8x7MTDgtBK0RSAnny_bd0t3xP5RVdhmqYrFfSxJiDI" alt="fotoperfil" />
         <h3>{props.data ? props.data.name : ""}<br/>{props.data ? props.data.surname : ""}</h3>
       </div>
       <ul className="menu-listado">

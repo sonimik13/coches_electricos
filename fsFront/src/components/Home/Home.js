@@ -7,6 +7,8 @@ import coche from "../../assets/coche.svg";
 import cargador from "../../assets/cargador.svg";
 import location from "../../assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
+import FetchUser from "../../Hooks/FetchUser";
+import { useHistory } from "react-router-dom";
 import "./Home.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,11 +20,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home(props) {
+  const history = useHistory();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [position, setPosition] = useState({});
   const [coches, setCoches] = useState([]);
+  const [tarjetas, setTarjetas] = useState([]);
+  const [recarga, setRecarga] = useState(true);
+  const [importe, setImporte] = useState("$ 5,99");
   const dataContext = useContext(AuthContext);
 
   const handleClick = (event) => {
@@ -31,16 +37,40 @@ function Home(props) {
   const handleClick2 = (event) => {
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
+  const handleRecarga = () => {
+    if (!recarga) {
+      setImporte("$ 5,99");
+    } else {
+      setImporte("$ 9,99");
+    }
+    setRecarga(!recarga);
+  };
+
+  const solicitar = () => {
+    if (coches.length < 1) {
+      alert("Aun no tienes coches añadidos");
+    } else if (tarjetas.length < 1) {
+      alert("Aun no tienes tarjetas añadidas");
+    } else {
+      history.push({
+        pathname: "/recarga1",
+        state: {
+          coches,
+          importe,
+        },
+      });
+    }
+  };
 
   useEffect(() => {
-    function loadCoches() {
-      if(props.data) {
-        setCoches(props.data.coches)
-      }
-    }
-    loadCoches()
-  }, [])
-  
+    const fetch1 = async () => {
+      const result = await FetchUser(sessionStorage.getItem("token"));
+      const data = await result.json();
+      setCoches(data.result.coches);
+      setTarjetas(data.result.tarjetas);
+    };
+    fetch1();
+  }, []);
 
   const open = Boolean(anchorEl);
   const open2 = Boolean(anchorEl2);
@@ -82,13 +112,15 @@ function Home(props) {
             <img src={coche} alt="" />
             <Popper id={id} open={open} anchorEl={anchorEl}>
               <div className={classes.paper}>
-              {coches.length > 0 ? coches[0].descripcion : "Aun no hay coches añadidos"}
+                {coches.length > 0
+                  ? coches[0].descripcion
+                  : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
-          <div className="recarga">
-            <h2>$ 0,00</h2>
-            <p>POR 0km</p>
+          <div className="recarga" onClick={handleRecarga}>
+            <h2>{recarga ? "$ 5,99" : "$ 9,99"}</h2>
+            <p>{recarga ? "por 1/2h de carga" : "por 1h de carga"}</p>
           </div>
           <div
             className="cargador"
@@ -99,7 +131,9 @@ function Home(props) {
             <img src={cargador} alt="" />
             <Popper id={id2} open={open2} anchorEl={anchorEl2}>
               <div className={classes.paper}>
-                {coches.length > 0 ? coches[0].cargador : "Aun no hay coches añadidos"}
+                {coches.length > 0
+                  ? coches[0].cargador
+                  : "Aun no hay coches añadidos"}
               </div>
             </Popper>
           </div>
@@ -186,7 +220,7 @@ function Home(props) {
           </select>
         </div>
         <hr />
-        <div className="btn-recarga">
+        <div className="btn-recarga" onClick={solicitar}>
           <h3>Solicitar</h3>
         </div>
       </footer>

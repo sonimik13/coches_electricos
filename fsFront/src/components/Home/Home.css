@@ -7,6 +7,9 @@
   background-color: whitesmoke;
   height: 100vh;
 }
+div.main-home a {
+  text-decoration: none;
+}
 .home-header {
   background-color: #69e5af;
   display: flex;
@@ -25,10 +28,10 @@
 }
 
 .info-recarga {
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -45,10 +48,17 @@
   width: 55px;
 }
 .info-recarga .recarga {
-  border: 1px solid black;
   padding: 20px;
   height: 100px;
   border-radius: 50%;
+  line-height: 1.6;
+}
+.info-recarga .recarga h2 {
+  font-size: 40px;
+}
+.info-recarga .recarga:hover {
+  cursor: pointer;
+  transform: scale(1.01);
 }
 hr {
   width: 90%;

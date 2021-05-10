@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./Tarjeta.css";
 import { Link, useHistory } from "react-router-dom";
-import logoTarjeta from "../../assets/tarjetascredito.svg";
+import logoTarjeta from "../../assets/Tarjeta.svg";
 import FetchCard from "../../Hooks/FetchCard"
 
 function Tarjeta(props) {
@@ -21,7 +21,7 @@ function Tarjeta(props) {
     setCodigo(e.target.value)
   }
   const handleFecha = (e) => {
-    setFecha({mes: e.target.value})
+    setFecha({mes: e.target.value, año: fecha.año})
   }
   const handleFecha2 = (e) => {
     setFecha({mes: fecha.mes, año: e.target.value})
@@ -72,7 +72,7 @@ function Tarjeta(props) {
           <input type="text" name="numero-tarjeta" id="numero-tarjeta" placeholder="Numero de tarjeta" onChange={handleTarjeta} />
           <div className="inputs2">
             <select name="mes-tarjeta" id="mes-tarjeta" onChange={handleFecha}>
-              <option value="0">mes</option>
+              <option value="0">Mes</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -87,7 +87,7 @@ function Tarjeta(props) {
               <option value="12">12</option>
             </select>
             <select name="año-tarjeta" id="año-tarjeta" onChange={handleFecha2}>
-              <option value="0">año</option>
+              <option value="0">Año</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2023">2023</option>
