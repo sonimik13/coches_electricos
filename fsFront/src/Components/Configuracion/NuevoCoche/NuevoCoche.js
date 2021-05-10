@@ -53,7 +53,7 @@ function NuevoCoche() {
           <img src={atras} alt="atras" />
         </Link>
         <div className="main-configuracion">
-          <h1 className="titulo-configuracion">Añadir nuevo coche</h1>
+          <h1 className="titulo-configuracion">Añadir coche</h1>
           <div className="info-coche">
             <div className="input-coche">
               <input

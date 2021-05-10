@@ -1,6 +1,6 @@
 div.main-recarga2 {
   display: flex;
-  background-color: whitesmoke;
+  background-color: #F6F6F6;
   flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
@@ -68,6 +68,9 @@ div.hora-precio h3 {
   transition: 1s all;
   width: 18%;
   font-size: 40px;
+}
+div.main-recarga2 a {
+  text-decoration: none;
 }
 .valoracion button:hover {
   cursor: pointer;
