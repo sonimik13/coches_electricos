@@ -1,5 +1,5 @@
 div.todo-configuracion {
-  background-color: whitesmoke;
+  background-color: #F7F7F7;
   padding: 20px;
   min-height: 100vh;
 }
@@ -23,7 +23,7 @@ div.menu-configuracion img {
 
 h1.titulo-configuracion {
   text-align: center;
-  margin-top: 5px;
+  margin-top: 15px;
   margin-bottom: 30px;
 }
 
@@ -72,9 +72,9 @@ div.input-coche {
 }
 
 div.input-coche input {
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+  color: black;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 div.info-coche input {
@@ -86,7 +86,7 @@ div.info-coche input {
   font-size: 16px;
   border-radius: 20px;
   border: none;
-  box-shadow: 5px 5px 18px -5px black;
+  box-shadow: 2px 2px 10px -3px black;
 }
 div.info-coche input:focus {
   outline: none;
@@ -110,8 +110,11 @@ div.guardar-coche {
   color: white;
   border-radius: 20px;
   margin: 20px auto;
-  padding: 5px;
-  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 156px;
   background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
 }
 div.guardar-coche:hover {

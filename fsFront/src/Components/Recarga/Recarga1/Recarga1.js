@@ -2,7 +2,6 @@ import "./Recarga1.css";
 import React, { useState, useEffect } from "react";
 import motocarga from "../../../assets/motocarga.svg";
 import deposito from "../../../assets/deposito.svg";
-import FetchUser from "../../../Hooks/FetchUser";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 function Recarga1() {
@@ -10,7 +9,10 @@ function Recarga1() {
   const location = useLocation();
 
   setTimeout(() => {
-    history.push("/recarga2")
+    history.push({
+      pathname: "/recarga2",
+      state: location.state.importe
+    })
   }, 5000);
 
   return (

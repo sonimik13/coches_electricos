@@ -120,7 +120,7 @@ function Home(props) {
           </div>
           <div className="recarga" onClick={handleRecarga}>
             <h2>{recarga ? "$ 5,99" : "$ 9,99"}</h2>
-            <p>{recarga ? "por 1/2h de carga" : "por 1h de carga"}</p>
+            <p>{recarga ? "por 1/2h de recarga" : "por 1h de recarga"}</p>
           </div>
           <div
             className="cargador"
@@ -142,6 +142,7 @@ function Home(props) {
         <div className="select">
           <label htmlFor="#">TIEMPO APARCADO</label>
           <select name="aparcamiento" id="aparcamiento">
+            <option value="">- -</option>
             <option value="">7:00</option>
             <option value="">7:30</option>
             <option value="">8:00</option>
@@ -181,6 +182,7 @@ function Home(props) {
           </select>
           <label htmlFor="#">HASTA</label>
           <select name="aparcamiento" id="aparcamiento">
+            <option value="">- -</option>
             <option value="">7:00</option>
             <option value="">7:30</option>
             <option value="">8:00</option>

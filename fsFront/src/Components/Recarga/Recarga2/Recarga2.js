@@ -2,9 +2,11 @@ import React from "react";
 import "./Recarga2.css";
 import logotipo from "../../../assets/Logotipo.svg";
 import vector from "../../../assets/vector.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Recarga2() {
+  const location = useLocation()
+
   return (
     <div className="main-recarga2">
       <div className="imagen-recarga">
@@ -21,7 +23,7 @@ function Recarga2() {
           <p className="hora">HORA</p> <h3>11:15</h3>
         </div>
         <div className="hora-column">
-          <p className="hora">PRECIO</p> <h3>15 €</h3>
+          <p className="hora">PRECIO</p> <h3>{location.state}</h3>
         </div>
       </div>
       <div className="valoracion">
