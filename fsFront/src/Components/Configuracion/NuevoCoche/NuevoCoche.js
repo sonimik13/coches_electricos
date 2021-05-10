@@ -37,7 +37,6 @@ function NuevoCoche() {
     const result = await FetchNewCar(newCar, token);
     const data = await result.json();
     if (data.status === 200) {
-      alert(data.data);
       history.push("/configuracion")
     } else if (data.status === 401) {
       alert(data.data);

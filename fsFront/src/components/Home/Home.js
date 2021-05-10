@@ -8,6 +8,7 @@ import cargador from "../../assets/cargador.svg";
 import location from "../../assets/gps.svg";
 import AuthContext from "../../contexts/AuthContext";
 import FetchUser from "../../Hooks/FetchUser";
+import FetchNewInvoice from "../../Hooks/FetchNewInvoice";
 import { useHistory } from "react-router-dom";
 import "./Home.css";
 
@@ -25,6 +26,7 @@ function Home(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const [position, setPosition] = useState({});
+  const [usuario, setUsuario] = useState({});
   const [coches, setCoches] = useState([]);
   const [tarjetas, setTarjetas] = useState([]);
   const [recarga, setRecarga] = useState(true);
@@ -46,19 +48,37 @@ function Home(props) {
     setRecarga(!recarga);
   };
 
-  const solicitar = () => {
+  const solicitar = async () => {
     if (coches.length < 1) {
       alert("Aun no tienes coches añadidos");
     } else if (tarjetas.length < 1) {
       alert("Aun no tienes tarjetas añadidas");
     } else {
-      history.push({
-        pathname: "/recarga1",
-        state: {
-          coches,
-          importe,
-        },
-      });
+      const newInvoice = {
+        nombre: `${usuario.name} ${usuario.surname}`,
+        concepto: `Recarga de ${coches[0].descripcion}`,
+        importe: importe,
+      };
+      const result = await FetchNewInvoice(
+        newInvoice,
+        sessionStorage.getItem("token")
+      );
+      const data = await result.json();
+      console.log(data);
+      if (data.status === 200) {
+        alert(data.data);
+        history.push({
+          pathname: "/recarga1",
+          state: {
+            coches,
+            importe,
+          },
+        });
+      } else if (data.status === 401) {
+        alert(data.status);
+      } else if (data.status === 500) {
+        alert(data.status);
+      }
     }
   };
 
@@ -68,6 +88,7 @@ function Home(props) {
       const data = await result.json();
       setCoches(data.result.coches);
       setTarjetas(data.result.tarjetas);
+      setUsuario(data.result);
     };
     fetch1();
   }, []);
