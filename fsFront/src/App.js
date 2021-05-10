@@ -1,44 +1,117 @@
-import LoginForm from './Components/Login/login'
-import React, { useState } from 'react';
+import "./App.css";
+import React, { useState } from "react";
+import AuthContext from "./contexts/AuthContext";
+import Signin from "./components/Signin/Signin";
+import General from "./components/General/General";
+import Intro from "./components/Intro/Intro";
+import RegistroP2 from "./components/RegistroP2/RegistroP2";
+import RegistroP3 from "./components/RegistroP3/RegistroP3";
+import Tarjeta from "./components/Tarjeta/Tarjeta";
+import Configuracion from "./components/Configuracion/Configuracion";
+import NuevoCoche from "./components/Configuracion/NuevoCoche/NuevoCoche";
+import EditUser from "./components/Configuracion/Usuario/EditUser";
+import Recarga2 from "./components/Recarga/Recarga2/Recarga2";
+import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
-const App = () => {
-  const adminUser = {
-    email: "gonzandres_39@hotmail.com",
-    password: "contraseña1234"
-  }
-  const [user, setUser] = useState({ email: "", password: "" })
-  const [error, setError] = useState("");
+function App() {
+  const [menu, setMenu] = useState(false);
+  const [token, setToken] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
-  const Login = details => {
-    console.log(details);
+  const handleNombre = (event) => {
+    setNombre(event.target.value);
+  };
+  const handleApellido = (event) => {
+    setApellido(event.target.value);
+  };
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePass = (event) => {
+    setPass(event.target.value);
+  };
 
-    if (details.email === adminUser.email && details.password === adminUser.password) {
-      console.log("Logged in")
-      setUser({
-        email: details.email
-      })
-    } else {
-      console.log("Details do not match")
-      setError("Details do not match")
-    }
-  }
+  const funcionesSignup = {
+    handleNombre,
+    handleApellido,
+    handleEmail,
+    handlePass,
+  };
 
-  const Logout = () => {
-    setUser({ name: "", email: "" })
-  }
+  const toggleMenu = () => setMenu(!menu);
+
+  const logout = async () => {
+    await sessionStorage.setItem("token", "");
+    setToken("");
+    setNombre("");
+    setApellido("");
+    setEmail("");
+    setPass("");
+  };
+
+  const signin = async (token) => {
+    await sessionStorage.setItem("token", token);
+    await setToken(token);
+  };
+
+  const fetch = {
+    nombre,
+    apellido,
+    email,
+    pass,
+    signin,
+  };
+
+  const dataContext = {
+    menu,
+    toggleMenu,
+    logout,
+    token,
+  };
 
   return (
-    <div className="App">
-      {(user.email !== "") ? (
-        <div className="welcome">
-          <h2>Welcome <span>{user.name}</span> </h2>
-          <button onClick={Logout}>Logout</button>
+    <AuthContext.Provider value={dataContext}>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/home" component={General} />
+            <Route exact path="/">
+              <Signin signin={signin} />
+            </Route>
+            <Route path="/signup" component={Intro} />
+            <Route path="/registroP2">
+              <RegistroP2 data={funcionesSignup} />
+            </Route>
+            <Route path="/registroP3">
+              <RegistroP3 data={fetch} />
+            </Route>
+            <Route path="/tarjeta">
+              <Tarjeta token={token} />
+            </Route>
+            <Route path="/configuracion">
+              <Configuracion />
+            </Route>
+            <Route path="/nuevoCoche">
+              <NuevoCoche />
+            </Route>
+            <Route path="/editarUsuario">
+              <EditUser />
+            </Route>
+            <Route path="/recarga2">
+              <Recarga2 />
+            </Route>
+            <Route path="/recarga1">
+              <Recarga1 />
+            </Route>
+          </Switch>
         </div>
-      ) : (
-        <LoginForm Login={Login} error={error} />
-      )}
-    </div>
+      </Router>
+    </AuthContext.Provider>
   );
 }
 

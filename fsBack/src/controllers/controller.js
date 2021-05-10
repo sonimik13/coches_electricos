@@ -118,9 +118,10 @@ const newCar = async (coche, token) => {
   const decode = jwt.decode(token);
   const CAR = {
     id: decode.id,
-    matricula: coche.matricula,
     descripcion: coche.descripcion,
     cargador: coche.cargador,
+    color: coche.color,
+    matricula: coche.matricula,
   };
   const result = await newCarDB(CAR);
   return result;
@@ -130,9 +131,10 @@ const editCar = async (coche, token) => {
   const decode = jwt.decode(token);
   const newCar = {
     id: decode.id,
-    matricula: coche.matricula,
     descripcion: coche.descripcion,
     cargador: coche.cargador,
+    color: coche.color,
+    matricula: coche.matricula,
   };
 
   const result = await editCarDB(newCar);
@@ -144,9 +146,9 @@ const newInvoice = async (invoice, token) => {
   const newInvoice = {
     id: decode.id,
     idFactura: nanoid(5),
+    nombre: invoice.nombre,
     concepto: invoice.concepto,
     importe: invoice.importe,
-    reating: invoice.reating,
     fecha: Date.now(),
   };
 
