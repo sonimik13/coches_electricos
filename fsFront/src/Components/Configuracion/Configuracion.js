@@ -43,7 +43,7 @@ function Config() {
           <img src={atras} alt="atras" />
         </Link>
         <div className="main-configuracion">
-          <h1 className="titulo-configuracion">Configuracion</h1>
+          <h1 className="titulo-configuracion">Configuración</h1>
           <div className="menu-configuracion">
             <img
               className="img-perfil"

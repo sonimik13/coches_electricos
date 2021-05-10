@@ -30,7 +30,6 @@ export default function Coche(props) {
     const result = await FetchDeleteCar(car, token);
     const data = await result.json();
     if (data.status === 200) {
-      alert(data.data);
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 406) {
