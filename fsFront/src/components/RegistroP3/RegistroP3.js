@@ -61,12 +61,12 @@ function Registrop3(props) {
         <div className="text-condiciones">
           <h3 className="text-condiciones">
             Al pulsar siguiente, acepta las Condiciones de uso y la Política de
-            privacidad de...
+            privacidad de ...
           </h3>
-          <h4 className="text-condiones2">
+          <p className="text-condiones2">
             Marca la casilla para indicar que eres mayor de 18 años y que
             aceptas las Condiciones y la Política de privacidad
-          </h4>
+          </p>
           <input type="checkbox" name="terminos" id="terminos" />
         </div>
 
