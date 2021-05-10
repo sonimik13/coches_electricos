@@ -8,8 +8,9 @@ import RegistroP2 from "./Components/RegistroP2/RegistroP2";
 import RegistroP3 from "./Components/RegistroP3/RegistroP3";
 import Tarjeta from "./Components/Tarjeta/Tarjeta";
 import Configuracion from "./Components/Configuracion/Configuracion";
+import Pago from "./Components/Pago/Pago";
 import NuevoCoche from "./Components/Configuracion/NuevoCoche/NuevoCoche";
-import NuevaTarjeta from "./Components/Configuracion/NuevaTarjeta/NuevaTarjeta" 
+import NuevaTarjeta from "./Components/Pago/NuevaTarjeta/NuevaTarjeta" 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Recarga2 from "./Components/Recarga/Recarga2/Recarga2";
@@ -95,6 +96,9 @@ function App() {
             </Route>
             <Route path="/configuracion">
               <Configuracion />
+            </Route>
+            <Route path="/pago">
+              <Pago />
             </Route>
             <Route path="/nuevoCoche">
               <NuevoCoche />

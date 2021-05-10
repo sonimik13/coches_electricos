@@ -198,8 +198,9 @@ div.guardar-tarjeta {
   border-radius: 20px;
   margin: 20px auto;
   padding: 5px;
-  width: 50%;
+  width: 95%;
   background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+
 }
 div.guardar-tarjeta:hover {
   cursor: pointer;

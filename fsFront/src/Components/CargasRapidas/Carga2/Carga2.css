@@ -1,0 +1,107 @@
+/* -----------General */
+
+
+
+
+/* ---------------Div 1 */
+.movil{
+    width: 15%;
+    height: 15%;
+    margin-right: 3%;
+}
+
+.carga2-div1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+div.carga2-div1p{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div.carga2-div1p p{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div.carga2-div1p span{
+    font-size: 1.5rem;
+}
+
+
+
+/* .carga2-div */
+
+/* -----------------Div 2 */
+.tarifa{
+    width: 15%;
+    height: 15%;
+    margin-right: 3%;
+}
+
+.carga2-div2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+div.carga2-div2p{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;   
+}
+
+div.carga2-div2p p{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;   
+}
+
+div.carga2-div2p span{
+    font-size: 1.5rem;
+
+}
+
+
+/* -----------------Div 3 */
+.tiempo{
+    width: 15%;
+    height: 15%;
+    margin-right: 3%;
+}
+
+.carga2-div3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+div.carga2-div3p{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;   
+    
+}
+
+div.carga2-div3p p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;   
+    
+}
+
+div.carga2-div3p span{
+    font-size: 1.5rem;
+
+}

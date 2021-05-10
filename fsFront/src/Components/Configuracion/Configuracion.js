@@ -3,7 +3,7 @@ import atras from "../../Assets/atras.svg";
 import avanza from "../../Assets/avanza.svg";
 import añadir from "../../Assets/añadir-coche.svg";
 import Coche from "./Coche/Coche";
-import Tarjeta from "./Tarjeta/Tarjeta"
+
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -36,23 +36,7 @@ function Config() {
       }
     }
   };
-
-  const selectCard = (card) => {
-    setSelect(card);
-  };
-
-  const drawTarjetas = () => {
-    if (user) {
-      if (user.tarjetas.length > 0) {
-        return user.tarjetas.map((item, index) => (
-          <Tarjeta select={selectCard} tarjeta={item} index={index} key={index} />
-        ));
-      } else {
-        return <h3>Añade tu primera tarjeta</h3>;
-      }
-    }
-  }
-
+  
   return (
     <>
       <div className="todo-configuracion">
@@ -82,14 +66,9 @@ function Config() {
               <img src={añadir} alt="añadir-coche" />
             </Link>
           </div>
-          <div className="tarjetas-usuario">
-            <h2>Tarjetas</h2>
-            <Link to="/nuevaTarjeta">
-              <img src={añadir} alt="añadir-tarjeta" />
-            </Link>
-          </div>
+         
           {drawCoches()}
-          {drawTarjetas()}
+          
         </div>
       </div>
     </>

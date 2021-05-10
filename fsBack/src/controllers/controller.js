@@ -173,6 +173,7 @@ const deleteCard = async (tarjeta, token) => {
     id: decode.id,
     numero: tarjeta.numero,
   };
+  console.log(card);
 
   const result = await deleteCardDB(card);
   return result;

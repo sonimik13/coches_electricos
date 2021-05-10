@@ -441,7 +441,7 @@ const deleteCardDB = (tarjeta) => {
           .collection("usuarios")
           .updateOne(
             { id: tarjeta.id },
-            { $pull: { tarjeta: tarjeta } },
+            { $pull: { tarjetas: tarjeta } },
             (err, result) => {
               if (err) throw err;
               if (result === null) {
