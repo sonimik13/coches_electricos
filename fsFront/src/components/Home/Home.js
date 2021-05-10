@@ -66,7 +66,6 @@ function Home(props) {
       const data = await result.json();
       console.log(data);
       if (data.status === 200) {
-        alert(data.data);
         history.push({
           pathname: "/recarga1",
           state: {

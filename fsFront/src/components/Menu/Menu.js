@@ -14,7 +14,6 @@ function Menu(props) {
     dataContext.toggleMenu()
 
     if (data.status === 200) {
-      alert(data.data);
       dataContext.logout()
       history.push("/")
     } else if (data.status === 401) {
