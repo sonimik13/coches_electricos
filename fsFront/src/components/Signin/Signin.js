@@ -3,7 +3,7 @@ import logo from "../../assets/Logotipo.svg";
 import "./Signin.css";
 import FetchLogin from "../../Hooks/FetchLogin";
 import { useHistory } from "react-router-dom";
-import Facebook from '../Facebook/facebook'
+
 
 
 function Signin(props) {
@@ -74,9 +74,7 @@ function Signin(props) {
           REGISTRARSE
         </button>
       </div>
-      <div>
-        <Facebook />
-      </div>
+      
     </div>
   );
 }

@@ -3,6 +3,7 @@ import "./Intro.css";
 import logo from "../../assets/Logotipo.svg";
 import atras from "../../assets/atras.svg";
 import { Link } from "react-router-dom";
+import Facebook from '../FacebookLogin/facebook'
 
 function Intro() {
   return (
@@ -22,10 +23,11 @@ function Intro() {
             <h3>o conéctate a través de las redes sociales</h3>
           </div>
           <div className="botones-redessoci">
-            <button className="btn-facebook">facebook</button>
             <button className="btn-google">Google</button>
           </div>
         </div>
+        <button ><Facebook /></button>
+
       </div>
     </div>
   );
