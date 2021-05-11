@@ -1,14 +1,1 @@
-/* .fb-login-button {
-	background-color: red;
-} */
-.center {
-	width: 299px;
-	height: 32px;
-	left: 32px;
-	top: 640px;
 
-	background: #004f9d;
-	border: 1px solid rgba(0, 0, 0, 0.05);
-	box-sizing: border-box;
-	border-radius: 100px;
-}

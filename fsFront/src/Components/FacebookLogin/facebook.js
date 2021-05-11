@@ -23,6 +23,7 @@ const Facebook = () => {
                 fields="name,email,picture"
                 callback={responseFacebook}
             />
+
             <br /><br />
 
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v10.0&appId=180266487194624&autoLogAppEvents=1" nonce="LMlaoHI4"></script>
