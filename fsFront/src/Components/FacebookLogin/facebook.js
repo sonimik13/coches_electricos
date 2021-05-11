@@ -14,7 +14,7 @@ const Facebook = () => {
     }
 
     return (
-        <FacebookLogin
+        <FacebookLogin 
             appId="180266487194624"
             appSecret="68d41c54faa5a8aa42c995a59da44ccf"
             autoLoad={true}

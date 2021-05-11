@@ -23,12 +23,10 @@ function Intro() {
             <h3>o conéctate a través de las redes sociales</h3>
           </div>
           <div className="botones-redessoci">
+            <button className="btn-facebook"><Facebook /></button>
             <button className="btn-google">Google</button>
           </div>
         </div>
-
-        <button ><Facebook /></button>
-
       </div>
     </div>
   );
