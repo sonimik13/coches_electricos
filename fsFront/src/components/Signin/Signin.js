@@ -28,9 +28,8 @@ function Signin(props) {
     const data = await result.json();
 
     if (data.status === 200) {
-      alert(data.data);
       props.signin(data.token);
-      history.push("/home");
+      history.push("/carga1");
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 500) {

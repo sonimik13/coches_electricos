@@ -14,7 +14,6 @@ function Menu(props) {
     dataContext.toggleMenu()
 
     if (data.status === 200) {
-      alert(data.data);
       dataContext.logout()
       history.push("/")
     } else if (data.status === 401) {
@@ -34,7 +33,7 @@ function Menu(props) {
       </div>
       <ul className="menu-listado">
         <li>Tus recargas</li>
-        <li>Pago</li>
+        <li onClick={dataContext.toggleMenu}><Link to="/pago">Pago</Link></li>
         <li onClick={dataContext.toggleMenu}><Link to="/configuracion">Configuración</Link></li>
         <li onClick={logout}>Logout</li>
         <li onClick={dataContext.toggleMenu}>Atras</li>
