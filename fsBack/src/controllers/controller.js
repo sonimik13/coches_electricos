@@ -149,7 +149,7 @@ const newInvoice = async (invoice, token) => {
     nombre: invoice.nombre,
     concepto: invoice.concepto,
     importe: invoice.importe,
-    fecha: Date.now(),
+    fecha: new Date(),
   };
 
   const result = await newInvoiceDB(newInvoice);
