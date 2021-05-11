@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import AuthContext from "./contexts/AuthContext";
 import Signin from "./components/Signin/Signin";
 import General from "./components/General/General";
-import Home from "./components/Home/Home";
 import Intro from "./components/Intro/Intro";
 import RegistroP2 from "./components/RegistroP2/RegistroP2";
 import RegistroP3 from "./components/RegistroP3/RegistroP3";
@@ -16,8 +15,9 @@ import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
 import Carga1 from "./components/CargasRapidas/Carga1";
 import Carga2 from "./components/CargasRapidas/Carga2";
 import Pago from "./components/Pago/Pago";
-import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta";
+import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -84,7 +84,6 @@ function App() {
         <div className="App">
           <Switch>
             <Route path="/home" component={General} />
-            <Route path="/home2" component={Home} />
             <Route exact path="/">
               <Signin signin={signin} />
             </Route>
