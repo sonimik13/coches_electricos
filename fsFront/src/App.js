@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AuthContext from "./contexts/AuthContext";
 import Signin from "./components/Signin/Signin";
 import General from "./components/General/General";
+import Home from "./components/Home/Home";
 import Intro from "./components/Intro/Intro";
 import RegistroP2 from "./components/RegistroP2/RegistroP2";
 import RegistroP3 from "./components/RegistroP3/RegistroP3";
@@ -84,6 +85,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route path="/home" component={General} />
+            <Route path="/home2" component={Home} />
             <Route exact path="/">
               <Signin signin={signin} />
             </Route>
