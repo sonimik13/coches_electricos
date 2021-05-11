@@ -146,10 +146,10 @@ const newInvoice = async (invoice, token) => {
   const newInvoice = {
     id: decode.id,
     idFactura: nanoid(5),
+    nombre: invoice.nombre,
     concepto: invoice.concepto,
     importe: invoice.importe,
-    reating: invoice.reating,
-    fecha: Date.now(),
+    fecha: new Date(),
   };
 
   const result = await newInvoiceDB(newInvoice);

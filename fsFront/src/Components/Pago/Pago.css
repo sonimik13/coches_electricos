@@ -1,104 +1,126 @@
 div.todo-pago {
-    
-    background-color: whitesmoke;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  
-  div.todo-pago img {
-    width: 25px;
-  }
-  div.todo-pago h3 {
-    text-align: center;
-  }
-  div.todo-pago img:hover {
-    cursor: pointer;
-  }
-  div.menu-pago .img-perfil {
-    width: 70px;
-    border-radius: 50%;
-    border: 1px solid red;
-  }
-  div.menu-pago img {
-    width: 15px;
-  }
-  
+  background-color: whitesmoke;
+  padding: 20px;
+  min-height: 100vh;
+}
 
-  h1.titulo-pago {
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 30px;
-  }
-  
-  div.menu-pago {
+div.todo-pago img {
+  width: 25px;
+}
+div.todo-pago h3 {
+  text-align: center;
+}
+div.todo-pago img:hover {
+  cursor: pointer;
+}
+div.menu-pago .img-perfil {
+  width: 70px;
+  border-radius: 50%;
+  border: 1px solid red;
+}
+div.menu-pago img {
+  width: 15px;
+}
+div.tarjetas-usuario {
     margin: 10px auto;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-  }
-  div.config-datos-perfil {
-    line-height: 1.6;
-    text-align: start;
-  }
-  div.config-datos-perfil h3 {
-    text-align: start;
-  }
-  div.input-tarjeta input {
-    color:black;
-    font-weight: bold;
-    background: rgba(243, 240, 240, 0.6);
-  }
-  div.input-titular input {
-    display: flex;
-    flex-direction: column;
-    color:black;
-    font-weight: bold;
-    background: rgba(243, 240, 240, 0.6);
-  }
-
-  div.eliminar-tarjeta {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    font-weight: 600;
-  }
-  div.eliminar-tarjeta p:hover {
-    cursor: pointer;
-    transform: scale(1.02);
-  }
-  div.inputs2>input, div.inputs2>select{
-    text-align: center;
-    width: 70px;
-    margin: 15px 10px;
-    height: 40px;
-    font-size: 16px;
-    box-shadow: 5px 5px 10px -1px black;
-  }
-  
-.info-tarjeta{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+h1.titulo-pago {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 30px;
 }
 
-.input-titular{
-    width: 100%;
+div.menu-pago {
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+div.config-datos-perfil {
+  line-height: 1.6;
+  text-align: start;
+}
+div.config-datos-perfil h3 {
+  text-align: start;
+}
+div.input-tarjeta input {
+  color: black;
+  font-weight: bold;
+  background: rgba(243, 240, 240, 0.6);
+}
+div.input-titular input {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  font-weight: bold;
+  background: rgba(243, 240, 240, 0.6);
 }
 
-.inputs2{
-    display: flex;
-    flex-direction: row;
-    
-} 
-
-.mes-tarjeta input{
-    width: 100%;
-} 
-
-
-.input-ccv{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+div.eliminar-tarjeta {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-weight: 600;
+}
+div.eliminar-tarjeta p:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+div.inputs2 > input,
+div.inputs2 > select {
+  text-align: center;
+  width: 70px;
+  margin: 15px 10px;
+  height: 40px;
+  font-size: 16px;
+  box-shadow: 5px 5px 10px -1px black;
 }
 
+.info-tarjeta {
+  margin: 20px auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #69e5af;
+  background-color: white;
+  border-radius: 25px;
+}
+
+div.info-tarjeta input {
+  text-align: center;
+  width: 90%;
+  margin: 12px auto;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 2px 2px 10px -3px black;
+}
+.input-tarjeta {
+  text-align: center;
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+  color: black;
+  font-weight: 600;
+  border-radius: 25px 25px 0 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.inputs2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.mes-tarjeta input {
+  width: 100%;
+}
+
+.input-ccv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

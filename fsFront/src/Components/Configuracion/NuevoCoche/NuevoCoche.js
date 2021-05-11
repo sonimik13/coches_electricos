@@ -37,7 +37,6 @@ function NuevoCoche() {
     const result = await FetchNewCar(newCar, token);
     const data = await result.json();
     if (data.status === 200) {
-      alert(data.data);
       history.push("/configuracion")
     } else if (data.status === 401) {
       alert(data.data);
@@ -53,7 +52,7 @@ function NuevoCoche() {
           <img src={atras} alt="atras" />
         </Link>
         <div className="main-configuracion">
-          <h1 className="titulo-configuracion">Añadir nuevo coche</h1>
+          <h1 className="titulo-configuracion">Añadir coche</h1>
           <div className="info-coche">
             <div className="input-coche">
               <input

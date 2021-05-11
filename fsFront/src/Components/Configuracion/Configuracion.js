@@ -44,7 +44,7 @@ function Config() {
           <img src={atras} alt="atras" />
         </Link>
         <div className="main-configuracion">
-          <h1 className="titulo-configuracion">Configuracion</h1>
+          <h1 className="titulo-configuracion">Configuración</h1>
           <div className="menu-configuracion">
             <img
               className="img-perfil"
@@ -58,7 +58,9 @@ function Config() {
               <p>+34 {user ? user.movil : ""}</p>
               <p>{user ? user.email : ""}</p>
             </div>
-            <img src={avanza} alt="avanza" />
+            <Link to="/editarUsuario">
+              <img src={avanza} alt="avanza" />
+            </Link>
           </div>
           <div className="coches-usuario">
             <h2>Coches</h2>
