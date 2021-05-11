@@ -10,7 +10,7 @@ const Facebook = () => {
 
     const responseFacebook = (response) => {
         console.log(response)
-        history.push("/general");
+        history.push("/home2");
     }
 
     return (

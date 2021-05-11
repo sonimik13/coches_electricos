@@ -26,6 +26,7 @@ function Intro() {
             <button className="btn-google">Google</button>
           </div>
         </div>
+
         <button ><Facebook /></button>
 
       </div>
