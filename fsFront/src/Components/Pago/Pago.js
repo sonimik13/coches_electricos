@@ -16,7 +16,7 @@ function Pago() {
       await setUser(data.result);
     };
     fetch1();
-  }, []);
+  });
 
   const drawTarjetas = () => {
     if (user) {
