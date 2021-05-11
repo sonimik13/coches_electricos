@@ -11,12 +11,10 @@ function Tarjeta(props) {
       fecha: props.tarjeta.fecha,
       codigo: props.tarjeta.codigo,
     };
-    console.log(card);
 
     const result = await FetchDeleteCard(card, token);
     const data = await result.json();
     if (data.status === 200) {
-      alert(data.data);
     } else if (data.status === 401) {
       alert(data.data);
     } else if (data.status === 406) {
@@ -25,6 +23,7 @@ function Tarjeta(props) {
       alert(data.data);
     }
   };
+
   return (
     <>
       <div className="info-tarjeta">

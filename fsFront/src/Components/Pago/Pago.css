@@ -22,11 +22,11 @@ div.menu-pago img {
   width: 15px;
 }
 div.tarjetas-usuario {
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
 }
 h1.titulo-pago {
   text-align: center;
@@ -61,23 +61,12 @@ div.input-titular input {
 }
 
 div.eliminar-tarjeta {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  font-weight: 600;
+  margin: 10px auto;
+  font-weight: bold;
 }
 div.eliminar-tarjeta p:hover {
   cursor: pointer;
   transform: scale(1.02);
-}
-div.inputs2 > input,
-div.inputs2 > select {
-  text-align: center;
-  width: 70px;
-  margin: 15px 10px;
-  height: 40px;
-  font-size: 16px;
-  box-shadow: 5px 5px 10px -1px black;
 }
 
 .info-tarjeta {
@@ -95,7 +84,6 @@ div.info-tarjeta input {
   width: 90%;
   margin: 12px auto;
   height: 40px;
-  padding-left: 10px;
   font-size: 16px;
   border-radius: 20px;
   border: none;
@@ -110,17 +98,44 @@ div.info-tarjeta input {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.inputs2 {
+div.añadir-inputs {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.mes-tarjeta input {
-  width: 100%;
+div.añadir-inputs select {
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 2px 2px 10px -3px black;
 }
 
-.input-ccv {
-  width: 100%;
+div.input-titular {
+  text-align: center;
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+  color: black;
+  font-weight: 600;
+  border-radius: 25px 25px 0 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+div.guardar-tarjeta {
+  color: white;
+  border-radius: 20px;
+  margin: 10px auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 156px;
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+}
+
+div.guardar-tarjeta:hover {
+  cursor: pointer;
+  transform: scale(1.02);
 }
