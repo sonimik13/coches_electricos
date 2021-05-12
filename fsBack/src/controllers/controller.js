@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------------
 // Node modules
 // -------------------------------------------------------------------------------
-const crypto = require('crypto')
+const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const randomstring = require("randomstring");
@@ -30,7 +30,8 @@ function validateEmail(email) {
 }
 
 function validatePass(pass) {
-  let patternPass = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+  let patternPass =
+    /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
   return patternPass.test(pass);
 }
 
@@ -45,7 +46,8 @@ function validateSurname(surname) {
 }
 
 function validateCard(card) {
-  let patternCard = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/;
+  let patternCard =
+    /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35d{3})d{11})$/;
   return patternCard.test(card);
 }
 
@@ -55,9 +57,9 @@ function validateCard(card) {
 
 const signUp = async (user) => {
   const secret = randomstring.generate();
-  let hash = crypto.createHmac( 'sha512' ,user.pass)
-  hash.update(user.pass)
-  const value = hash.digest('hex')
+  let hash = crypto.createHmac("sha512", user.pass);
+  hash.update(user.pass);
+  const value = hash.digest("hex");
   const id = nanoid(10);
   const USER = {
     id,
@@ -77,9 +79,9 @@ const signUp = async (user) => {
 };
 
 const signIn = async (user) => {
-  let hash = crypto.createHmac( 'sha512' ,user.pass)
-  hash.update(user.pass)
-  const value = hash.digest('hex')
+  let hash = crypto.createHmac("sha512", user.pass);
+  hash.update(user.pass);
+  const value = hash.digest("hex");
   const USER = {
     email: user.email,
     pass: value,
@@ -330,16 +332,19 @@ const mailer = (email, link) => {
 };
 
 const signUpGoogle = async (user) => {
+  let hash = crypto.createHmac("sha512", user.pass);
+  hash.update(user.pass);
+  const value = hash.digest("hex");
   const secret = randomstring.generate();
   const id = nanoid(10);
   const USER = {
     id,
     img: "",
     name: user.name,
-    surname: user.surname,
+    surname: "",
     email: user.email,
     movil: user.movil,
-    pass: md5(user.pass),
+    pass: value,
     secret,
     coches: [],
     facturas: [],

@@ -51,7 +51,7 @@ function Tarjeta() {
   return (
     <div className="todo-tarjeta">
       <div className="omitir">
-        <Link to="/home">
+        <Link to="/carga1">
           <p className="text-omitir">Omitir por ahora</p>
         </Link>
       </div>

@@ -29,11 +29,18 @@ function App() {
   const handleNombre = (event) => {
     setNombre(event.target.value);
   };
+  const handleNombrefb = (name) => {
+    console.log(name);
+    setNombre(name);
+  };
   const handleApellido = (event) => {
     setApellido(event.target.value);
   };
   const handleEmail = (event) => {
     setEmail(event.target.value);
+  };
+  const handleEmailfb = (email) => {
+    setEmail(email);
   };
   const handlePass = (event) => {
     setPass(event.target.value);
@@ -75,6 +82,8 @@ function App() {
     toggleMenu,
     logout,
     token,
+    handleNombrefb,
+    handleEmailfb
   };
 
   return (
