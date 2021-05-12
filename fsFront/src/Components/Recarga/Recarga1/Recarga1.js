@@ -1,15 +1,8 @@
 import "./Recarga1.css";
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
 import motocarga from "../../../Assets/motocarga.svg";
 import deposito from "../../../Assets/deposito.svg";
-import FetchUser from "../../../Hooks/FetchUser";
-import { Link, useHistory } from "react-router-dom";
-=======
-import motocarga from "../../../assets/motocarga.svg";
-import deposito from "../../../assets/deposito.svg";
 import { Link, useHistory, useLocation } from "react-router-dom";
->>>>>>> develop
 
 function Recarga1() {
   const history = useHistory();

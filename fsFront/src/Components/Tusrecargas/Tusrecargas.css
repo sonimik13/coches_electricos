@@ -1,0 +1,185 @@
+div.todo-tusrecargas {
+    background-color: #F7F7F7;
+    padding: 20px;
+    min-height: 100vh;
+   
+  }
+  div.todo-tusrecargas img {
+    width: 25px;
+  }
+  div.todo-tusrecargas h3 {
+    text-align: center;
+  }
+  div.todo-tusrecargas img:hover {
+    cursor: pointer;
+  }
+  div.menu-tusrecargas .img-perfil {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid red;
+  }
+
+  div.menu-tusrecargas img {
+    width: 15px;
+  }
+
+  h1.titulo-tusrecargas {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+  div.menu-tusrecargas {
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  div.config-datos-perfil {
+    line-height: 1.6;
+    text-align: start;
+  }
+  div.config-datos-perfil h3 {
+    text-align: start;
+  }
+
+  div.tusrecargas {
+    margin: 25px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  div.tusrecargas img {
+    width: 35px;
+  }
+  div.tusrecargas img:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+  div.input-factura {
+    background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+    text-align: center;
+    border-radius: 25px 25px 0 0;
+  }
+  
+  div.input-factura input {
+    color: black;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  div.info-facturas input {
+    text-align: center;
+    width: 90%;
+    margin: 12px auto;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 2px 2px 10px -3px black;
+  }
+  div.info-factura input:focus {
+    outline: none;
+  }
+
+  div.guardar-nuevafactura {
+    color: white;
+    border-radius: 20px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    width: 156px;
+    background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+  }
+  div.guardar-nuevafactura:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+  
+  div.editar-usuario {
+    margin: 10px auto;
+  }
+  div.editar-usuario:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+  
+  div.todo-nuevafactura {
+    background-color: #F7F7F7;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  div.todo-nuevafactura img {
+    width: 25px;
+  }
+  div.todo-nuevafactura h3 {
+    text-align: center;
+  }
+  div.todo-nuevafactura img:hover {
+    cursor: pointer;
+  }
+
+
+ /* div.menu-tusrecargas{
+    display: flex;
+    flex-direction: column;
+    
+    margin: 10px auto;
+    width: 80%;
+    line-height: 2.5;
+    border:solid 2px black;
+ } */
+
+ /* div.menu-tusrecargas .modelo-column{
+   display: flex;
+   justify-content:left;
+   
+  
+ } */
+
+ /* div.menu-tusrecargas .modelo-column p{
+  width: 50%;
+  margin-left: 40px;
+}
+
+div.menu-tusrecargas .modelo-column h4{
+  width: 10%;
+  margin-left: 40px;
+} */
+
+/* div.modelo-column{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+ margin-top: 12%;
+  margin-left: 7%;
+  padding: inherit;
+  
+ 
+} */
+/* div.main-tusrecargas h1, img{
+  background: linear-gradient(94.06deg, #56CCF2 -40.19%, #22C47D 141.01%);
+} */
+.recargas-header {
+  background: linear-gradient(94.06deg, #56CCF2 -40.19%, #22C47D 141.01%);
+  display: flex;
+  padding: 30px 20px 12px 20px;
+  color: white;
+}
+
+.recargas-header img {
+  width: 35px;
+ 
+}
+.recargas-header img:hover {
+  cursor: pointer;
+}
+.recargas-header h3 {
+  margin: 0 auto;
+ 
+}
+.titulo-tusrecargas{
+  margin: 36px;
+}

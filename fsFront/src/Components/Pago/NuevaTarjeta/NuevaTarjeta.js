@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import atras from "../../../assets/atras.svg";
+import atras from "../../../Assets/atras.svg";
 import FetchNewCard from "../../../Hooks/FetchCard";
 import { Link, useHistory } from "react-router-dom";
 

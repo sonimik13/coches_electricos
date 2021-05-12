@@ -1,21 +1,23 @@
 import "./App.css";
 import React, { useState } from "react";
 import AuthContext from "./contexts/AuthContext";
-import Signin from "./components/Signin/Signin";
-import General from "./components/General/General";
-import Intro from "./components/Intro/Intro";
-import RegistroP2 from "./components/RegistroP2/RegistroP2";
-import RegistroP3 from "./components/RegistroP3/RegistroP3";
-import Tarjeta from "./components/Tarjeta/Tarjeta";
-import Configuracion from "./components/Configuracion/Configuracion";
-import NuevoCoche from "./components/Configuracion/NuevoCoche/NuevoCoche";
-import EditUser from "./components/Configuracion/Usuario/EditUser";
-import Recarga2 from "./components/Recarga/Recarga2/Recarga2";
-import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
-import Carga1 from "./components/CargasRapidas/Carga1";
-import Carga2 from "./components/CargasRapidas/Carga2";
-import Pago from "./components/Pago/Pago";
-import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta"
+import Signin from "./Components/Signin/Signin";
+import General from "./Components/General/General";
+import Intro from "./Components/Intro/Intro";
+import RegistroP2 from "./Components/RegistroP2/RegistroP2";
+import RegistroP3 from "./Components/RegistroP3/RegistroP3";
+import Tarjeta from "./Components/Tarjeta/Tarjeta";
+import Configuracion from "./Components/Configuracion/Configuracion";
+import NuevoCoche from "./Components/Configuracion/NuevoCoche/NuevoCoche";
+import EditUser from "./Components/Configuracion/Usuario/EditUser";
+import Recarga2 from "./Components/Recarga/Recarga2/Recarga2";
+import Recarga1 from "./Components/Recarga/Recarga1/Recarga1";
+import Carga1 from "./Components/CargasRapidas/Carga1";
+import Carga2 from "./Components/CargasRapidas/Carga2";
+import Pago from "./Components/Pago/Pago";
+import NuevaTarjeta from "./Components/Pago/NuevaTarjeta/NuevaTarjeta";
+import Tusrecargas from "./Components/Tusrecargas/Tusrecargas";
+import NuevaFactura from "./Components/Tusrecargas/NuevaFactura/NuevaFactura";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
@@ -126,6 +128,12 @@ function App() {
             </Route>
             <Route path="/nuevaTarjeta">
               <NuevaTarjeta />
+            </Route>
+            <Route path="/tusrecargas">
+              <Tusrecargas />
+            </Route>
+            <Route path="/nuevafactura">
+              <NuevaFactura />
             </Route>
           </Switch>
         </div>

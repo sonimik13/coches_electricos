@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./UserInfo.css";
-import park from "../../assets/park.svg";
-import oil from "../../assets/oil.svg";
-import toggle from "../../assets/toggle.svg";
+import park from "../../Assets/park.svg";
+import oil from "../../Assets/oil.svg";
+import toggle from "../../Assets/toggle.svg";
 import { useHistory } from "react-router-dom";
 
 const UserInfo = () => {

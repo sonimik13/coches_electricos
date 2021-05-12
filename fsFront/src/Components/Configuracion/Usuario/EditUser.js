@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FetchEditUser from "../../../Hooks/FetchEditUser";
 import FetchUser from "../../../Hooks/FetchUser";
-import atras from "../../../assets/atras.svg";
+import atras from "../../../Assets/atras.svg";
 import { Link, useHistory } from "react-router-dom";
 
 export default function EditUser() {

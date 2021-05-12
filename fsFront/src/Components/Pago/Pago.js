@@ -1,6 +1,6 @@
 import "./Pago.css";
-import atras from "../../assets/atras.svg";
-import añadir from "../../assets/añadir-coche.svg";
+import atras from "../../Assets/atras.svg";
+import añadir from "../../Assets/añadir-coche.svg";
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";

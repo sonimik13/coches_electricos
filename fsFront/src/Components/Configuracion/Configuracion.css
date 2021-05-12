@@ -122,97 +122,10 @@ div.guardar-coche:hover {
   transform: scale(1.02);
 }
 
-<<<<<<< HEAD
-div.tarjetas-usuario {
-  margin: 25px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-div.tarjetas-usuario img {
-  width: 35px;
-}
-div.tarjetas-usuario img:hover {
-  cursor: pointer;
-  transform: scale(1.02);
-}
-div.info-tarjeta {
-  margin: 15px auto;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #69e5af;
-  background-color: white;
-  border-radius: 25px;
-}
-
-div.input-tarjeta {
-  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
-  text-align: center;
-  border-radius: 25px 25px 0 0;
-}
-div.info-tarjeta:hover {
-  border: 2px solid #69e5af;
-  cursor: pointer;
-}
-div.input-titular input {
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
-}
-div.info-tarjeta input {
-  text-align: center;
-  width: 90%;
-  margin: 12px auto;
-  height: 40px;
-  padding-left: 10px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: none;
-  box-shadow: 5px 5px 18px -5px black;
-}
-div.info-tarjeta input:focus {
-  outline: none;
-}
-div.eliminar-tarjeta {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  font-weight: 600;
-}
-div.eliminar-tarjeta p:hover {
-  cursor: pointer;
-  transform: scale(1.02);
-}
-div.guardar-tarjeta {
-  color: white;
-  border-radius: 20px;
-  margin: 20px auto;
-  padding: 5px;
-  width: 50%;
-  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
-}
-div.guardar-tarjeta p:hover {
-  cursor: pointer;
-  transform: scale(1.02);
-}
-div.guardar-tarjeta {
-  color: white;
-  border-radius: 20px;
-  margin: 20px auto;
-  padding: 5px;
-  width: 95%;
-  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
-
-}
-div.guardar-tarjeta:hover {
-=======
 div.editar-usuario {
   margin: 10px auto;
 }
 div.editar-usuario:hover {
->>>>>>> develop
   cursor: pointer;
   transform: scale(1.02);
 }

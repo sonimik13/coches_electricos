@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./UserInfo.css";
-import movil from "../../assets/movil.svg";
-import tarifa from "../../assets/tarifa.svg";
-import tiempo from "../../assets/tiempo.svg";
-import toggle from "../../assets/toggle2.svg";
+import movil from "../../Assets/movil.svg";
+import tarifa from "../../Assets/tarifa.svg";
+import tiempo from "../../Assets/tiempo.svg";
+import toggle from "../../Assets/toggle2.svg";
 import { useHistory } from "react-router-dom";
 
 const UserInfo = () => {
