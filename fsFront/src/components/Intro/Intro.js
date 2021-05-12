@@ -4,7 +4,7 @@ import logo from "../../assets/Logotipo.svg";
 import atras from "../../assets/atras.svg";
 import { Link } from "react-router-dom";
 import Facebook from '../FacebookLogin/facebook'
-import Gmail from '../Gmail/gmail'
+
 
 function Intro() {
   return (
@@ -28,9 +28,6 @@ function Intro() {
           </div>
           <div className="botones-redessoci">
             <br /><br /><br /><br />
-            <div>
-              <Gmail />
-            </div>
           </div>
         </div>
       </div>
