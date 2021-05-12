@@ -56,7 +56,7 @@ div.coches-usuario img:hover {
 }
 
 div.info-coche {
-  margin: 20px auto;
+  margin: 40px auto;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -99,7 +99,7 @@ div.editar-eliminar {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  font-weight: 600;
+  font-weight: 700;
 }
 div.editar-eliminar p:hover {
   cursor: pointer;

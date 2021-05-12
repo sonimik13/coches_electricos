@@ -13,7 +13,7 @@ function Recarga1() {
       pathname: "/recarga2",
       state: location.state.importe
     })
-  }, 5000);
+  }, 6000);
 
   return (
     <div className="main-recarga1">

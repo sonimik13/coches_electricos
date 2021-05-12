@@ -3,7 +3,7 @@ import atras from "../../../Assets/atras.svg";
 import FetchNewCard from "../../../Hooks/FetchCard";
 import { Link, useHistory } from "react-router-dom";
 
-function NuevaTarjeta(props) {
+function NuevaTarjeta() {
   const history = useHistory();
   const [titular, setTitular] = useState("");
   const [numero, setNumero] = useState("");
@@ -36,12 +36,11 @@ function NuevaTarjeta(props) {
       numero: numero,
       fecha: `${fecha.mes}/${fecha.año}`,
       codigo: codigo,
-      token: props.token,
+      token: token,
     };
     const result = await FetchNewCard(newCard, token);
     const data = await result.json();
     if (data.status === 200) {
-      alert(data.data);
       history.push("/pago");
     } else if (data.status === 401) {
       alert(data.data);
@@ -50,7 +49,6 @@ function NuevaTarjeta(props) {
     } else {
       alert(data.data);
     }
-    console.log(data);
   };
   return (
     <div className="todo-pago">
@@ -58,7 +56,7 @@ function NuevaTarjeta(props) {
         <img src={atras} alt="atras" />
       </Link>
       <div className="main-pago">
-        <h1 className="titulo-pago">Añade nueva tarjeta</h1>
+        <h1 className="titulo-pago">Añadir tarjeta</h1>
         <div className="info-tarjeta">
           <div className="input-titular">
             <input type="text" onChange={handleTitular} placeholder="Titular" />
@@ -68,9 +66,9 @@ function NuevaTarjeta(props) {
             onChange={handleNumero}
             placeholder="Número de tarjeta"
           />
-          <div className="inputs2">
-            <select name="mes-tarjeta" id="mes-tarjeta" onChange={handleFecha}>
-              <option value="0">mes</option>
+          <div className="añadir-inputs">
+            <select name="mes-tarjeta" onChange={handleFecha}>
+              <option value="#">Mes</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -84,8 +82,8 @@ function NuevaTarjeta(props) {
               <option value="11">11</option>
               <option value="12">12</option>
             </select>
-            <select name="año-tarjeta" id="año-tarjeta" onChange={handleFecha2}>
-              <option value="0">año</option>
+            <select name="año-tarjeta" onChange={handleFecha2}>
+              <option value="0">Año</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2023">2023</option>
@@ -96,9 +94,7 @@ function NuevaTarjeta(props) {
               <option value="2028">2028</option>
             </select>
           </div>
-          <div className="input-ccv">
             <input type="text" onChange={handleCodigo} placeholder="CCV" />
-          </div>
           <div className="guardar-tarjeta" onClick={Fetch}>
             <h3>Guardar</h3>
           </div>

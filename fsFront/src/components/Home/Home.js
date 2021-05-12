@@ -30,6 +30,7 @@ function Home(props) {
   const [coches, setCoches] = useState([]);
   const [tarjetas, setTarjetas] = useState([]);
   const [recarga, setRecarga] = useState(true);
+  const [direccion, setDireccion] = useState();
   const [importe, setImporte] = useState("€ 5,99");
   const dataContext = useContext(AuthContext);
 
@@ -58,6 +59,7 @@ function Home(props) {
         nombre: `${usuario.name} ${usuario.surname}`,
         concepto: `Recarga de ${coches[0].descripcion}`,
         importe: importe,
+        direccion: direccion
       };
       const result = await FetchNewInvoice(
         newInvoice,
@@ -104,6 +106,14 @@ function Home(props) {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       });
+
+      fetch(`http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=0&zoom=18&lat=${position.coords.latitude}&lon=${position.coords.longitude}`)
+        .then(res => res.json())
+        .then(data => data.display_name.split(","))
+        .then(adress => {
+          setDireccion(adress)
+          console.log(adress);
+        }) 
     });
   };
 
@@ -143,8 +153,7 @@ function Home(props) {
             <p>{recarga ? "por 1/2h de recarga" : "por 1h de recarga"}</p>
           </div>
           <div
-            className="cargador"
-            className="coche"
+            className="cargador coche"
             aria-describedby={id2}
             onClick={handleClick2}
           >

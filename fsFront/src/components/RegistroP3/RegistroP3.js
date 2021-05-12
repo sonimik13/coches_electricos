@@ -21,7 +21,6 @@ function Registrop3(props) {
     const result = await FetchSignup(nombre, apellido, email, pass, movil);
     const data = await result.json();
     if (data.status === 200) {
-      alert(data.data);
       await props.data.signin(data.token)
       history.push("/tarjeta");
     }

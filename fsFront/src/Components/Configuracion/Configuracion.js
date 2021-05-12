@@ -6,9 +6,10 @@ import Coche from "./Coche/Coche";
 
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Config() {
+  const history = useHistory()
   const [select, setSelect] = useState({});
   const [user, setUser] = useState();
 
@@ -58,9 +59,10 @@ function Config() {
               <p>+34 {user ? user.movil : ""}</p>
               <p>{user ? user.email : ""}</p>
             </div>
-            <Link to="/editarUsuario">
-              <img src={avanza} alt="avanza" />
-            </Link>
+              <img src={avanza} alt="avanza" onClick={()=> history.push({
+                pathname: "/editarUsuario",
+                state: user
+              })}/>
           </div>
           <div className="coches-usuario">
             <h2>Coches</h2>
