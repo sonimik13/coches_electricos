@@ -9,7 +9,10 @@ const Facebook = () => {
 
     const responseFacebook = (response) => {
         console.log(response)
-        history.push("/home");
+        history.push({
+            pathname:"/registroP3",
+            state: response
+        });
     }
 
 
