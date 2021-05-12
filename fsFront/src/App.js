@@ -12,6 +12,7 @@ import Pago from "./Components/Pago/Pago";
 import NuevoCoche from "./Components/Configuracion/NuevoCoche/NuevoCoche";
 import NuevaTarjeta from "./Components/Pago/NuevaTarjeta/NuevaTarjeta" 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import LoginG from "./Components/GoogleLogin/GoogleLogin"
 
 import Recarga2 from "./Components/Recarga/Recarga2/Recarga2";
 import Recarga1 from "./Components/Recarga/Recarga1/Recarga1";

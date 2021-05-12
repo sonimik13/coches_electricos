@@ -323,10 +323,19 @@ const mailer = (email, link) => {
   });
 };
 
-const signUpGoogle = async (email, pass) => {
+const signUpGoogle = async (user) => {
   const USER = {
-    email,
-    pass: md5(pass),
+    id,
+    img: "",
+    name: user.name,
+    surname: user.surname,
+    email: user.email,
+    movil: user.movil,
+    pass: md5(user.pass),
+    secret,
+    coches: [],
+    facturas: [],
+    tarjetas: [],
   };
   const result = await registerNewUserGoogle(USER);
   return result;

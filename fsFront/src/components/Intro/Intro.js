@@ -3,6 +3,8 @@ import "./Intro.css";
 import logo from "../../Assets/Logotipo.svg";
 import atras from "../../Assets/atras.svg";
 import { Link } from "react-router-dom";
+// import { GoogleLogin } from "react-google-login"
+import HooksLoginG from "../GoogleLogin/GoogleLogin"
 
 function Intro() {
   return (
@@ -23,7 +25,9 @@ function Intro() {
           </div>
           <div className="botones-redessoci">
             <button className="btn-facebook">facebook</button>
-            <button className="btn-google">Google</button>
+          </div>
+          <div id="googleButton">
+            <HooksLoginG />
           </div>
         </div>
       </div>

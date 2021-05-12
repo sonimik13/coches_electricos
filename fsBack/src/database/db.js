@@ -49,6 +49,41 @@ const registerNewUser = (USER) => {
   });
 };
 
+// const registerNewUserGoogle = (USER) => {
+//   return new Promise((res, rej) => {
+//     const secret = randomstring.generate();
+//     MongoClient.connect(URL, optionsMongo, (err, db) => {
+//       try {
+//         db.db("niutu")
+//           .collection("usuarios")
+//           .insertOne(USER, (err, response) => {
+//             if (err) {
+//               const result = {
+//                 status: 405,
+//                 data: "El usuario ya consta en la base de datos",
+//                 ok: false
+//               }
+//               res(result)
+//             } else {
+//               let token = jwt.sign(
+//                 { email: response.ops[0].email, id: response.ops[0].id },
+//                 response.ops[0].secret,
+//                 {
+//                   expiresIn: 60 * 60,
+//                 }
+//               );
+//             }
+//           })
+
+//       } catch {
+
+
+//       }
+
+//     })
+//   })
+// }
+
 const checkUser = (user) => {
   return new Promise((res, rej) => {
     MongoClient.connect(URL, optionsMongo, (err, db) => {
