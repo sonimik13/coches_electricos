@@ -42,9 +42,6 @@ div.main-home a {
   align-items: center;
 }
 .info-recarga img {
-  border: 2px solid black;
-  padding: 5px;
-  border-radius: 50%;
   width: 75px;
 }
 .info-recarga .recarga {
