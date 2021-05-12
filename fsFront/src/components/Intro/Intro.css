@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 div.todo-intro {
-  background-color: #69e5af;
+  background-color: #F2FDF8;
   height: 100vh;
   padding: 20px;
 }
@@ -20,7 +20,6 @@ div.main-singup {
   justify-content: space-around;
   align-items: center;
   height: 90vh;
-  background-color: #69e5af;
 }
 div.logo {
   display: flex;
@@ -42,7 +41,7 @@ div.text-redessoci {
   text-align: center;
   margin: 30px auto;
   font-size: 18px;
-  color: white;
+  color: #082B1C;
 }
 div.botones-signup a {
   text-decoration: none;
@@ -50,14 +49,14 @@ div.botones-signup a {
 }
 div.botones-signup button {
   width: 80%;
-  height: 50px;
+  height: 46px;
   color: white;
   font-weight: bolder;
   font-size: 16px;
-  background-color: #e83f6f;
-  box-shadow: 5px 5px 10px -3px black;
+  background-color: #082B1C;
+  box-shadow: 2px 2px 10px -3px black;
   border: none;
-  border-radius: 5px;
+  border-radius: 56px;
 }
 div.botones-signup button:hover {
   cursor: pointer;
@@ -73,14 +72,14 @@ div.botones-redessoci {
 }
 div.botones-redessoci button {
   width: 80%;
-  height: 40px;
+  height: 32px;
   margin: 15px auto;
   color: white;
   font-weight: bolder;
   font-size: 15px;
-  box-shadow: 5px 5px 10px -3px black;
+  box-shadow: 3px 3px 10px -3px black;
   border: none;
-  border-radius: 15px;
+  border-radius: 100px;
 }
 div.botones-redessoci button:hover {
   cursor: pointer;

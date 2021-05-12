@@ -37,15 +37,6 @@ function Registrop2(props) {
               placeholder="Contraseña"
               onChange={props.data.handlePass}
             />
-
-            <div className="recuerdame2">
-              <input
-                type="checkbox"
-                name="recuerdame"
-                id="recuerdame-checkbox"
-              />
-              <p>RECUÉRDAME</p>
-            </div>
           </div>
           <div className="botones-registrop2">
             <button>

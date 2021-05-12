@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .main-home {
-  background-color: whitesmoke;
+  background-color: #F7F7F7;
   height: 100vh;
 }
 div.main-home a {
@@ -28,10 +28,10 @@ div.main-home a {
 }
 
 .info-recarga {
-  margin: 10px 0;
+  margin: 5px 0;
   padding: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -42,20 +42,28 @@ div.main-home a {
   align-items: center;
 }
 .info-recarga img {
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 5px;
   border-radius: 50%;
-  width: 55px;
+  width: 75px;
 }
 .info-recarga .recarga {
-  border: 1px solid black;
   padding: 20px;
   height: 100px;
   border-radius: 50%;
+  line-height: 1.6;
+}
+.info-recarga .recarga h2 {
+  font-size: 40px;
+}
+.info-recarga .recarga:hover {
+  cursor: pointer;
+  transform: scale(1.01);
 }
 hr {
   width: 90%;
   margin: 5px auto;
+  color: black;
 }
 footer {
   background-color: whitesmoke;
@@ -69,9 +77,11 @@ footer .select label {
   margin-left: 10px;
 }
 footer .select select {
+  text-align: center;
   margin-left: 10px;
   height: 25px;
   border-radius: 5px;
+  border: none;
 }
 footer .btn-recarga {
   width: 100%;
@@ -85,8 +95,8 @@ footer .btn-recarga {
 }
 footer .btn-recarga h3 {
   width: 90%;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 0px auto;
+  padding: 7px;
   background-color: #69e5af;
 }
 footer .btn-recarga:hover {
