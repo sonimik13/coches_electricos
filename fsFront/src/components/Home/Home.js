@@ -2,10 +2,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { Popper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MapView from "../Mapa/react-leaflet";
-import square from "../../assets/square.svg";
-import coche from "../../assets/coche.svg";
-import cargador from "../../assets/cargador.svg";
-import location from "../../assets/gps.svg";
+import square from "../../assets/Menu.svg";
+import coche from "../../assets/coche-home.svg";
+import cargador from "../../assets/enchufe-home.svg";
+import location from "../../assets/Localizador.svg";
 import AuthContext from "../../contexts/AuthContext";
 import FetchUser from "../../Hooks/FetchUser";
 import FetchNewInvoice from "../../Hooks/FetchNewInvoice";
@@ -138,8 +138,7 @@ function Home(props) {
       </main>
       <footer className="home-footer">
         <div className="info-recarga">
-          <div className="coche" aria-describedby={id} onClick={handleClick}>
-            <img src={coche} alt="" />
+            <img src={coche} alt="coche" aria-describedby={id} onClick={handleClick} />
             <Popper id={id} open={open} anchorEl={anchorEl}>
               <div className={classes.paper}>
                 {coches.length > 0
@@ -147,17 +146,13 @@ function Home(props) {
                   : "Aun no hay coches añadidos"}
               </div>
             </Popper>
-          </div>
           <div className="recarga" onClick={handleRecarga}>
             <h2>{importe}</h2>
             <p>{recarga ? "por 1/2h de recarga" : "por 1h de recarga"}</p>
           </div>
-          <div
-            className="cargador coche"
-            aria-describedby={id2}
-            onClick={handleClick2}
-          >
-            <img src={cargador} alt="" />
+          
+            <img src={cargador} alt="cargador" aria-describedby={id2}
+            onClick={handleClick2} />
             <Popper id={id2} open={open2} anchorEl={anchorEl2}>
               <div className={classes.paper}>
                 {coches.length > 0
@@ -165,7 +160,6 @@ function Home(props) {
                   : "Aun no hay coches añadidos"}
               </div>
             </Popper>
-          </div>
         </div>
         <hr />
         <div className="select">
