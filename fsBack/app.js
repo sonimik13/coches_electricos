@@ -125,7 +125,7 @@ app.post("/signin/google", async (req, res) => {
 });
 
 app.post("/signup/google", async (req, res) => {
-  const result = await signUpGoogle(req.body.email, "");
+  const result = await signUpGoogle(req.body);
   res.send(result);
 });
 
