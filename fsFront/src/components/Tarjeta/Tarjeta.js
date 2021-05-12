@@ -32,7 +32,7 @@ function Tarjeta(props) {
     numero: tarjeta,
     fecha: `${fecha.mes}/${fecha.año}`,
     codigo: codigo,
-    token: props.token
+    token: sessionStorage.getItem("token")
   }
   const addCard = async () => {
     const result = await FetchCard(card)
@@ -44,8 +44,7 @@ function Tarjeta(props) {
       alert(data.data)
     }
     else if(data.status === 200) {
-      alert(data.data)
-      history.push("/home")
+      history.push("/carga1")
     }
     else if(data.status === 500) {
       alert(data.data)
