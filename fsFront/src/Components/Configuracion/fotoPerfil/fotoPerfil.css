@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.container {
+	height: 300px;
+	width: 300px;
+	border-radius: 10px;
+}
+.heading {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 1rem;
+	font-weight: bold;
+}
+.img-holder {
+	margin: auto;
+	width: 150px;
+	height: 150px;
+
+	border-radius: 100%;
+	margin-top: 1rem;
+}
+.container .img {
+	width: 145px;
+	height: 145px;
+	border-radius: 100%;
+}
+
+#input[type='file'] {
+	display: none;
+}
+
+.label img.botonFotoPerfil {
+	width: 27%;
+	height: 27%;
+	cursor: pointer;
+	margin-top: -50px;
+	display: flex;
+	justify-content: center;
+	margin-left: 50%;
+}

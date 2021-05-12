@@ -4,6 +4,7 @@ import FetchUser from "../../../Hooks/FetchUser";
 import atras from "../../../assets/atras.svg";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
+
 export default function EditUser() {
   const location = useLocation()
   const history = useHistory();

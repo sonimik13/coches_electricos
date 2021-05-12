@@ -6,6 +6,7 @@ import Coche from "./Coche/Coche";
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import FotoPerfil from './fotoPerfil/fotoPerfil'
 
 function Config() {
   const history = useHistory()
@@ -46,11 +47,8 @@ function Config() {
         <div className="main-configuracion">
           <h1 className="titulo-configuracion">Configuración</h1>
           <div className="menu-configuracion">
-            <img
-              className="img-perfil"
-              src="https://media-exp1.licdn.com/dms/image/C4E03AQHrfYwlcuM60g/profile-displayphoto-shrink_200_200/0/1593101044871?e=1625097600&v=beta&t=X8x7MTDgtBK0RSAnny_bd0t3xP5RVdhmqYrFfSxJiDI"
-              alt="foto perfil"
-            />
+            <FotoPerfil />
+            
             <div className="config-datos-perfil">
               <h3>
                 {user ? user.name : ""} {user ? user.surname : ""}{" "}
@@ -58,10 +56,10 @@ function Config() {
               <p>+34 {user ? user.movil : ""}</p>
               <p>{user ? user.email : ""}</p>
             </div>
-              <img src={avanza} alt="avanza" onClick={()=> history.push({
-                pathname: "/editarUsuario",
-                state: user
-              })}/>
+            <img src={avanza} alt="avanza" onClick={() => history.push({
+              pathname: "/editarUsuario",
+              state: user
+            })} />
           </div>
           <div className="coches-usuario">
             <h2>Coches</h2>
