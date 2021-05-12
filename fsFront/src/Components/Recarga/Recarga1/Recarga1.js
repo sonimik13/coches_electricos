@@ -1,5 +1,5 @@
 import "./Recarga1.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import motocarga from "../../../assets/motocarga.svg";
 import deposito from "../../../assets/deposito.svg";
 import { Link, useHistory, useLocation } from "react-router-dom";
@@ -13,7 +13,7 @@ function Recarga1() {
       pathname: "/recarga2",
       state: location.state.importe
     })
-  }, 5000);
+  }, 6000);
 
   return (
     <div className="main-recarga1">

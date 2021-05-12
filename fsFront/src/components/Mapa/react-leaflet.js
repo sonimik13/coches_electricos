@@ -21,7 +21,7 @@ class MapView extends Component {
         center={
           Object.keys(this.props.data).length !== 0
             ? this.props.data
-            : this.state.position
+            : position
         }
         zoom={zoom}
       >
