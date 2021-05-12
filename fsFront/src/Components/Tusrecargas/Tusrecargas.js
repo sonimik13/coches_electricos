@@ -1,6 +1,6 @@
 import "./Tusrecargas.css";
-import atrasblanco from "../../Assets/atrasblanco.svg";
-
+// import atrasblanco from "../../Assets/atrasblanco.svg";
+import atras from "../../Assets/atras.svg";
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";
 import { Link} from "react-router-dom";
@@ -39,13 +39,13 @@ function Tusrecargas() {
 
     <>
       <div className="todo-tusrecargas">
-        <header className="recargas-header">
+        <div className="main-recargas">
           <Link to="/home">
-            <img src={atrasblanco} alt="atras" />
+            <img src={atras} alt="atras" />
           </Link>
 
           <h1 className="titulo-tusrecargas">Mis Recargas</h1>
-        </header>
+        </div>
 
         <div className="tusrecargas">
           {drawTusrecargas()}
