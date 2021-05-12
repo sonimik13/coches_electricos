@@ -482,54 +482,54 @@ const deleteCardDB = (tarjeta) => {
 };
 
 // --------------- PARA CHEQUEAR ---------------
-const registerNewUserGoogle = (USER) => {
-  return new Promise((res, rej) => {
-    const secret = randomstring.generate();
-    connection.query(
-      `INSERT INTO usuarios (email, pass, secret) VALUES ("${USER.email}","${USER.pass}", "${secret}")`,
-      function (error, results, fields) {
-        if (error) {
-          const result = {
-            status: 405,
-            data: "Usuario ya existe",
-            ok: false,
-          };
-          res(result);
-        } else {
-          connection.query(
-            `SELECT secret, id FROM usuarios WHERE email = '${USER.email}'`,
-            function (err, results, fields) {
-              if (err) {
-                console.log(err);
-                res(false);
-              } else if (results[0]?.secret) {
-                let token = jwt.sign(
-                  { email: USER.email, id: results[0].id },
-                  results[0].secret,
-                  { expiresIn: 60 * 60 }
-                );
-                const result = {
-                  status: 200,
-                  data: "Usuario creado correctamente",
-                  token,
-                  ok: true,
-                };
-                res(result);
-              } else if (results[0] == undefined) {
-                const result = {
-                  status: 400,
-                  data: "Email o contraseña incorrect@s",
-                  ok: false,
-                };
-                res(result);
-              }
-            }
-          );
-        }
-      }
-    );
-  });
-};
+// const registerNewUserGoogle = (USER) => {
+//   return new Promise((res, rej) => {
+//     const secret = randomstring.generate();
+//     connection.query(
+//       `INSERT INTO usuarios (email, pass, secret) VALUES ("${USER.email}","${USER.pass}", "${secret}")`,
+//       function (error, results, fields) {
+//         if (error) {
+//           const result = {
+//             status: 405,
+//             data: "Usuario ya existe",
+//             ok: false,
+//           };
+//           res(result);
+//         } else {
+//           connection.query(
+//             `SELECT secret, id FROM usuarios WHERE email = '${USER.email}'`,
+//             function (err, results, fields) {
+//               if (err) {
+//                 console.log(err);
+//                 res(false);
+//               } else if (results[0]?.secret) {
+//                 let token = jwt.sign(
+//                   { email: USER.email, id: results[0].id },
+//                   results[0].secret,
+//                   { expiresIn: 60 * 60 }
+//                 );
+//                 const result = {
+//                   status: 200,
+//                   data: "Usuario creado correctamente",
+//                   token,
+//                   ok: true,
+//                 };
+//                 res(result);
+//               } else if (results[0] == undefined) {
+//                 const result = {
+//                   status: 400,
+//                   data: "Email o contraseña incorrect@s",
+//                   ok: false,
+//                 };
+//                 res(result);
+//               }
+//             }
+//           );
+//         }
+//       }
+//     );
+//   });
+// };
 
 // -------------------------------------------------------------------------------
 // Login facebook
@@ -564,5 +564,5 @@ module.exports = {
   deleteCardDB,
   deleteSecret,
   readUserDB,
-  registerNewUserGoogle,
+  // registerNewUserGoogle,
 };

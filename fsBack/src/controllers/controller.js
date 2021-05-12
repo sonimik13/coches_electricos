@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------------
 // Node modules
 // -------------------------------------------------------------------------------
-const md5 = require("md5");
+const crypto = require('crypto')
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const randomstring = require("randomstring");
@@ -55,6 +55,9 @@ function validateCard(card) {
 
 const signUp = async (user) => {
   const secret = randomstring.generate();
+  let hash = crypto.createHmac( 'sha512' ,user.pass)
+  hash.update(user.pass)
+  const value = hash.digest('hex')
   const id = nanoid(10);
   const USER = {
     id,
@@ -63,7 +66,7 @@ const signUp = async (user) => {
     surname: user.surname,
     email: user.email,
     movil: user.movil,
-    pass: md5(user.pass),
+    pass: value,
     secret,
     coches: [],
     facturas: [],
@@ -74,9 +77,12 @@ const signUp = async (user) => {
 };
 
 const signIn = async (user) => {
+  let hash = crypto.createHmac( 'sha512' ,user.pass)
+  hash.update(user.pass)
+  const value = hash.digest('hex')
   const USER = {
     email: user.email,
-    pass: md5(user.pass),
+    pass: value,
   };
   const result = await checkUser(USER);
   return result;
