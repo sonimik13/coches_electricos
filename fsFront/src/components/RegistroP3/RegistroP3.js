@@ -21,20 +21,16 @@ function Registrop3(props) {
     const result = await FetchSignup(nombre, apellido, email, pass, movil);
     const data = await result.json();
     if (data.status === 200) {
-      await props.data.signin(data.token)
+      await props.data.signin(data.token);
       history.push("/tarjeta");
-    }
-    else if (data.status === 500) {
+    } else if (data.status === 500) {
       alert(data.data);
-    }
-    else if (data.status === 500) {
+    } else if (data.status === 500) {
       alert(data.data);
-    }
-    else if (data.status === 406) {
+    } else if (data.status === 406) {
       alert(data.data);
       history.push("/registroP2");
-    }
-    else {
+    } else {
       console.log(data);
     }
   };
@@ -59,12 +55,12 @@ function Registrop3(props) {
 
         <div className="text-condiciones">
           <h3 className="text-condiciones">
-            Al pulsar siguiente, acepta las Condiciones de uso y la Política de
+            Al pulsar siguiente, aceptas las Condiciones de uso y la Política de
             privacidad de ...
           </h3>
           <p className="text-condiones2">
             Marca la casilla para indicar que eres mayor de 18 años y que
-            aceptas las Condiciones y la Política de privacidad
+            aceptas las Condiciones y la Política de privacidad.
           </p>
           <input type="checkbox" name="terminos" id="terminos" />
         </div>

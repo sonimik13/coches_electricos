@@ -28,10 +28,6 @@ const {
   signUpGoogle,
 } = require("./src/controllers/controller");
 
-// FRONTEND
-// const staticFilesPath = express.static(__dirname + "/public")
-// app.use(staticFilesPath)
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
@@ -72,16 +68,8 @@ app.put("/signout", async (req, res) => {
 });
 
 app.put("/create/card", async (req, res) => {
-  if (validateCard(req.body.numero)) {
     const result = await newCard(req.body, req.headers.authorization);
     res.send(result);
-  } else {
-    res.status(406).json({
-      status: 406,
-      data: "Tarjeta de credito no valida",
-      ok: false,
-    });
-  }
 });
 
 app.put("/edit/user", async (req, res) => {
