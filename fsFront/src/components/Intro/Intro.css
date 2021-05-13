@@ -61,6 +61,21 @@ div.botones-signup button:hover {
 	cursor: pointer;
 	transform: scale(1.02);
 }
+div.botones-signup button.registrate {
+  width: 80%;
+  height: 46px;
+  color: white;
+  font-weight: bolder;
+  font-size: 16px;
+  background-color: #082B1C;
+  box-shadow: 2px 2px 10px -3px black;
+  border: none;
+  border-radius: 56px;
+}
+div.botones-signup button.registrate:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
 
 div.botones-redessoci {
 	display: flex;
@@ -83,8 +98,9 @@ div.botones-redessoci button {
 div.botones-redessoci button:hover {
 	cursor: pointer;
 	transform: scale(1.02);
+	cursor: pointer;
+  	transform: scale(1.02);
 }
-
 div.botones-redessoci button.btn-google {
 	background-color: #ffffff;
 	color: black;
