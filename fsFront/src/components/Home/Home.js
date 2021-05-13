@@ -60,6 +60,7 @@ function Home(props) {
         concepto: `Recarga de ${coches[0].descripcion}`,
         importe: importe,
         direccion: direccion,
+        email: usuario.email
       };
       const result = await FetchNewInvoice(
         newInvoice,

@@ -44,6 +44,10 @@ div.main-home a {
 .info-recarga img {
   width: 75px;
 }
+.info-recarga img:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
 .info-recarga .recarga {
   padding: 20px;
   height: 100px;

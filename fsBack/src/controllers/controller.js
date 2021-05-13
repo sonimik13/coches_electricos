@@ -160,7 +160,7 @@ const newInvoice = async (invoice, token) => {
     direccion: invoice.direccion,
     fecha: new Date(),
   };
-
+  mailer(invoice);
   const result = await newInvoiceDB(newInvoice);
   return result;
 };
@@ -205,7 +205,7 @@ const readUser = async (token) => {
 };
 
 // --------------- PARA CHEQUEAR ---------------
-const mailer = (email, link) => {
+const mailer = (invoice) => {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
@@ -215,10 +215,35 @@ const mailer = (email, link) => {
   });
 
   const mailOptions = {
-    from: "FyF Tu Portal de Empleo IT",
-    to: email,
-    subject: "RECUPERACION DE CONTRASEÑA",
-    text: `Pincha aquí para recuperar tu contraseña ${link}`,
+    from: "Miutu",
+    to: invoice.email,
+    subject: "Tu recarga ya está en camino",
+    html: `
+    <table border="0" cellpadding="0" cellspacing="0" width="600px" margin="20px auto" background-color="#2d3436" bgcolor="#2d3436">
+    <tr height="200px">  
+        <td bgcolor="" width="600px">
+            <h1 style="color: #fff; text-align:center">Gracias, ${invoice.nombre} </h1>
+            <h3  style="color: #fff; text-align:center">
+            ¡Tu
+                <span style="color: #e84393">CHARGER</span> 
+                ya está en camino!
+            </h3>
+            <h4  style="color: #fff; text-align:center">
+            La factura de tu ${invoice.concepto} ya está disponible en <span style="color: #e84393">Mis Recargas</span>.
+            </h4>
+            <h3  style="color: #fff; text-align:center">
+             Importe: ${invoice.importe}
+            </h3>
+        </td>
+    </tr>
+    <tr bgcolor="#fff">
+        <td style="text-align:center">
+            <p style="color: #000">¡Miutu, un mundo de recargas a su disposición!</p>
+        </td>
+    </tr>
+    </table>
+
+`,
   };
 
   return new Promise((res, rej) => {
