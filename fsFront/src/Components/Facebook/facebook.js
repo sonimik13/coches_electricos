@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import FacebookLogin from "react-facebook-login";
-import AuthContext from "../../contexts/AuthContext";
+
 import "./Facebook.css";
 import { useHistory } from "react-router-dom";
 
 const Facebook = () => {
   const history = useHistory();
-  const dataContext = useContext(AuthContext);
+
 
   const responseFacebook = async (response) => {
     history.push({

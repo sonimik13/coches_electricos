@@ -3,6 +3,7 @@ import FetchEditUser from "../../../Hooks/FetchEditUser";
 import FetchUser from "../../../Hooks/FetchUser";
 import atras from "../../../assets/atras.svg";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import FotoPerfil from '../fotoPerfil/fotoPerfil'
 
 
 export default function EditUser() {
@@ -67,11 +68,7 @@ export default function EditUser() {
         </Link>
         <h1 className="titulo-configuracion">Editar cuenta</h1>
         <div className="menu-configuracion">
-          <img
-            className="img-perfil"
-            src="https://media-exp1.licdn.com/dms/image/C4E03AQHrfYwlcuM60g/profile-displayphoto-shrink_200_200/0/1593101044871?e=1625097600&v=beta&t=X8x7MTDgtBK0RSAnny_bd0t3xP5RVdhmqYrFfSxJiDI"
-            alt="foto perfil"
-          />
+          <FotoPerfil />
           <div className="config-datos-perfil">
             <h3>
               {user ? user.name : ""} {user ? user.surname : ""}

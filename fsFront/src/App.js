@@ -15,12 +15,8 @@ import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
 import Carga1 from "./components/CargasRapidas/Carga1";
 import Carga2 from "./components/CargasRapidas/Carga2";
 import Pago from "./components/Pago/Pago";
-<<<<<<< HEAD
-import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta"
-=======
 import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta";
 import Tusrecargas from "./components/Tusrecargas/Tusrecargas";
->>>>>>> coni
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 

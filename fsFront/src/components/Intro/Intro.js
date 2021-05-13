@@ -4,7 +4,6 @@ import Facebook from "../Facebook/Facebook";
 import logo from "../../assets/Logotipo.svg";
 import atras from "../../assets/atras.svg";
 import { Link } from "react-router-dom";
-import Facebook from '../FacebookLogin/facebook'
 
 
 function Intro() {
@@ -25,13 +24,10 @@ function Intro() {
           <div className="text-redessoci">
             <h3>o conéctate a través de las redes sociales</h3>
           </div>
-<<<<<<< HEAD
-=======
           <Facebook />
           <div className="botones-redessoci">
             <button className="btn-google">Google</button>
           </div>
->>>>>>> develop
         </div>
         <Facebook />
       </div>
