@@ -62,7 +62,7 @@ export default function Coche(props) {
     <>
       <div className="info-coche" onClick={() => props.select(props.coche)}>
         <div className="input-coche">
-          <input type="text" value={coche} onChange={handleCoche} />
+          <input type="text" value={props.coche.descripcion} onChange={handleCoche} />
         </div>
         <input type="text" value={cargador} onChange={handleCargador} />
         <input type="text" value={color} onChange={handleColor} />
