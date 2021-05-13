@@ -225,11 +225,11 @@ const mailer = (invoice) => {
             <h1 style="color: #fff; text-align:center">Gracias, ${invoice.nombre} </h1>
             <h3  style="color: #fff; text-align:center">
             ¡Tu
-                <span style="color: #e84393">CHARGER</span> 
+                <span style="color: #22C47D">CHARGER</span> 
                 ya está en camino!
             </h3>
             <h4  style="color: #fff; text-align:center">
-            La factura de tu ${invoice.concepto} ya está disponible en <span style="color: #e84393">Mis Recargas</span>.
+            La factura de tu ${invoice.concepto} ya está disponible en <span style="color: #22C47D">Mis Recargas</span>.
             </h4>
             <h3  style="color: #fff; text-align:center">
              Importe: ${invoice.importe}

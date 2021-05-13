@@ -21,21 +21,23 @@ export default function Coche(props) {
   };
 
   const FetchDelete = async () => {
-    const car = {
-      descripcion: coche,
-      cargador: cargador,
-      color: color,
-      matricula: props.coche.matricula,
-    };
-    const result = await FetchDeleteCar(car, token);
-    const data = await result.json();
-    if (data.status === 200) {
-    } else if (data.status === 401) {
-      alert(data.data);
-    } else if (data.status === 406) {
-      alert(data.data);
-    } else if (data.status === 500) {
-      alert(data.data);
+    if(window.confirm("¿Estás seguro de que quieres eliminar este coche?")){
+      const car = {
+        descripcion: coche,
+        cargador: cargador,
+        color: color,
+        matricula: props.coche.matricula,
+      };
+      const result = await FetchDeleteCar(car, token);
+      const data = await result.json();
+      if (data.status === 200) {
+      } else if (data.status === 401) {
+        alert(data.data);
+      } else if (data.status === 406) {
+        alert(data.data);
+      } else if (data.status === 500) {
+        alert(data.data);
+      }
     }
   };
 

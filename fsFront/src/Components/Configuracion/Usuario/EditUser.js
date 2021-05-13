@@ -23,6 +23,11 @@ export default function EditUser() {
     fetch1();
   }, []);
 
+  function validateName(name) {
+    let patternName = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
+    return patternName.test(name);
+  }
+
   const handleNombre = (e) => {
     setNombre(e.target.value);
   };
@@ -40,21 +45,25 @@ export default function EditUser() {
   };
 
   const FetchEditar = async () => {
-    const user = {
-      name: nombre,
-      surname: apellido,
-      email: email,
-      movil: movil,
-    };
-    const result = await FetchEditUser(user, token);
-    const data = await result.json();
-    if (data.status === 200) {
-      alert(data.data);
-      history.push("/configuracion");
-    } else if (data.status === 401) {
-      alert(data.data);
-    } else if (data.status === 500) {
-      alert(data.data);
+    if(validateName(nombre) && validateName(apellido)){
+
+      const user = {
+        name: nombre,
+        surname: apellido,
+        email: email,
+        movil: movil,
+      };
+      const result = await FetchEditUser(user, token);
+      const data = await result.json();
+      if (data.status === 200) {
+        history.push("/configuracion");
+      } else if (data.status === 401) {
+        alert(data.data);
+      } else if (data.status === 500) {
+        alert(data.data);
+      }
+    } else {
+      alert("Por favor, introduce un nombre/apellido correcto")
     }
   };
 
@@ -68,7 +77,7 @@ export default function EditUser() {
             </Link>
             <h1 className="titulo-configuracion">Editar cuenta</h1>
           </div>
-          <div className="menu-configuracion">
+          {/* <div className="menu-configuracion">
             <img
               className="img-perfil"
               src="https://media-exp1.licdn.com/dms/image/C4E03AQHrfYwlcuM60g/profile-displayphoto-shrink_200_200/0/1593101044871?e=1625097600&v=beta&t=X8x7MTDgtBK0RSAnny_bd0t3xP5RVdhmqYrFfSxJiDI"
@@ -81,7 +90,7 @@ export default function EditUser() {
               <p>+34 {user ? user.movil : ""}</p>
               <p>{user ? user.email : ""}</p>
             </div>
-          </div>
+          </div> */}
           <div className="info-coche">
             <div className="input-coche">
               <input
@@ -90,6 +99,8 @@ export default function EditUser() {
                 className="nombre-usuario"
                 placeholder="Edita tu nombre"
                 value={nombre}
+                maxLength="20"
+                required
               />
             </div>
             <input
@@ -97,18 +108,24 @@ export default function EditUser() {
               value={apellido}
               onChange={handleApellido}
               placeholder="Apellido"
+              maxLength="30"
+              required
             />
             <input
               type="text"
               value={movil}
               onChange={handleMovil}
               placeholder="Movil"
+              maxLength="15"
+              required
             />
             <input
               type="text"
               value={email}
               onChange={handleEmail}
               placeholder="Correo"
+              maxLength="30"
+              required
             />
             <div className="editar-usuario">
               <h3 onClick={FetchEditar}>Editar</h3>

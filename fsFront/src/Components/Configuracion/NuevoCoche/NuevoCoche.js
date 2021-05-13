@@ -31,24 +31,33 @@ function NuevoCoche() {
     setMatricula(e.target.value);
   };
 
+  const validarMatricula = (matricula) => {
+    let patternEmail = /^[0-9]{1,4}(?!.*(LL|CH))[BCDFGHJKLMNPRSTVWXYZ]{3}/;
+    return patternEmail.test(matricula);
+  };
+
   const Fetch = async () => {
     if (coche === "" || color === "" || matricula === "") {
       alert("Por favor, añade todos los datos de tu coche");
     } else {
-      const newCar = {
-        descripcion: coche,
-        cargador: cargador,
-        color: color,
-        matricula: matricula,
-      };
-      const result = await FetchNewCar(newCar, token);
-      const data = await result.json();
-      if (data.status === 200) {
-        history.push("/configuracion");
-      } else if (data.status === 401) {
-        alert(data.data);
-      } else if (data.status === 500) {
-        alert(data.data);
+      if (validarMatricula(matricula)) {
+        const newCar = {
+          descripcion: coche,
+          cargador: cargador,
+          color: color,
+          matricula: matricula,
+        };
+        const result = await FetchNewCar(newCar, token);
+        const data = await result.json();
+        if (data.status === 200) {
+          history.push("/configuracion");
+        } else if (data.status === 401) {
+          alert(data.data);
+        } else if (data.status === 500) {
+          alert(data.data);
+        }
+      } else {
+        alert("La matricula introducida no es válida");
       }
     }
   };
@@ -94,11 +103,12 @@ function NuevoCoche() {
               value={cargador}
               placeholder="Tipo de cargador"
             />
-            <input type="text" onChange={handleColor} placeholder="Color" />
+            <input type="text" onChange={handleColor} placeholder="Color" maxLength="15" />
             <input
               type="text"
               onChange={handleMatricula}
               placeholder="Matricula"
+              maxLength="7"
             />
             <div className="guardar-coche" onClick={Fetch}>
               <h3>Guardar</h3>
