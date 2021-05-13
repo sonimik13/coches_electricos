@@ -2,10 +2,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { Popper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MapView from "../Mapa/react-leaflet";
-import square from "../../assets/square.svg";
-import coche from "../../assets/coche.svg";
-import cargador from "../../assets/cargador.svg";
-import location from "../../assets/gps.svg";
+import square from "../../assets/Menu.svg";
+import coche from "../../assets/coche-home.svg";
+import cargador from "../../assets/enchufe-home.svg";
+import location from "../../assets/Localizador.svg";
 import AuthContext from "../../contexts/AuthContext";
 import FetchUser from "../../Hooks/FetchUser";
 import FetchNewInvoice from "../../Hooks/FetchNewInvoice";
@@ -30,7 +30,8 @@ function Home(props) {
   const [coches, setCoches] = useState([]);
   const [tarjetas, setTarjetas] = useState([]);
   const [recarga, setRecarga] = useState(true);
-  const [importe, setImporte] = useState("$ 5,99");
+  const [direccion, setDireccion] = useState();
+  const [importe, setImporte] = useState("€ 5,99");
   const dataContext = useContext(AuthContext);
 
   const handleClick = (event) => {
@@ -41,9 +42,9 @@ function Home(props) {
   };
   const handleRecarga = () => {
     if (!recarga) {
-      setImporte("$ 5,99");
+      setImporte("€ 5,99");
     } else {
-      setImporte("$ 9,99");
+      setImporte("€ 9,99");
     }
     setRecarga(!recarga);
   };
@@ -58,6 +59,7 @@ function Home(props) {
         nombre: `${usuario.name} ${usuario.surname}`,
         concepto: `Recarga de ${coches[0].descripcion}`,
         importe: importe,
+        direccion: direccion,
       };
       const result = await FetchNewInvoice(
         newInvoice,
@@ -66,7 +68,6 @@ function Home(props) {
       const data = await result.json();
       console.log(data);
       if (data.status === 200) {
-        alert(data.data);
         history.push({
           pathname: "/recarga1",
           state: {
@@ -83,14 +84,21 @@ function Home(props) {
   };
 
   useEffect(() => {
-    const fetch1 = async () => {
-      const result = await FetchUser(sessionStorage.getItem("token"));
-      const data = await result.json();
-      setCoches(data.result.coches);
-      setTarjetas(data.result.tarjetas);
-      setUsuario(data.result);
-    };
-    fetch1();
+    if (
+      sessionStorage.getItem("token") &&
+      sessionStorage.getItem("token") !== ""
+    ) {
+      const fetch1 = async () => {
+        const result = await FetchUser(sessionStorage.getItem("token"));
+        const data = await result.json();
+        setCoches(data.result.coches);
+        setTarjetas(data.result.tarjetas);
+        setUsuario(data.result);
+      };
+      fetch1();
+    } else {
+      history.push("/");
+    }
   }, []);
 
   const open = Boolean(anchorEl);
@@ -105,6 +113,16 @@ function Home(props) {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       });
+
+      fetch(
+        `http://nominatim.openstreetmap.org/reverse?format=json&addressdetails=0&zoom=18&lat=${position.coords.latitude}&lon=${position.coords.longitude}`
+      )
+        .then((res) => res.json())
+        .then((data) => data.display_name.split(","))
+        .then((adress) => {
+          setDireccion(adress);
+          console.log(adress);
+        });
     });
   };
 
@@ -129,35 +147,37 @@ function Home(props) {
       </main>
       <footer className="home-footer">
         <div className="info-recarga">
-          <div className="coche" aria-describedby={id} onClick={handleClick}>
-            <img src={coche} alt="" />
-            <Popper id={id} open={open} anchorEl={anchorEl}>
-              <div className={classes.paper}>
-                {coches.length > 0
-                  ? coches[0].descripcion
-                  : "Aun no hay coches añadidos"}
-              </div>
-            </Popper>
-          </div>
+          <img
+            src={coche}
+            alt="coche"
+            aria-describedby={id}
+            onClick={handleClick}
+          />
+          <Popper id={id} open={open} anchorEl={anchorEl}>
+            <div className={classes.paper}>
+              {coches.length > 0
+                ? coches[0].descripcion
+                : "Aun no hay coches añadidos"}
+            </div>
+          </Popper>
           <div className="recarga" onClick={handleRecarga}>
-            <h2>{recarga ? "$ 5,99" : "$ 9,99"}</h2>
+            <h2>{importe}</h2>
             <p>{recarga ? "por 1/2h de recarga" : "por 1h de recarga"}</p>
           </div>
-          <div
-            className="cargador"
-            className="coche"
+
+          <img
+            src={cargador}
+            alt="cargador"
             aria-describedby={id2}
             onClick={handleClick2}
-          >
-            <img src={cargador} alt="" />
-            <Popper id={id2} open={open2} anchorEl={anchorEl2}>
-              <div className={classes.paper}>
-                {coches.length > 0
-                  ? coches[0].cargador
-                  : "Aun no hay coches añadidos"}
-              </div>
-            </Popper>
-          </div>
+          />
+          <Popper id={id2} open={open2} anchorEl={anchorEl2}>
+            <div className={classes.paper}>
+              {coches.length > 0
+                ? coches[0].cargador
+                : "Aun no hay coches añadidos"}
+            </div>
+          </Popper>
         </div>
         <hr />
         <div className="select">

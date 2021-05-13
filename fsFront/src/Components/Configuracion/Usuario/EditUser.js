@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import FetchEditUser from "../../../Hooks/FetchEditUser";
 import FetchUser from "../../../Hooks/FetchUser";
 import atras from "../../../assets/atras.svg";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 export default function EditUser() {
+  const location = useLocation()
   const history = useHistory();
   const [token] = useState(sessionStorage.getItem("token"));
   const [user, setUser] = useState();
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [movil, setMovil] = useState("");
-  const [email, setEmail] = useState("");
+  const [nombre, setNombre] = useState(location.state.name);
+  const [apellido, setApellido] = useState(location.state.surname);
+  const [movil, setMovil] = useState(location.state.movil);
+  const [email, setEmail] = useState(location.state.email);
 
   useEffect(() => {
     const fetch1 = async () => {
@@ -85,11 +86,12 @@ export default function EditUser() {
               onChange={handleNombre}
               className="nombre-usuario"
               placeholder="Edita tu nombre"
+              value={nombre}
             />
           </div>
-          <input type="text" onChange={handleApellido} placeholder="Apellido" />
-          <input type="text" onChange={handleMovil} placeholder="Movil" />
-          <input type="text" onChange={handleEmail} placeholder="Correo" />
+          <input type="text" value={apellido} onChange={handleApellido} placeholder="Apellido" />
+          <input type="text" value={movil} onChange={handleMovil} placeholder="Movil" />
+          <input type="text" value={email} onChange={handleEmail} placeholder="Correo" />
           <div className="editar-usuario">
             <h3 onClick={FetchEditar}>Editar</h3>
           </div>

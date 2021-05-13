@@ -1,0 +1,121 @@
+div.todo-tusrecargas {
+  background-color: #f7f7f7;
+  padding: 20px;
+  min-height: 100vh;
+}
+div.todo-tusrecargas img {
+  width: 25px;
+}
+div.todo-tusrecargas h3 {
+  text-align: center;
+}
+div.todo-tusrecargas img:hover {
+  cursor: pointer;
+}
+div.menu-tusrecargas .img-perfil {
+  width: 70px;
+  border-radius: 50%;
+  border: 1px solid red;
+}
+
+div.menu-tusrecargas img {
+  width: 15px;
+}
+
+h1.titulo-tusrecargas {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+div.menu-tusrecargas {
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+div.config-datos-perfil {
+  line-height: 1.6;
+  text-align: start;
+}
+div.config-datos-perfil h3 {
+  text-align: start;
+}
+
+div.tusrecargas {
+  margin: 25px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+div.tusrecargas img {
+  width: 35px;
+}
+div.tusrecargas img:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+div.input-factura {
+  background: linear-gradient(94.06deg, #69e5af -40.19%, #340d66 141.01%);
+  text-align: center;
+  border-radius: 25px 25px 0 0;
+}
+
+div.input-factura input {
+  color: black;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+div.info-facturas input {
+  text-align: center;
+  width: 90%;
+  margin: 12px auto;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 2px 2px 10px -3px black;
+}
+div.info-factura input:focus {
+  outline: none;
+}
+
+div.info-factura {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 10px auto;
+  width: 90%;
+  padding: 10px;
+  box-shadow: 2px 2px 10px -1px black;
+}
+div.importe {
+  display: flex;
+  margin-right: 20px;
+  flex-direction: column;
+}
+
+div.info {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-top: auto;
+  width: 100%;
+}
+
+.titulo-tusrecargas {
+  margin: 36px;
+}
+
+div.info p {
+  color: grey;
+  font-size: 14px;
+}
+div.info h4 {
+  font-size: 14px;
+}
+div.info h3 {
+  font-size: 16px;
+}

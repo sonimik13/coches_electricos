@@ -12,8 +12,12 @@ import NuevoCoche from "./components/Configuracion/NuevoCoche/NuevoCoche";
 import EditUser from "./components/Configuracion/Usuario/EditUser";
 import Recarga2 from "./components/Recarga/Recarga2/Recarga2";
 import Recarga1 from "./components/Recarga/Recarga1/Recarga1";
+import Carga1 from "./components/CargasRapidas/Carga1";
+import Carga2 from "./components/CargasRapidas/Carga2";
+import Pago from "./components/Pago/Pago";
+import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta";
+import Tusrecargas from "./components/Tusrecargas/Tusrecargas";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -26,11 +30,18 @@ function App() {
   const handleNombre = (event) => {
     setNombre(event.target.value);
   };
+  const handleNombrefb = (name) => {
+    console.log(name);
+    setNombre(name);
+  };
   const handleApellido = (event) => {
     setApellido(event.target.value);
   };
   const handleEmail = (event) => {
     setEmail(event.target.value);
+  };
+  const handleEmailfb = (email) => {
+    setEmail(email);
   };
   const handlePass = (event) => {
     setPass(event.target.value);
@@ -72,6 +83,8 @@ function App() {
     toggleMenu,
     logout,
     token,
+    handleNombrefb,
+    handleEmailfb,
   };
 
   return (
@@ -107,6 +120,21 @@ function App() {
             </Route>
             <Route path="/recarga1">
               <Recarga1 />
+            </Route>
+            <Route path="/carga1">
+              <Carga1 />
+            </Route>
+            <Route path="/carga2">
+              <Carga2 />
+            </Route>
+            <Route path="/pago">
+              <Pago />
+            </Route>
+            <Route path="/nuevaTarjeta">
+              <NuevaTarjeta />
+            </Route>
+            <Route path="/tusrecargas">
+              <Tusrecargas />
             </Route>
           </Switch>
         </div>
