@@ -16,6 +16,7 @@ import Carga1 from "./components/CargasRapidas/Carga1";
 import Carga2 from "./components/CargasRapidas/Carga2";
 import Pago from "./components/Pago/Pago";
 import NuevaTarjeta from "./components/Pago/NuevaTarjeta/NuevaTarjeta";
+import Tusrecargas from "./components/Tusrecargas/Tusrecargas";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -83,7 +84,7 @@ function App() {
     logout,
     token,
     handleNombrefb,
-    handleEmailfb
+    handleEmailfb,
   };
 
   return (
@@ -131,6 +132,9 @@ function App() {
             </Route>
             <Route path="/nuevaTarjeta">
               <NuevaTarjeta />
+            </Route>
+            <Route path="/tusrecargas">
+              <Tusrecargas />
             </Route>
           </Switch>
         </div>
