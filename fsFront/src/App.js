@@ -9,23 +9,20 @@ import RegistroP3 from "./Components/RegistroP3/RegistroP3";
 import Tarjeta from "./Components/Tarjeta/Tarjeta";
 import Configuracion from "./Components/Configuracion/Configuracion";
 import NuevoCoche from "./Components/Configuracion/NuevoCoche/NuevoCoche";
-<<<<<<< HEAD
 import NuevaTarjeta from "./Components/Pago/NuevaTarjeta/NuevaTarjeta" 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import LoginG from "./Components/GoogleLogin/GoogleLogin"
 
-=======
 import EditUser from "./Components/Configuracion/Usuario/EditUser";
->>>>>>> 0a5cc6f2a164bc12c956c9a636606cb09614faca
 import Recarga2 from "./Components/Recarga/Recarga2/Recarga2";
 import Recarga1 from "./Components/Recarga/Recarga1/Recarga1";
 import Carga1 from "./Components/CargasRapidas/Carga1";
 import Carga2 from "./Components/CargasRapidas/Carga2";
 import Pago from "./Components/Pago/Pago";
-import NuevaTarjeta from "./Components/Pago/NuevaTarjeta/NuevaTarjeta";
+
 import Tusrecargas from "./Components/Tusrecargas/Tusrecargas";
 import NuevaFactura from "./Components/Tusrecargas/NuevaFactura/NuevaFactura";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 function App() {
   const [menu, setMenu] = useState(false);
