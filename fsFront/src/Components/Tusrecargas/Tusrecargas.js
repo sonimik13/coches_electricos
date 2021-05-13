@@ -33,12 +33,13 @@ function Tusrecargas() {
     <>
       <div className="todo-tusrecargas">
         <div className="main-recargas">
-          <Link to="/home">
-            <img src={atras} alt="atras" />
-          </Link>
-          <h1 className="titulo-tusrecargas">Mis Recargas</h1>
+          <div className="verde">
+            <Link to="/home">
+              <img src={atras} alt="atras" />
+            </Link>
+            <h1 className="titulo-tusrecargas">Mis Recargas</h1>
+          </div>
         </div>
-        <hr />
         <div className="tusrecargas">{drawTusrecargas()}</div>
       </div>
     </>

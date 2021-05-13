@@ -18,19 +18,10 @@ function NuevoCoche() {
   const handleAutocomplete = (e, newValue) => {
     if (newValue != null) {
       console.log(newValue);
-      setCoche(newValue.modelo)
-      setCargador(newValue.cargador)
+      setCoche(newValue.modelo);
+      setCargador(newValue.cargador);
     }
   };
-
-
-  // const handleCoche = (e) => {
-  //   setCoche(e.target.value);
-  // };
-
-  // const handleCargador = (e) => {
-  //   setCargador(e.target.value);
-  // };
 
   const handleColor = (e) => {
     setColor(e.target.value);
@@ -41,8 +32,8 @@ function NuevoCoche() {
   };
 
   const Fetch = async () => {
-    if (coche === "" || color === "" || matricula === "" ) {
-      alert("Por favor, añade todos los datos de tu coche")
+    if (coche === "" || color === "" || matricula === "") {
+      alert("Por favor, añade todos los datos de tu coche");
     } else {
       const newCar = {
         descripcion: coche,
@@ -60,38 +51,43 @@ function NuevoCoche() {
         alert(data.data);
       }
     }
-    
   };
 
   return (
     <>
       <div className="todo-configuracion">
-        <Link to="/configuracion">
-          <img src={atras} alt="atras" />
-        </Link>
         <div className="main-configuracion">
-          <h1 className="titulo-configuracion">Añadir coche</h1>
-          <Autocomplete
-            id="combo-box-demo"
-            options={dataCoches}
-            getOptionLabel={(option) => option.modelo}
-            style={{ width: "90%", margin: "10px auto", borderRadius: "25px", backgroundColor: "white", textAlign: "center" }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Busca aquí tu coche"
-                variant="standard"
-              />
-            )}
-            onChange={handleAutocomplete}
-          />
+          <div className="verde">
+            <Link to="/configuracion">
+              <img src={atras} alt="atras" />
+            </Link>
+            <h1 className="titulo-configuracion">Añadir coche</h1>
+          </div>
+          <div className="buscador">
+            <Autocomplete
+              id="combo-box-demo"
+              options={dataCoches}
+              getOptionLabel={(option) => option.modelo}
+              style={{
+                width: "90%",
+                margin: "10px auto",
+                borderRadius: "25px",
+                backgroundColor: "white",
+                textAlign: "center",
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Busca aquí tu coche"
+                  variant="standard"
+                />
+              )}
+              onChange={handleAutocomplete}
+            />
+          </div>
           <div className="info-coche">
             <div className="input-coche">
-              <input
-                type="text"
-                value={coche}
-                placeholder="Marca y modelo"
-              />
+              <input type="text" value={coche} placeholder="Marca y modelo" />
             </div>
             <input
               type="text"

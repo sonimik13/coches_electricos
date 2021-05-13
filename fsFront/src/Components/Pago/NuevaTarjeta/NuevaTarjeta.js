@@ -52,11 +52,13 @@ function NuevaTarjeta() {
   };
   return (
     <div className="todo-pago">
-      <Link to="/pago">
-        <img src={atras} alt="atras" />
-      </Link>
       <div className="main-pago">
-        <h1 className="titulo-pago">Añadir tarjeta</h1>
+        <div className="verde">
+          <Link to="/pago">
+            <img src={atras} alt="atras" />
+          </Link>
+          <h1 className="titulo-pago">Añadir tarjeta</h1>
+        </div>
         <div className="info-tarjeta">
           <div className="input-titular">
             <input type="text" onChange={handleTitular} placeholder="Titular" />
@@ -94,7 +96,7 @@ function NuevaTarjeta() {
               <option value="2028">2028</option>
             </select>
           </div>
-            <input type="text" onChange={handleCodigo} placeholder="CCV" />
+          <input type="text" onChange={handleCodigo} placeholder="CCV" />
           <div className="guardar-tarjeta" onClick={Fetch}>
             <h3>Guardar</h3>
           </div>
