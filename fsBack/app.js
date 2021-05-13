@@ -23,8 +23,6 @@ const {
   deleteCar,
   deleteCard,
   readUser,
-  newPass,
-  changePass,
   signUpGoogle,
 } = require("./src/controllers/controller");
 
@@ -68,8 +66,16 @@ app.put("/signout", async (req, res) => {
 });
 
 app.put("/create/card", async (req, res) => {
+  if (validateCard(req.body.numero)) {
     const result = await newCard(req.body, req.headers.authorization);
     res.send(result);
+  } else {
+    res.status(406).json({
+      status: 406,
+      data: "El número de la tarjeta no es válido",
+      ok: false,
+    });
+  }
 });
 
 app.put("/edit/user", async (req, res) => {
@@ -108,17 +114,6 @@ app.get("/usuario/get", async (req, res) => {
 });
 
 // --------------- PARA CHEQUEAR ---------------
-
-app.post("/user/newpass", async (req, res) => {
-  const result = await newPass(req.body.email);
-  res.send(result);
-});
-
-app.put("/user/changepass", async (req, res) => {
-  const result = await changePass(req.body.pass, req.headers.authorization);
-  res.send(result);
-});
-
 app.post("/signin/google", async (req, res) => {
   const result = await signIn(req.body.email, "");
   res.send(result);

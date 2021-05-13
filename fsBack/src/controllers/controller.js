@@ -205,104 +205,6 @@ const readUser = async (token) => {
 };
 
 // --------------- PARA CHEQUEAR ---------------
-const newPass = async (email) => {
-  const sql = `SELECT * FROM usuarios WHERE email = "${email}"`;
-  const response = await doQuery(sql);
-  let result;
-
-  if (response.length !== 0) {
-    const token = jwt.sign({ email: email }, response[0].pass);
-    const link = `https://fyf-greenteam.netlify.app/pass/recuperar/?token=${token}`;
-    try {
-      await mailer(email, link).then((res) => {
-        if (res) {
-          result = {
-            status: 200,
-            data: `Correo electrónico mandado a ${email}`,
-            ok: true,
-          };
-        } else {
-          result = {
-            status: 404,
-            data: "Algo ha salido mal...",
-            ok: false,
-          };
-        }
-      });
-    } catch (error) {
-      result = {
-        status: 500,
-        data: `Error al mandar correo a ${email}: error`,
-        ok: false,
-      };
-    }
-  } else {
-    result = {
-      status: 406,
-      data: "Este correo no existe",
-      ok: false,
-    };
-  }
-
-  return result;
-};
-
-const changePass = async (newPass, token) => {
-  if (validatePass(newPass)) {
-    try {
-      const decode = jwt.decode(token);
-      const sql = `SELECT * FROM usuarios WHERE email = "${decode.email}"`;
-      const response = await doQuery(sql);
-
-      if (response.length !== 0) {
-        const pass = response[0].pass;
-        try {
-          const res = jwt.verify(token, pass);
-          if (res.email) {
-            const newSecret = randomstring.generate();
-            const sql2 = `UPDATE usuarios SET secret = "${newSecret}", pass = "${md5(
-              newPass
-            )}" WHERE email = "${decode.email}"`;
-            const response = await doQuery(sql2);
-            return response.changedRows > 0
-              ? {
-                  status: 200,
-                  data: "Password cambiada",
-                  ok: true,
-                }
-              : {
-                  status: 406,
-                  data: "Algo va mal...",
-                  ok: false,
-                };
-          } else {
-            const result = {
-              status: 500,
-              data: "La contraseña ya ha sido cambiada",
-              ok: false,
-            };
-            return result;
-          }
-        } catch (error) {
-          const result = {
-            OK: 0,
-            error: 401,
-            message: `Token no válido: ${error.message}`,
-          };
-          return result;
-        }
-      }
-    } catch (error) {
-      const result = {
-        status: 400,
-        data: `No hay token.`,
-        ok: false,
-      };
-      return result;
-    }
-  }
-};
-
 const mailer = (email, link) => {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
@@ -375,7 +277,5 @@ module.exports = {
   deleteCar,
   deleteCard,
   readUser,
-  newPass,
-  changePass,
   signUpGoogle,
 };
