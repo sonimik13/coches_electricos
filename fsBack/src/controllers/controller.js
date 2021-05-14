@@ -6,12 +6,16 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const randomstring = require("randomstring");
 const { nanoid } = require("nanoid");
+const multer = require("multer");
+
+
+
 const {
   registerNewUser,
   checkUser,
   newCardDB,
   newCarDB,
-  newFotoDB,
+  // newFotoDB,
   editCarDB,
   editUserDB,
   newInvoiceDB,
@@ -97,15 +101,17 @@ const signOut = async (token) => {
   return result;
 };
 
-const newFotoPerfil = async (token, imagen) => {
-  const decode = jwt.decode(token);
-  const foto = {
-    id: decode.id,
-    imagen: foto.imagen,
-  }
-  const result = await newFotoDB(foto);
-  return result;
-}
+
+
+// const newFotoPerfil = async (token, imagen) => {
+//   const decode = jwt.decode(token);
+//   const foto = {
+//     id: decode.id,
+//     imagen: foto.imagen,
+//   }
+//   const result = await newFotoDB(foto);
+//   return result;
+// }
 
 const newCard = async (card, token) => {
   const decode = jwt.decode(token);
@@ -377,7 +383,7 @@ module.exports = {
   editUser,
   newCar,
   editCar,
-  newFotoPerfil,
+  // newFotoPerfil,
   newInvoice,
   validateEmail,
   validatePass,

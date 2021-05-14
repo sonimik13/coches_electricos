@@ -5,7 +5,9 @@ async function FetchFotoPerfil(imagen, id) {
       imagen: imagen,
       id: id
     }),
-    headers: { "Content-Type": "image/svg+xml" }
+    headers: {
+      "Content-Type": "image/jpeg"
+    }
   };
   return await fetch("http://localhost:8080/create/fotoPerfil", options)
 }

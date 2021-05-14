@@ -232,6 +232,7 @@ const editUserDB = (user) => {
                 surname: user.surname,
                 email: user.email,
                 movil: user.movil,
+                imagen: imagen,
               },
             },
             (err, result) => {

@@ -14,11 +14,11 @@ export class App extends Component {
         }
     }
     imageHandler = (e) => {
-        // const FetchFotoPerfil = (profileImg) => {
-        //     fetch("http://localhost:8080/create/fotoPerfil")
-        //         .then(response => response.json())
-        //         .then(image => reader.result)
-        // }
+        const FetchFotoPerfil = (profileImg) => {
+            fetch("http://localhost:8080/create/fotoPerfil")
+                .then(response => response.json())
+                .then(image => reader.result)
+        }
         const reader = new FileReader();
         reader.onload = () => {
             if (reader.readyState === 2) {

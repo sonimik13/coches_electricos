@@ -5,6 +5,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const multer = require("multer")
+const upload = multer({ dest: 'images/' })
 
 const {
   signUp,
@@ -83,7 +85,8 @@ app.put("/create/car", async (req, res) => {
   res.send(result);
 });
 
-app.put("/create/fotoPerfil", async (req, res) => {
+app.post("/create/fotoPerfil", upload.single('profileImage'), async (req, res) => {
+  console.log(req.file)
   const result = await newFotoPerfil(req.body, req.headers.authorization);
   res.send(result);
 });
