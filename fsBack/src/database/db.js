@@ -91,6 +91,7 @@ const checkUser = (user) => {
   });
 };
 
+
 const deleteSecret = (token) => {
   const secret = randomstring.generate();
   const decode = jwt.decode(token);
@@ -125,6 +126,44 @@ const deleteSecret = (token) => {
                   data: "Algo salió mal...",
                   result,
                   ok: false,
+                });
+                db.close();
+              }
+            }
+          );
+      } catch {
+        rej({
+          status: 500,
+          data: "Error con la base de datos",
+          ok: false,
+        });
+      }
+    });
+  });
+};
+
+const newFotoDB = (imagen) => {
+  return new Promise((res, rej) => {
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+      try {
+        db.db("niutu")
+          .collection("usuarios")
+          .updateOne(
+            { id: imagen.id },
+            { $push: { foto: imagen } },
+            (err, result) => {
+              if (err) throw err;
+              if (result === null) {
+                res({
+                  status: 401,
+                  data: "Ha habido un error",
+                  ok: false,
+                });
+              } else {
+                res({
+                  status: 200,
+                  data: "Foto añadida correctamente",
+                  ok: true,
                 });
                 db.close();
               }
@@ -544,6 +583,7 @@ module.exports = {
   registerNewUser,
   checkUser,
   newCardDB,
+  newFotoDB,
   editUserDB,
   newCarDB,
   editCarDB,

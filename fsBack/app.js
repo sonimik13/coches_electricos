@@ -12,6 +12,7 @@ const {
   signOut,
   editUser,
   newCar,
+  newFotoPerfil,
   editCar,
   newInvoice,
   validateEmail,
@@ -68,8 +69,8 @@ app.put("/signout", async (req, res) => {
 });
 
 app.put("/create/card", async (req, res) => {
-    const result = await newCard(req.body, req.headers.authorization);
-    res.send(result);
+  const result = await newCard(req.body, req.headers.authorization);
+  res.send(result);
 });
 
 app.put("/edit/user", async (req, res) => {
@@ -79,6 +80,11 @@ app.put("/edit/user", async (req, res) => {
 
 app.put("/create/car", async (req, res) => {
   const result = await newCar(req.body, req.headers.authorization);
+  res.send(result);
+});
+
+app.put("/create/fotoPerfil", async (req, res) => {
+  const result = await newFotoPerfil(req.body, req.headers.authorization);
   res.send(result);
 });
 

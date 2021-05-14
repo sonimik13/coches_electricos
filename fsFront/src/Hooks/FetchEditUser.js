@@ -1,12 +1,12 @@
-async function FetchEditUser (user, token) {
+async function FetchEditUser(user, token) {
     const options = {
         method: "PUT",
         body: JSON.stringify(user),
-        headers: { 
+        headers: {
             "Content-Type": "application/json",
             "Authorization": token
         }
-      };
+    };
     return await fetch("http://localhost:8080/edit/user", options)
 }
 

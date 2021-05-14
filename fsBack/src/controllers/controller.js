@@ -11,6 +11,7 @@ const {
   checkUser,
   newCardDB,
   newCarDB,
+  newFotoDB,
   editCarDB,
   editUserDB,
   newInvoiceDB,
@@ -64,6 +65,7 @@ const signUp = async (user) => {
   const USER = {
     id,
     img: "",
+    newImagen: user.newImagen,
     name: user.name,
     surname: user.surname,
     email: user.email,
@@ -94,6 +96,16 @@ const signOut = async (token) => {
   const result = await deleteSecret(token);
   return result;
 };
+
+const newFotoPerfil = async (token, imagen) => {
+  const decode = jwt.decode(token);
+  const foto = {
+    id: decode.id,
+    imagen: foto.imagen,
+  }
+  const result = await newFotoDB(foto);
+  return result;
+}
 
 const newCard = async (card, token) => {
   const decode = jwt.decode(token);
@@ -266,15 +278,15 @@ const changePass = async (newPass, token) => {
             const response = await doQuery(sql2);
             return response.changedRows > 0
               ? {
-                  status: 200,
-                  data: "Password cambiada",
-                  ok: true,
-                }
+                status: 200,
+                data: "Password cambiada",
+                ok: true,
+              }
               : {
-                  status: 406,
-                  data: "Algo va mal...",
-                  ok: false,
-                };
+                status: 406,
+                data: "Algo va mal...",
+                ok: false,
+              };
           } else {
             const result = {
               status: 500,
@@ -365,6 +377,7 @@ module.exports = {
   editUser,
   newCar,
   editCar,
+  newFotoPerfil,
   newInvoice,
   validateEmail,
   validatePass,

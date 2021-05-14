@@ -6,11 +6,11 @@ import Coche from "./Coche/Coche";
 import FetchUser from "../../Hooks/FetchUser";
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import FotoPerfil from './fotoPerfil/fotoPerfil'
+import maniqui from "../../assets/maniqui.svg"
 
 function Config() {
   const history = useHistory()
-  const [select, setSelect] = useState({});
+  const [setSelect] = useState({});
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -47,8 +47,8 @@ function Config() {
         <div className="main-configuracion">
           <h1 className="titulo-configuracion">Configuración</h1>
           <div className="menu-configuracion">
-            <FotoPerfil />
-            
+            <img src={maniqui} alt="Img" className="img" />
+
             <div className="config-datos-perfil">
               <h3>
                 {user ? user.name : ""} {user ? user.surname : ""}{" "}

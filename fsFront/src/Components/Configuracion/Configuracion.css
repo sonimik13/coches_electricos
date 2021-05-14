@@ -129,3 +129,9 @@ div.editar-usuario:hover {
 	cursor: pointer;
 	transform: scale(1.02);
 }
+div.menu-configuracion img.img {
+	width: 145px;
+	height: 145px;
+	border-radius: 100%;
+	cursor: default;
+}
