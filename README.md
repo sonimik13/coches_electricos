@@ -4,7 +4,7 @@ Proyecto grupal en el que se ha desarrollado un producto digital para coches el�
 
 #### Proceso
 
-- Se ha realizado uan encuenta que nos sirviera para decidir nuestra propuesta de valor
+- Se ha realizado una encuesta que sirviera para decidir la propuesta de valor
 - Se ha diseñado el producto
 - Se ha realizado web scraping de la página web de [Electric Vehicle Database](https://ev-database.org/#sort:path~type~order=.rank~number~desc|range-slider-range:prev~next=0~1200|range-slider-acceleration:prev~next=2~23|range-slider-topspeed:prev~next=110~450|range-slider-battery:prev~next=10~200|range-slider-eff:prev~next=100~300|range-slider-fastcharge:prev~next=0~1500|paging:currentPage=0|paging:number=all) para obtener la BBDD (macra y modelo de coche y tipo de cargador eléctrico)
 - Se ha creado la aplicación [miutu](https://miutu-front.herokuapp.com/)
