@@ -10,6 +10,6 @@ Proyecto grupal en el que se ha desarrollado un producto digital para coches el�
 - Se ha creado la aplicaci처n [miutu](https://miutu-front.herokuapp.com/)
 - Se ha comprobado la seguridad de la aplicaci처n realizando testeos de ciberseguridad
 
-Tras presentar el producto a partir de un PowerPoint, se ha realizado una demostraci처n en directo y retransmitida por el canal [Youtube](https://www.youtube.com/watch?v=rdZCj-R7MPM) del funcionamiento de la aplicaci처n miutu (tercer grupo en exponer, para ver la exposici처n se debe adelatar el video a la 1:00:24).
+Tras presentar el producto a partir de un PowerPoint, se ha realizado una demostraci처n en directo y retransmitida por el canal [Youtube](https://www.youtube.com/watch?v=rdZCj-R7MPM) del funcionamiento de la aplicaci처n miutu (tercer grupo en exponer, para ver la exposici처n se debe adelantar el video a la 1:00:24).
 
 **Palabras clave** (Python, Java, Web Scraping, MongoDB, Ciberseguridad )
