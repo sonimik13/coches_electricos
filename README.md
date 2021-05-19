@@ -1,6 +1,6 @@
 # coches_electricos
 
-Proyecto grupal en el que se ha desarrollado un producto digital para coches eléctricos en relación con la autonomía y puntos de carga.
+Proyecto grupal multidisciplinar (UX/UI, Full Stack, Data Science y Ciberseguridad) en el que se ha desarrollado un producto digital para coches eléctricos en relación con la autonomía y puntos de carga.
 
 #### Proceso
 
