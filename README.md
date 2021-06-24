@@ -12,4 +12,4 @@ Proyecto grupal multidisciplinar (UX/UI, Full Stack, Data Science y Cibersegurid
 
 Se ha realizado una demostración en directo y retransmitida por el canal [Youtube](https://www.youtube.com/watch?v=rdZCj-R7MPM) del producto digital creado y del funcionamiento de la aplicación miutu (tercer grupo en exponer, para ver la exposición se debe adelantar el video a la posición 1:00:50).
 
-**Palabras clave** (Python, Java, Web Scraping, MongoDB, Ciberseguridad )
+**Palabras clave** (Python, Java, Web Scraping, MongoDB, Ciberseguridad)
